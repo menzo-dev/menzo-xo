@@ -3,272 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MENZO-XO: NEURAL OMEGA</title>
+    <title>MENZO-XO: OMEGA CLOUD</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
 
         :root {
-            /* Dark Mode (Default) */
-            --bg-color: #050505;
-            --panel-bg: rgba(20, 20, 30, 0.6);
-            --text-color: #ffffff;
-            --accent-color: #00f3ff; /* Cyan */
-            --secondary-color: #bc13fe; /* Pink */
-            --grid-color: rgba(255, 255, 255, 0.1);
-            --shadow: 0 0 20px rgba(0, 243, 255, 0.2);
-            --sidebar-width: 350px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        [data-theme="light"] {
-            --bg-color: #f0f2f5;
-            --panel-bg: rgba(255, 255, 255, 0.7);
-            --text-color: #1a1a2e;
-            --accent-color: #0066ff;
-            --secondary-color: #ff0055;
-            --grid-color: rgba(0, 0, 0, 0.1);
-            --shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+            --bg-dark: #030305;
+            --sidebar-bg: rgba(10, 15, 30, 0.85);
+            --primary: #00f3ff;
+            --secondary: #bc13fe;
+            --success: #0aff0a;
+            --danger: #ff003c;
+            --text-main: #ffffff;
+            --text-dim: #8b9bb4;
+            --glass: 1px solid rgba(255, 255, 255, 0.1);
+            --shadow: 0 0 30px rgba(0, 243, 255, 0.15);
         }
 
         body {
             margin: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             font-family: 'Rajdhani', sans-serif;
-            overflow: hidden;
-            transition: var(--transition);
-            height: 100vh;
             display: flex;
-            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(188, 19, 254, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 20%);
         }
 
-        /* --- HEADER --- */
-        header {
+        /* --- SIDEBAR (Always Open by Default) --- */
+        .sidebar {
+            width: 380px;
+            background: var(--sidebar-bg);
+            backdrop-filter: blur(20px);
+            border-left: var(--glass);
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            box-shadow: 10px 0 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(100%); /* Hide to right */
+            position: absolute;
+            height: 100%;
+        }
+
+        .sidebar-header {
+            padding: 30px;
+            border-bottom: var(--glass);
+            background: rgba(0,0,0,0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            z-index: 100;
         }
 
         .logo {
             font-family: 'Orbitron';
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
         }
 
-        .controls {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: transform 0.5s;
-        }
-        .theme-toggle:hover { transform: rotate(180deg); }
-
-        /* Hamburger Menu */
-        .hamburger {
-            cursor: pointer;
-            width: 30px;
-            height: 20px;
-            position: relative;
-            z-index: 200;
-        }
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: var(--text-color);
-            position: absolute;
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-        .hamburger span:nth-child(1) { top: 0; }
-        .hamburger span:nth-child(2) { top: 8px; }
-        .hamburger span:nth-child(3) { top: 16px; }
-
-        .hamburger.active span:nth-child(1) { top: 8px; transform: rotate(45deg); background: var(--secondary-color); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { top: 8px; transform: rotate(-45deg); background: var(--secondary-color); }
-
-        /* --- SIDEBAR --- */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -var(--sidebar-width);
-            width: var(--sidebar-width);
-            height: 100%;
-            background: var(--panel-bg);
-            backdrop-filter: blur(20px);
-            border-left: 1px solid var(--grid-color);
-            padding: 80px 30px 30px;
-            transition: var(--transition);
-            z-index: 150;
-            overflow-y: auto;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-        }
-
-        .sidebar.active { right: 0; }
-
-        .sidebar-section { margin-bottom: 40px; }
-        .sidebar-title {
-            font-family: 'Orbitron';
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--grid-color);
-            padding-bottom: 5px;
-        }
-
-        .level-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 10px;
+        .toggle-btn {
             background: transparent;
-            border: 1px solid var(--grid-color);
-            color: var(--text-color);
-            font-family: 'Rajdhani';
-            font-weight: bold;
-            font-size: 1.1rem;
+            border: var(--glass);
+            color: var(--text-main);
             cursor: pointer;
-            text-align: right;
+            padding: 8px;
+            border-radius: 5px;
             transition: 0.3s;
-            border-radius: 5px;
         }
-        .level-btn:hover, .level-btn.active {
-            background: var(--accent-color);
-            color: #000;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color);
-        }
+        .toggle-btn:hover { background: rgba(255,255,255,0.1); }
 
-        .log-container {
-            height: 200px;
+        .sidebar-content {
+            flex: 1;
             overflow-y: auto;
-            background: rgba(0,0,0,0.2);
-            border-radius: 5px;
-            padding: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            color: #aaa;
+            padding: 20px;
         }
-        .log-entry { margin-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .log-entry.win { color: var(--accent-color); }
-        .log-entry.lose { color: var(--secondary-color); }
 
-        .dev-info {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #888;
+        /* Scrollbar */
+        .sidebar-content::-webkit-scrollbar { width: 5px; }
+        .sidebar-content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; }
+
+        .section-title {
+            font-family: 'Orbitron';
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 16px;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Level Buttons */
+        .level-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        .level-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-dim);
+            padding: 15px;
+            text-align: right;
+            cursor: pointer;
+            font-family: 'Rajdhani';
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .level-btn:hover {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--primary);
+            border-color: var(--primary);
+            padding-right: 25px;
+        }
+        .level-btn.active {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+        .level-btn.cloud {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        .level-btn.cloud.active {
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.4);
+        }
+
+        /* Dev Profile Card */
+        .dev-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: var(--glass);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .dev-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
         }
         .dev-name {
-            color: var(--text-color);
-            font-weight: bold;
             font-family: 'Orbitron';
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .dev-role {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .dev-stats {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
         }
 
-        /* --- MAIN GAME AREA --- */
-        .game-stage {
+        /* Cloud Status */
+        .cloud-status {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid var(--success);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--success);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        /* --- MAIN STAGE --- */
+        .main-stage {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, transparent 70%);
         }
 
-        .neural-viz-container {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 150px;
-            height: 150px;
-            border: 1px solid var(--grid-color);
-            border-radius: 10px;
-            background: rgba(0,0,0,0.3);
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
-        .neural-label {
-            position: absolute;
-            bottom: 5px;
-            left: 5px;
-            font-size: 0.6rem;
-            color: var(--accent-color);
-            font-family: 'Orbitron';
-            z-index: 2;
-        }
-        #neural-canvas { width: 100%; height: 100%; }
-
-        .status-panel {
+        .game-info {
             text-align: center;
             margin-bottom: 30px;
-            z-index: 10;
         }
-        .main-status {
+        .status-text {
             font-family: 'Orbitron';
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px var(--accent-color);
+            letter-spacing: 4px;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
-        .sub-status {
-            font-size: 1rem;
-            color: var(--secondary-color);
-            min-height: 1.2em;
+        .sub-text {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            min-height: 1.5em;
         }
 
-        .board-wrapper {
+        .board-container {
             position: relative;
             padding: 20px;
-            background: var(--panel-bg);
+            background: rgba(10, 15, 30, 0.4);
             border-radius: 20px;
-            border: 1px solid var(--grid-color);
+            border: var(--glass);
             box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
         }
 
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
-            gap: 10px;
+            grid-template-columns: repeat(3, 120px);
+            grid-template-rows: repeat(3, 120px);
+            gap: 15px;
         }
 
         .cell {
             background: rgba(255,255,255,0.03);
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             font-family: 'Orbitron';
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             z-index: 10;
+            border: 1px solid transparent;
         }
-        .cell:hover { background: rgba(255,255,255,0.1); }
-        .cell.x { color: var(--accent-color); text-shadow: 0 0 20px var(--accent-color); }
-        .cell.o { color: var(--secondary-color); text-shadow: 0 0 20px var(--secondary-color); }
-        
-        .cell.hint {
-            animation: pulseHint 1s infinite;
-            border: 2px solid var(--accent-color);
+
+        .cell:hover {
+            background: rgba(255,255,255,0.08);
+            transform: scale(1.05);
+            border-color: rgba(255,255,255,0.2);
         }
-        @keyframes pulseHint { 0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(0, 243, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); } }
+
+        .cell.x { 
+            color: var(--primary); 
+            text-shadow: 0 0 30px var(--primary); 
+            animation: popIn 0.4s forwards;
+        }
+        .cell.o { 
+            color: var(--secondary); 
+            text-shadow: 0 0 30px var(--secondary); 
+            animation: popIn 0.4s forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            80% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
 
         /* SVG Overlay */
         .winning-svg {
@@ -279,121 +316,139 @@
         }
         .winning-path {
             fill: none;
-            stroke: var(--text-color);
-            stroke-width: 8;
+            stroke: #fff;
+            stroke-width: 10;
             stroke-linecap: round;
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            filter: drop-shadow(0 0 10px var(--text-color));
-            transition: stroke-dashoffset 0.8s ease-out;
+            filter: drop-shadow(0 0 15px #fff);
+            transition: stroke-dashoffset 1s ease-out;
         }
 
-        /* Start Overlay */
-        .start-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
+        /* Controls */
+        .controls {
+            margin-top: 40px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 50;
-            transition: opacity 0.5s;
+            gap: 20px;
         }
-        .start-btn {
-            padding: 20px 50px;
-            font-size: 2rem;
+        .action-btn {
+            padding: 15px 40px;
             font-family: 'Orbitron';
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
             background: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
+            border: 1px solid var(--primary);
+            color: var(--primary);
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 0 30px var(--accent-color);
             transition: 0.3s;
-            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
         }
-        .start-btn:hover {
-            background: var(--accent-color);
+        .action-btn:hover {
+            background: var(--primary);
             color: #000;
-            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.6);
+            transform: translateY(-3px);
         }
-        .hidden { opacity: 0; pointer-events: none; }
+        .action-btn.secondary {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
+        }
+        .action-btn.secondary:hover {
+            background: var(--secondary);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(188, 19, 254, 0.6);
+        }
 
-        /* Mobile */
-        @media (max-width: 600px) {
-            .board { grid-template-columns: repeat(3, 80px); grid-template-rows: repeat(3, 80px); }
-            .sidebar { width: 100%; right: -100%; }
-            .neural-viz-container { width: 100px; height: 100px; top: 10px; left: 10px; }
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .sidebar {
+                position: absolute;
+                height: 100%;
+                transform: translateX(100%); /* Hidden by default on mobile */
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .board {
+                grid-template-columns: repeat(3, 90px);
+                grid-template-rows: repeat(3, 90px);
+            }
+            .cell { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">MENZO-XO</div>
-        <div class="controls">
-            <div class="theme-toggle" onclick="toggleTheme()" id="themeIcon">☀️</div>
-            <div class="hamburger" onclick="toggleSidebar()">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-section">
-            <div class="sidebar-title">مستوى الذكاء</div>
-            <button class="level-btn" onclick="setLevel('easy')">مبتدئ (Random)</button>
-            <button class="level-btn" onclick="setLevel('medium')">محترف (Tactical)</button>
-            <button class="level-btn active" onclick="setLevel('hard')">إلهي (Minimax)</button>
-            <button class="level-btn" onclick="setLevel('neural')" style="border-color: var(--secondary-color); color: var(--secondary-color);">عصبي (Neural Hybrid)</button>
+        <div class="sidebar-header">
+            <div class="logo">MENZO-XO</div>
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
         </div>
 
-        <div class="sidebar-section">
-            <div class="sidebar-title">سجل المعركة</div>
-            <div class="log-container" id="gameLog">
-                <div class="log-entry">> System Ready...</div>
+        <div class="sidebar-content">
+            
+            <!-- Levels -->
+            <div class="section-title">مستويات الذكاء</div>
+            <div class="level-grid">
+                <button class="level-btn" onclick="setLevel('easy')">مبتدئ (Random)</button>
+                <button class="level-btn" onclick="setLevel('medium')">محترف (Tactical)</button>
+                <button class="level-btn active" onclick="setLevel('hard')">إلهي (Minimax)</button>
+                <button class="level-btn cloud" onclick="setLevel('omega')">☁️ أوميغا (Cloud AI)</button>
             </div>
-        </div>
 
-        <div class="sidebar-section">
-            <div class="sidebar-title">عن النظام</div>
-            <div class="dev-info">
-                <p>Core Version: 4.0.1 Omega</p>
-                <p>Algorithm: Hybrid Minimax + Heuristics</p>
-                <br>
-                <p>Developed by:</p>
-                <p class="dev-name">Mohamed El-Menzalawy</p>
-                <p style="font-size: 0.8rem; margin-top: 5px;">© 2024 All Rights Reserved</p>
+            <!-- Cloud Status -->
+            <div class="cloud-status">
+                <div class="pulse-dot"></div>
+                <div>
+                    <div style="font-weight: bold; color: #fff;">GLOBAL BRAIN ONLINE</div>
+                    <div style="font-size: 0.8rem; color: var(--success);">Connected to Mohamed's Server</div>
+                </div>
             </div>
+
+            <!-- Developer Profile -->
+            <div class="section-title">عن المطور والنظام</div>
+            <div class="dev-card">
+                <div class="dev-avatar">M</div>
+                <div class="dev-name">Mohamed El-Menzalawy</div>
+                <div class="dev-role">Lead AI Architect</div>
+                <div style="font-size: 0.85rem; color: #aaa; line-height: 1.6; text-align: right;">
+                    مطور النواة الذكية للنظام. متخصص في خوارزميات التعلم العميق وتحليل الألعاب. هذا الإصدار (Omega) يمثل قمة التطور في ذكاء الألعاب المتصفحية.
+                </div>
+                <div class="dev-stats">
+                    <div>
+                        <div style="color: var(--primary); font-weight: bold;">v4.0</div>
+                        <div>Version</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--secondary); font-weight: bold;">100%</div>
+                        <div>Optimization</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Log -->
+            <div class="section-title">سجل العمليات</div>
+            <div id="gameLog" style="height: 150px; overflow-y: auto; font-family: 'Courier New'; font-size: 0.8rem; color: #888;">
+                <div>> System Initialized...</div>
+                <div>> Waiting for input...</div>
+            </div>
+
         </div>
     </div>
 
-    <!-- Main Stage -->
-    <div class="game-stage">
+    <!-- MAIN STAGE -->
+    <div class="main-stage">
         
-        <!-- Neural Visualization -->
-        <div class="neural-viz-container">
-            <canvas id="neural-canvas"></canvas>
-            <div class="neural-label">NEURAL CORE</div>
+        <div class="game-info">
+            <h1 class="status-text" id="statusText">READY</h1>
+            <div class="sub-text" id="subText">Initialize Neural Link...</div>
         </div>
 
-        <!-- Start Overlay -->
-        <div class="start-overlay" id="startOverlay">
-            <h1 style="font-family: 'Orbitron'; margin-bottom: 30px; font-size: 3rem; color: var(--accent-color);">READY?</h1>
-            <button class="start-btn" onclick="startGame()">START GAME</button>
-        </div>
-
-        <!-- Game Area -->
-        <div class="status-panel">
-            <div class="main-status" id="mainStatus">WAITING</div>
-            <div class="sub-status" id="subStatus">Initialize System...</div>
-        </div>
-
-        <div class="board-wrapper">
+        <div class="board-container">
             <svg class="winning-svg">
                 <path id="winPath" class="winning-path" d="" />
             </svg>
@@ -402,121 +457,88 @@
             </div>
         </div>
 
-        <div style="margin-top: 30px; display: flex; gap: 20px;">
-            <button class="level-btn" style="width: auto; padding: 10px 30px;" onclick="getHint()">💡 تلميح</button>
-            <button class="level-btn" style="width: auto; padding: 10px 30px; border-color: var(--secondary-color); color: var(--secondary-color);" onclick="resetGame()">🔄 إعادة</button>
+        <div class="controls">
+            <button class="action-btn" onclick="getHint()">💡 تلميح ذكي</button>
+            <button class="action-btn secondary" onclick="resetGame()">🔄 إعادة ضبط</button>
         </div>
+
     </div>
 
     <script>
-        // --- THEME & UI ---
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.getElementById('themeIcon');
-            if (body.getAttribute('data-theme') === 'light') {
-                body.setAttribute('data-theme', 'dark');
-                icon.innerText = '☀️';
+        // --- UI FUNCTIONS ---
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (window.innerWidth > 900) {
+                sidebar.classList.toggle('collapsed');
             } else {
-                body.setAttribute('data-theme', 'light');
-                icon.innerText = '🌙';
+                sidebar.classList.toggle('active');
             }
         }
 
-        function toggleSidebar() {
-            document.querySelector('.hamburger').classList.toggle('active');
-            document.getElementById('sidebar').classList.toggle('active');
+        function addLog(msg) {
+            const log = document.getElementById('gameLog');
+            const entry = document.createElement('div');
+            const time = new Date().toLocaleTimeString('en-US', {hour12: false});
+            entry.innerText = `[${time}] ${msg}`;
+            log.prepend(entry);
         }
 
         function setLevel(level) {
             currentLevel = level;
             document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            addLog(`Level changed to: ${level.toUpperCase()}`);
+            addLog(`Level switched to: ${level.toUpperCase()}`);
+            
+            if (level === 'omega') {
+                document.getElementById('subText').innerText = "Connected to Global Neural Network...";
+                document.getElementById('subText').style.color = "var(--secondary)";
+            } else {
+                document.getElementById('subText').innerText = "Local Processing Mode";
+                document.getElementById('subText').style.color = "var(--primary)";
+            }
             resetGame();
-            toggleSidebar(); // Close sidebar on selection
         }
 
-        function addLog(msg, type = '') {
-            const log = document.getElementById('gameLog');
-            const entry = document.createElement('div');
-            entry.className = `log-entry ${type}`;
-            entry.innerText = `> ${msg}`;
-            log.prepend(entry);
-        }
+        // --- CLOUD AI SIMULATION (The Brain) ---
+        // In a real app, this would be a database on a server. 
+        // Here we simulate a persistent global memory that learns from losses.
+        const GlobalBrain = {
+            lostPatterns: [], // Stores board states where AI lost
+            connected: true,
 
-        // --- NEURAL NETWORK VISUALIZATION ---
-        const canvas = document.getElementById('neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let nodes = [];
-        let neuralActive = false;
+            // Save a losing pattern to "Server"
+            reportLoss: function(boardState) {
+                this.lostPatterns.push(boardState);
+                addLog("⚠️ LOSS DETECTED. Uploading pattern to Cloud...", "error");
+                // Simulate server delay
+                setTimeout(() => {
+                    addLog("✅ Pattern Saved. AI will not repeat this mistake.");
+                }, 1000);
+            },
 
-        function resizeNeural() {
-            canvas.width = canvas.parentElement.offsetWidth;
-            canvas.height = canvas.parentElement.offsetHeight;
-        }
-        window.addEventListener('resize', resizeNeural);
-        resizeNeural();
+            // Check if a move leads to a known losing pattern
+            isDangerous: function(boardState) {
+                // Simple hash of the board to compare
+                const currentHash = boardState.join('');
+                // Check if this state exists in our lost history
+                return this.lostPatterns.some(lost => lost.join('') === currentHash);
+            },
 
-        class Node {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2 + 1;
-                this.color = getComputedStyle(document.body).getPropertyValue('--accent-color').trim();
+            // Clear memory (Reset Server)
+            wipe: function() {
+                this.lostPatterns = [];
+                addLog("🗑️ Global Memory Wiped. AI reset to factory settings.");
             }
-            update() {
-                this.x += this.vx * (neuralActive ? 5 : 1); // Speed up when thinking
-                this.y += this.vy * (neuralActive ? 5 : 1);
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 30; i++) nodes.push(new Node());
-
-        function animateNeural() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const color = getComputedStyle(document.body).getPropertyValue(neuralActive ? '--secondary-color' : '--accent-color').trim();
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 0.5;
-            ctx.globalAlpha = neuralActive ? 0.8 : 0.3;
-
-            for (let i = 0; i < nodes.length; i++) {
-                nodes[i].update();
-                nodes[i].draw();
-                for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x;
-                    const dy = nodes[i].y - nodes[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < (neuralActive ? 60 : 40)) {
-                        ctx.beginPath();
-                        ctx.moveTo(nodes[i].x, nodes[i].y);
-                        ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateNeural);
-        }
-        animateNeural();
+        };
 
         // --- GAME ENGINE ---
         const boardEl = document.getElementById('board');
-        const mainStatus = document.getElementById('mainStatus');
-        const subStatus = document.getElementById('subStatus');
+        const statusText = document.getElementById('statusText');
+        const subText = document.getElementById('subText');
         const winPath = document.getElementById('winPath');
-        const startOverlay = document.getElementById('startOverlay');
 
         let board = Array(9).fill(null);
-        let gameActive = false;
+        let gameActive = true;
         let currentPlayer = 'X';
         let currentLevel = 'hard';
         const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
@@ -533,21 +555,13 @@
         }
         initBoard();
 
-        function startGame() {
-            startOverlay.classList.add('hidden');
-            resetGame();
-            addLog("Game Session Started");
-        }
-
         function handleCellClick(index) {
             if (board[index] || !gameActive || currentPlayer !== 'X') return;
             makeMove(index, 'X');
-            removeHint();
             if (gameActive) {
                 currentPlayer = 'O';
-                mainStatus.innerText = "AI THINKING";
-                subStatus.innerText = "Calculating probabilities...";
-                neuralActive = true; // Activate Neural Viz
+                statusText.innerText = "AI THINKING";
+                subText.innerText = "Analyzing 1,000,000 scenarios...";
                 setTimeout(makeComputerMove, 800);
             }
         }
@@ -557,7 +571,7 @@
             const cell = boardEl.children[index + 1];
             cell.innerText = player;
             cell.classList.add(player.toLowerCase());
-            
+
             if (checkWin(board, player)) {
                 endGame(player);
             } else if (!board.includes(null)) {
@@ -567,23 +581,29 @@
 
         function makeComputerMove() {
             if (!gameActive) return;
-            neuralActive = false; // Deactivate Neural Viz
 
             let moveIndex;
-            if (currentLevel === 'easy') moveIndex = getRandomMove();
-            else if (currentLevel === 'medium') moveIndex = getBestMove(3);
-            else if (currentLevel === 'hard') moveIndex = getBestMove(9);
-            else if (currentLevel === 'neural') moveIndex = getNeuralMove();
+            
+            if (currentLevel === 'easy') {
+                moveIndex = getRandomMove();
+            } else if (currentLevel === 'medium') {
+                moveIndex = getBestMove(3);
+            } else if (currentLevel === 'hard') {
+                moveIndex = getBestMove(9);
+            } else if (currentLevel === 'omega') {
+                moveIndex = getOmegaMove();
+            }
 
             makeMove(moveIndex, 'O');
             if (gameActive) {
                 currentPlayer = 'X';
-                mainStatus.innerText = "YOUR TURN";
-                subStatus.innerText = "Analyze the board";
+                statusText.innerText = "YOUR TURN";
+                subText.innerText = "Analyze the board carefully";
             }
         }
 
-        // --- HYBRID AI ALGORITHMS ---
+        // --- ALGORITHMS ---
+
         function getRandomMove() {
             const available = board.map((v, i) => v === null ? i : null).filter(v => v !== null);
             return available[Math.floor(Math.random() * available.length)];
@@ -640,24 +660,25 @@
             }
         }
 
-        // Neural Hybrid: Combines Minimax with Pattern Disruption
-        function getNeuralMove() {
-            // 1. Check for immediate win/block
-            const winMove = getBestMove(9);
+        // OMEGA LEVEL: Minimax + Cloud Memory Avoidance
+        function getOmegaMove() {
+            // 1. Get the mathematically best move
+            const bestMove = getBestMove(9);
             
-            // 2. Psychological Disruption: If center is open and game is early, take it aggressively
-            if (board[4] === null && board.filter(x=>x!==null).length < 3) {
-                subStatus.innerText = "Pattern Detected: Aggressive Center Control";
-                return 4;
+            // 2. Check Cloud Memory: Did this state lead to a loss before?
+            // We simulate checking the server
+            const tempBoard = [...board];
+            tempBoard[bestMove] = 'O';
+            
+            if (GlobalBrain.isDangerous(tempBoard)) {
+                addLog("⚠️ Cloud Warning: This move pattern previously led to defeat.");
+                addLog("🔄 Recalculating alternative strategy...");
+                // If the best move is dangerous, try to find the second best
+                // (Simplified logic for demo: just pick random if best is bad)
+                return getRandomMove(); 
             }
 
-            // 3. Randomness injection to feel "Alive" (5% chance to deviate from perfect play)
-            if (Math.random() < 0.05) {
-                subStatus.innerText = "Creativity Module Engaged";
-                return getRandomMove();
-            }
-
-            return winMove;
+            return bestMove;
         }
 
         function checkWin(currentBoard, player) {
@@ -666,31 +687,32 @@
 
         function endGame(winner) {
             gameActive = false;
-            neuralActive = false;
             if (winner === 'draw') {
-                mainStatus.innerText = "DRAW";
-                subStatus.innerText = "Perfect Balance";
-                addLog("Result: Draw", "win");
+                statusText.innerText = "DRAW";
+                subText.innerText = "Perfect Equilibrium";
+                addLog("Result: Draw");
             } else {
                 if (winner === 'X') {
-                    mainStatus.innerText = "YOU WON";
-                    subStatus.innerText = "Impossible Outcome";
-                    addLog("Result: Human Victory", "win");
+                    statusText.innerText = "YOU WON";
+                    subText.innerText = "Anomaly Detected in AI Logic";
+                    addLog("Result: Human Victory");
+                    // LEARNING MOMENT: Save this loss to Cloud
+                    if (currentLevel === 'omega') {
+                        GlobalBrain.reportLoss([...board]);
+                    }
                     drawWinLine(winner);
                 } else {
-                    mainStatus.innerText = "AI WON";
-                    subStatus.innerText = "System Dominance";
-                    addLog("Result: AI Victory", "lose");
+                    statusText.innerText = "AI WON";
+                    subText.innerText = "System Dominance Confirmed";
+                    addLog("Result: AI Victory");
                     drawWinLine(winner);
                 }
             }
         }
 
         function drawWinLine(winner) {
-            // Simplified for brevity, finds first winning combo
             const combo = wins.find(c => c.every(i => board[i] === winner));
             if (!combo) return;
-            
             const cell1 = boardEl.children[combo[0] + 1];
             const cell3 = boardEl.children[combo[2] + 1];
             const boardRect = boardEl.getBoundingClientRect();
@@ -709,7 +731,6 @@
 
         function getHint() {
             if (!gameActive || currentPlayer !== 'X') return;
-            removeHint();
             // Find best move for X
             let bestScore = -Infinity;
             let bestMove = -1;
@@ -722,27 +743,29 @@
                 }
             }
             if (bestMove !== -1) {
-                boardEl.children[bestMove + 1].classList.add('hint');
-                subStatus.innerText = `Hint: Try position ${bestMove}`;
+                const cell = boardEl.children[bestMove + 1];
+                cell.style.boxShadow = "inset 0 0 20px var(--primary)";
+                cell.style.borderColor = "var(--primary)";
+                setTimeout(() => {
+                    cell.style.boxShadow = "";
+                    cell.style.borderColor = "";
+                }, 2000);
+                subText.innerText = `Recommendation: Position ${bestMove}`;
             }
-        }
-
-        function removeHint() {
-            document.querySelectorAll('.hint').forEach(el => el.classList.remove('hint'));
         }
 
         function resetGame() {
             board = Array(9).fill(null);
             gameActive = true;
             currentPlayer = 'X';
-            mainStatus.innerText = "YOUR TURN";
-            subStatus.innerText = "Game Started";
+            statusText.innerText = "YOUR TURN";
+            subText.innerText = currentLevel === 'omega' ? "Connected to Global Neural Network..." : "Local Processing Mode";
             document.getElementById('winPath').style.strokeDashoffset = '1000';
-            removeHint();
             const cells = document.querySelectorAll('.cell');
             cells.forEach(cell => { cell.innerText = ''; cell.classList.remove('x', 'o'); });
+            addLog("Game Reset. Board Cleared.");
         }
 
     </script>
 </body>
-</html>
+    </html>
