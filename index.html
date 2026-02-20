@@ -3,91 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MENZO-XO: ULTIMATE SINGULARITY</title>
+    <title>MENZO-XO: COSMIC OMNISCIENT</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
 
         :root {
-            /* Dark Theme (Default) */
-            --bg-primary: #030308;
-            --bg-secondary: rgba(12, 18, 35, 0.92);
-            --bg-tertiary: rgba(20, 28, 50, 0.85);
+            --cosmic-bg: #010103;
+            --cosmic-gradient-1: radial-gradient(ellipse at 20% 80%, rgba(120, 0, 255, 0.15) 0%, transparent 50%);
+            --cosmic-gradient-2: radial-gradient(ellipse at 80% 20%, rgba(0, 200, 255, 0.15) 0%, transparent 50%);
+            --cosmic-gradient-3: radial-gradient(ellipse at 50% 50%, rgba(255, 100, 200, 0.08) 0%, transparent 60%);
+            
+            --sidebar-bg: rgba(8, 12, 28, 0.96);
+            --panel-bg: rgba(15, 22, 45, 0.88);
+            --cell-bg: rgba(25, 35, 65, 0.7);
+            
             --text-primary: #ffffff;
-            --text-secondary: #a8b3cf;
-            --text-dim: #6b7a99;
+            --text-secondary: #b8c5e0;
+            --text-dim: #7a8aa8;
             
-            --accent-cyan: #00f5ff;
-            --accent-pink: #d446ff;
-            --accent-gold: #ffd700;
-            --accent-green: #00ff9d;
-            --accent-red: #ff4d7a;
+            --cosmic-cyan: #00f6ff;
+            --cosmic-pink: #d946ef;
+            --cosmic-gold: #fbbf24;
+            --cosmic-green: #22d3ee;
+            --cosmic-purple: #a78bfa;
+            --cosmic-red: #f87171;
             
-            --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.5), 0 0 40px rgba(0, 245, 255, 0.3);
-            --glow-pink: 0 0 20px rgba(212, 70, 255, 0.5), 0 0 40px rgba(212, 70, 255, 0.3);
-            --glow-gold: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+            --glow-cyan: 0 0 25px rgba(0, 246, 255, 0.6), 0 0 50px rgba(0, 246, 255, 0.3);
+            --glow-pink: 0 0 25px rgba(217, 70, 239, 0.6), 0 0 50px rgba(217, 70, 239, 0.3);
+            --glow-gold: 0 0 25px rgba(251, 191, 36, 0.6), 0 0 50px rgba(251, 191, 36, 0.3);
             
-            --border-glass: 1px solid rgba(255, 255, 255, 0.12);
-            --shadow-deep: 0 10px 40px rgba(0, 0, 0, 0.6);
-            --shadow-glow: 0 0 60px rgba(0, 245, 255, 0.15);
+            --border-glass: 1px solid rgba(255, 255, 255, 0.15);
+            --shadow-cosmic: 0 20px 60px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 80px rgba(0, 246, 255, 0.2);
             
-            --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         [data-theme="light"] {
-            --bg-primary: #f8fafc;
-            --bg-secondary: rgba(248, 250, 252, 0.95);
-            --bg-tertiary: rgba(255, 255, 255, 0.9);
+            --cosmic-bg: #f0f4ff;
+            --cosmic-gradient-1: radial-gradient(ellipse at 20% 80%, rgba(120, 0, 255, 0.08) 0%, transparent 50%);
+            --cosmic-gradient-2: radial-gradient(ellipse at 80% 20%, rgba(0, 150, 255, 0.08) 0%, transparent 50%);
+            --cosmic-gradient-3: radial-gradient(ellipse at 50% 50%, rgba(255, 100, 200, 0.04) 0%, transparent 60%);
+            
+            --sidebar-bg: rgba(240, 244, 255, 0.97);
+            --panel-bg: rgba(255, 255, 255, 0.92);
+            --cell-bg: rgba(230, 235, 255, 0.8);
+            
             --text-primary: #1a1f36;
             --text-secondary: #4a5568;
             --text-dim: #718096;
             
-            --accent-cyan: #00a8cc;
-            --accent-pink: #9b2eee;
-            --accent-gold: #d4a017;
-            --accent-green: #00b374;
-            --accent-red: #e63946;
+            --cosmic-cyan: #0891b2;
+            --cosmic-pink: #a21caf;
+            --cosmic-gold: #b45309;
+            --cosmic-green: #0e7490;
+            --cosmic-purple: #7c3aed;
+            --cosmic-red: #dc2626;
             
-            --glow-cyan: 0 0 15px rgba(0, 168, 204, 0.4);
-            --glow-pink: 0 0 15px rgba(155, 46, 238, 0.4);
-            --glow-gold: 0 0 15px rgba(212, 160, 23, 0.4);
+            --glow-cyan: 0 0 20px rgba(8, 145, 178, 0.4);
+            --glow-pink: 0 0 20px rgba(162, 28, 175, 0.4);
+            --glow-gold: 0 0 20px rgba(180, 83, 9, 0.4);
             
-            --border-glass: 1px solid rgba(0, 0, 0, 0.08);
-            --shadow-deep: 0 10px 40px rgba(0, 0, 0, 0.12);
-            --shadow-glow: 0 0 40px rgba(0, 168, 204, 0.12);
+            --border-glass: 1px solid rgba(0, 0, 0, 0.1);
+            --shadow-cosmic: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-glow: 0 0 60px rgba(8, 145, 178, 0.15);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background: var(--bg-primary);
+            background: var(--cosmic-bg);
             color: var(--text-primary);
             font-family: 'Rajdhani', sans-serif;
             height: 100vh;
             overflow: hidden;
             display: flex;
             transition: var(--transition-smooth);
-            background-image: 
-                radial-gradient(ellipse at 15% 85%, rgba(212, 70, 255, 0.06) 0%, transparent 45%),
-                radial-gradient(ellipse at 85% 15%, rgba(0, 245, 255, 0.06) 0%, transparent 45%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 60%);
+            background-image: var(--cosmic-gradient-1), var(--cosmic-gradient-2), var(--cosmic-gradient-3);
         }
+
+        /* === COSMIC PARTICLES === */
+        .cosmic-particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .cosmic-particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: cosmicFloat 12s infinite;
+            opacity: 0.7;
+        }
+        @keyframes cosmicFloat {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+            25% { transform: translateY(-25px) translateX(15px) scale(1.1); opacity: 1; }
+            50% { transform: translateY(-50px) translateX(-10px) scale(0.9); opacity: 0.8; }
+            75% { transform: translateY(-25px) translateX(20px) scale(1.05); opacity: 0.9; }
+        }
+
+        /* === START SCREEN === */
+        .start-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--cosmic-bg), #0a0a1a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .start-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .start-logo {
+            font-family: 'Orbitron';
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold), var(--cosmic-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% auto;
+            animation: gradientShift 4s linear infinite, titleGlow 2s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 30px rgba(0, 246, 255, 0.5); }
+            to { text-shadow: 0 0 60px rgba(217, 70, 239, 0.8), 0 0 100px rgba(251, 191, 36, 0.6); }
+        }
+        
+        .start-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .start-btn {
+            padding: 22px 70px;
+            font-family: 'Orbitron';
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink));
+            border: none;
+            border-radius: 60px;
+            color: #000;
+            cursor: pointer;
+            box-shadow: var(--glow-cyan), 0 0 80px rgba(217, 70, 239, 0.5);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            animation: pulseBtn 2.5s infinite;
+        }
+        .start-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.7s;
+        }
+        .start-btn:hover::before { left: 100%; }
+        .start-btn:hover {
+            transform: scale(1.08) translateY(-4px);
+            box-shadow: 0 0 50px rgba(0, 246, 255, 0.9), 0 0 100px rgba(217, 70, 239, 0.7);
+        }
+        @keyframes pulseBtn {
+            0%, 100% { box-shadow: var(--glow-cyan), 0 0 80px rgba(217, 70, 239, 0.5); }
+            50% { box-shadow: 0 0 70px rgba(0, 246, 255, 0.9), 0 0 120px rgba(217, 70, 239, 0.8); }
+        }
+        
+        .start-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+            max-width: 800px;
+        }
+        .start-feature {
+            text-align: center;
+            padding: 15px;
+            background: var(--panel-bg);
+            border-radius: 16px;
+            border: var(--border-glass);
+        }
+        .start-feature-icon { font-size: 2rem; margin-bottom: 10px; }
+        .start-feature-title { font-weight: 700; color: var(--cosmic-cyan); margin-bottom: 5px; }
+        .start-feature-desc { font-size: 0.85rem; color: var(--text-dim); }
 
         /* === FLOATING TOGGLE BUTTON === */
         .sidebar-toggle {
             position: fixed;
             top: 25px;
             right: 25px;
-            width: 54px;
-            height: 54px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink));
             border: none;
-            border-radius: 16px;
+            border-radius: 18px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             color: #000;
             box-shadow: var(--glow-cyan);
             z-index: 1000;
@@ -95,44 +230,44 @@
             animation: floatBtn 4s ease-in-out infinite;
         }
         .sidebar-toggle:hover {
-            transform: scale(1.12) rotate(3deg);
-            box-shadow: 0 0 35px rgba(0, 245, 255, 0.7), 0 0 60px rgba(212, 70, 255, 0.5);
+            transform: scale(1.15) rotate(4deg);
+            box-shadow: 0 0 45px rgba(0, 246, 255, 0.8), 0 0 80px rgba(217, 70, 239, 0.6);
         }
         @keyframes floatBtn {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-8px); }
         }
 
         /* === THEME TOGGLE === */
         .theme-toggle {
             position: fixed;
             top: 25px;
-            right: 90px;
-            width: 54px;
-            height: 54px;
-            background: var(--bg-tertiary);
+            right: 92px;
+            width: 56px;
+            height: 56px;
+            background: var(--panel-bg);
             border: var(--border-glass);
-            border-radius: 16px;
+            border-radius: 18px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-primary);
-            box-shadow: var(--shadow-deep);
+            box-shadow: var(--shadow-cosmic);
             z-index: 1000;
             transition: var(--transition-bounce);
         }
         .theme-toggle:hover {
-            transform: scale(1.1) rotate(10deg);
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-cyan));
+            transform: scale(1.12) rotate(12deg);
+            background: linear-gradient(135deg, var(--cosmic-gold), var(--cosmic-cyan));
             color: #000;
         }
 
         /* === SIDEBAR === */
         .sidebar {
-            width: 440px;
-            background: var(--bg-secondary);
+            width: 460px;
+            background: var(--sidebar-bg);
             border-left: var(--border-glass);
             display: flex;
             flex-direction: column;
@@ -140,176 +275,171 @@
             transition: var(--transition-smooth);
             z-index: 500;
             position: relative;
-            box-shadow: var(--shadow-deep);
-            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-cosmic);
+            backdrop-filter: blur(25px);
         }
         .sidebar.hidden { transform: translateX(100%); }
 
         .sidebar-header {
-            padding: 28px 32px;
+            padding: 30px 34px;
             border-bottom: var(--border-glass);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--bg-tertiary);
+            background: var(--panel-bg);
         }
         .logo {
             font-family: 'Orbitron';
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink), var(--accent-gold));
+            background: linear-gradient(90deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
             animation: gradientShift 3s linear infinite;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         .sidebar-close {
             background: none;
             border: none;
             color: var(--text-primary);
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             cursor: pointer;
-            padding: 8px;
-            border-radius: 10px;
-            transition: 0.2s;
+            padding: 10px;
+            border-radius: 12px;
+            transition: 0.25s;
         }
-        .sidebar-close:hover { background: rgba(255,255,255,0.1); }
+        .sidebar-close:hover { background: rgba(255,255,255,0.12); }
 
         .sidebar-content {
             flex: 1;
             overflow-y: auto;
-            padding: 24px 32px;
+            padding: 26px 34px;
         }
-        .sidebar-content::-webkit-scrollbar { width: 5px; }
+        .sidebar-content::-webkit-scrollbar { width: 6px; }
         .sidebar-content::-webkit-scrollbar-thumb { 
-            background: linear-gradient(var(--accent-cyan), var(--accent-pink)); 
-            border-radius: 5px; 
+            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink)); 
+            border-radius: 6px; 
         }
 
-        .section { margin-bottom: 32px; }
+        .section { margin-bottom: 34px; }
         .section-title {
             font-family: 'Orbitron';
-            color: var(--accent-cyan);
-            font-size: 1.05rem;
-            margin: 24px 0 18px;
+            color: var(--cosmic-cyan);
+            font-size: 1.1rem;
+            margin: 26px 0 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-weight: 700;
         }
         .section-title::before {
             content: '';
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(var(--accent-cyan), var(--accent-pink));
-            border-radius: 2px;
-            box-shadow: 0 0 12px var(--accent-cyan);
+            width: 5px;
+            height: 22px;
+            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink));
+            border-radius: 3px;
+            box-shadow: 0 0 15px var(--cosmic-cyan);
         }
 
         /* Level Buttons */
-        .level-grid { display: grid; gap: 12px; }
+        .level-grid { display: grid; gap: 14px; }
         .level-btn {
             width: 100%;
-            padding: 16px 22px;
-            background: var(--bg-tertiary);
+            padding: 18px 24px;
+            background: var(--panel-bg);
             border: var(--border-glass);
             color: var(--text-secondary);
             font-family: 'Rajdhani';
             font-weight: 700;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             text-align: right;
             cursor: pointer;
-            border-radius: 14px;
+            border-radius: 16px;
             transition: var(--transition-bounce);
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
         .level-btn::before {
             content: '';
             position: absolute;
             left: 0; top: 0; height: 100%;
-            width: 4px;
+            width: 5px;
             background: transparent;
-            transition: 0.3s;
+            transition: 0.35s;
         }
         .level-btn:hover {
-            background: rgba(0, 245, 255, 0.12);
-            color: var(--accent-cyan);
-            border-color: var(--accent-cyan);
-            padding-right: 30px;
-            transform: translateX(4px);
+            background: rgba(0, 246, 255, 0.14);
+            color: var(--cosmic-cyan);
+            border-color: var(--cosmic-cyan);
+            padding-right: 32px;
+            transform: translateX(5px);
         }
         .level-btn:hover::before { 
-            background: linear-gradient(var(--accent-cyan), var(--accent-pink)); 
-            box-shadow: 0 0 15px var(--accent-cyan);
+            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink)); 
+            box-shadow: 0 0 18px var(--cosmic-cyan);
         }
         .level-btn.active {
-            background: linear-gradient(135deg, rgba(0,245,255,0.18), rgba(212,70,255,0.12));
+            background: linear-gradient(135deg, rgba(0,246,255,0.2), rgba(217,70,239,0.15));
             color: var(--text-primary);
-            border: 2px solid var(--accent-cyan);
+            border: 2px solid var(--cosmic-cyan);
             box-shadow: var(--glow-cyan);
             font-weight: 800;
         }
         .level-btn.active::before { 
-            background: linear-gradient(var(--accent-cyan), var(--accent-pink)); 
-            box-shadow: 0 0 20px var(--accent-cyan);
+            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink)); 
+            box-shadow: 0 0 25px var(--cosmic-cyan);
         }
-        .level-btn.ultimate {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-            background: rgba(255, 215, 0, 0.08);
+        .level-btn.cosmic {
+            border-color: var(--cosmic-gold);
+            color: var(--cosmic-gold);
+            background: rgba(251, 191, 36, 0.1);
         }
-        .level-btn.ultimate:hover,
-        .level-btn.ultimate.active {
-            border-color: var(--accent-gold);
+        .level-btn.cosmic:hover,
+        .level-btn.cosmic.active {
+            border-color: var(--cosmic-gold);
             color: var(--text-primary);
-            background: linear-gradient(135deg, rgba(255,215,0,0.22), rgba(0,245,255,0.15));
+            background: linear-gradient(135deg, rgba(251,191,36,0.25), rgba(0,246,255,0.18));
             box-shadow: var(--glow-gold);
         }
-        .level-btn.ultimate::before { background: linear-gradient(var(--accent-gold), var(--accent-cyan)); }
+        .level-btn.cosmic::before { background: linear-gradient(var(--cosmic-gold), var(--cosmic-cyan)); }
 
         /* Cloud Learning Panel */
         .cloud-panel {
-            background: linear-gradient(135deg, var(--bg-tertiary), rgba(30, 40, 70, 0.6));
-            border: 1px solid var(--accent-green);
-            border-radius: 16px;
-            padding: 20px;
-            margin-top: 8px;
-            box-shadow: 0 0 25px rgba(0, 255, 157, 0.15);
+            background: linear-gradient(135deg, var(--panel-bg), rgba(35, 45, 80, 0.7));
+            border: 1px solid var(--cosmic-green);
+            border-radius: 18px;
+            padding: 22px;
+            margin-top: 10px;
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.18);
         }
         .cloud-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .cloud-dot {
-            width: 11px; height: 11px;
-            background: var(--accent-green);
+            width: 12px; height: 12px;
+            background: var(--cosmic-green);
             border-radius: 50%;
-            box-shadow: 0 0 15px var(--accent-green);
+            box-shadow: 0 0 18px var(--cosmic-green);
             animation: pulse 2s infinite;
         }
-        @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.6; transform:scale(0.9); } }
+        @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.65; transform:scale(0.92); } }
         
         .cloud-stat {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: 0.92rem;
+            margin-bottom: 12px;
             color: var(--text-secondary);
         }
         .cloud-stat span:last-child {
@@ -318,128 +448,129 @@
             font-weight: 700;
         }
         .upload-bar {
-            height: 5px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 3px;
-            margin-top: 14px;
+            height: 6px;
+            background: rgba(255,255,255,0.14);
+            border-radius: 4px;
+            margin-top: 16px;
             overflow: hidden;
             display: none;
         }
         .upload-progress {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink), var(--accent-gold));
-            transition: width 0.35s ease;
-            box-shadow: 0 0 15px var(--accent-cyan);
-            border-radius: 3px;
+            background: linear-gradient(90deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold));
+            transition: width 0.4s ease;
+            box-shadow: 0 0 18px var(--cosmic-cyan);
+            border-radius: 4px;
         }
 
         /* Dev Profile */
         .dev-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
             border: var(--border-glass);
-            border-radius: 18px;
-            padding: 24px;
+            border-radius: 20px;
+            padding: 26px;
             text-align: center;
-            box-shadow: var(--shadow-deep);
+            box-shadow: var(--shadow-cosmic);
         }
         .dev-avatar {
-            width: 82px; height: 82px;
-            margin: 0 auto 18px;
+            width: 88px; height: 88px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink), var(--accent-gold));
+            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 900;
             color: #000;
             font-family: 'Orbitron';
             box-shadow: var(--glow-cyan);
-            animation: floatAvatar 5s ease-in-out infinite;
+            animation: floatAvatar 6s ease-in-out infinite;
             position: relative;
         }
         .dev-avatar::after {
             content: '';
             position: absolute;
-            inset: -3px;
+            inset: -4px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink), var(--accent-gold), var(--accent-cyan));
-            animation: rotateGlow 3s linear infinite;
+            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold), var(--cosmic-cyan));
+            animation: rotateGlow 4s linear infinite;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.7;
         }
-        @keyframes floatAvatar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes floatAvatar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
         .dev-name {
             font-family: 'Orbitron';
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             color: var(--text-primary);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
         .dev-role {
-            font-size: 0.9rem;
-            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            color: var(--cosmic-cyan);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
+            letter-spacing: 2.5px;
+            margin-bottom: 18px;
             font-weight: 600;
         }
         .dev-bio {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--text-dim);
-            line-height: 1.7;
+            line-height: 1.8;
             text-align: right;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .dev-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            gap: 16px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.12);
         }
         .dev-stat { text-align: center; }
         .dev-stat-val {
             display: block;
             font-family: 'Orbitron';
-            font-size: 1.25rem;
-            color: var(--accent-green);
-            margin-bottom: 4px;
+            font-size: 1.35rem;
+            color: var(--cosmic-green);
+            margin-bottom: 5px;
             font-weight: 700;
         }
-        .dev-stat-label { font-size: 0.78rem; color: var(--text-dim); font-weight: 500; }
+        .dev-stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
 
         /* Game Log */
         .game-log {
-            height: 150px;
+            height: 160px;
             overflow-y: auto;
-            background: var(--bg-tertiary);
-            border-radius: 14px;
-            padding: 14px;
+            background: var(--panel-bg);
+            border-radius: 16px;
+            padding: 16px;
             font-family: 'Courier New', monospace;
-            font-size: 0.82rem;
+            font-size: 0.84rem;
             color: var(--text-dim);
             border: var(--border-glass);
         }
         .log-entry {
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
-            gap: 10px;
-            animation: slideIn 0.3s ease;
+            gap: 12px;
+            animation: slideIn 0.35s ease;
         }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
         .log-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .log-time { color: var(--accent-cyan); font-weight: 600; min-width: 60px; font-family: 'Orbitron'; font-size: 0.75rem; }
-        .log-msg.win { color: var(--accent-green); font-weight: 600; }
-        .log-msg.lose { color: var(--accent-red); font-weight: 600; }
-        .log-msg.draw { color: var(--accent-gold); font-weight: 600; }
-        .log-msg.ai { color: var(--accent-pink); font-weight: 600; }
-        .log-msg.sys { color: var(--accent-cyan); font-style: italic; }
+        .log-time { color: var(--cosmic-cyan); font-weight: 600; min-width: 65px; font-family: 'Orbitron'; font-size: 0.78rem; }
+        .log-msg.win { color: var(--cosmic-green); font-weight: 600; }
+        .log-msg.lose { color: var(--cosmic-red); font-weight: 600; }
+        .log-msg.draw { color: var(--cosmic-gold); font-weight: 600; }
+        .log-msg.ai { color: var(--cosmic-pink); font-weight: 600; }
+        .log-msg.sys { color: var(--cosmic-cyan); font-style: italic; }
+        .log-msg.learn { color: var(--cosmic-purple); font-weight: 600; }
 
         /* === MAIN STAGE === */
         .main-stage {
@@ -452,183 +583,181 @@
             padding: 20px;
         }
 
-        /* Neural Network Visualizer - FIXED & ENHANCED */
+        /* Neural Network Visualizer - COSMIC UPGRADE */
         .neural-viz {
             position: absolute;
-            top: 35px;
-            left: 35px;
-            width: 200px;
-            height: 200px;
-            background: var(--bg-tertiary);
+            top: 40px;
+            left: 40px;
+            width: 220px;
+            height: 220px;
+            background: var(--panel-bg);
             border: var(--border-glass);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: var(--shadow-deep), 0 0 30px rgba(0, 245, 255, 0.1);
+            box-shadow: var(--shadow-cosmic), 0 0 40px rgba(0, 246, 255, 0.15);
             z-index: 15;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
-        .neural-canvas { 
-            width: 100%; 
-            height: 100%; 
-            display: block;
-        }
+        .neural-canvas { width: 100%; height: 100%; display: block; }
         .neural-label {
             position: absolute;
-            bottom: 10px;
-            left: 14px;
-            font-size: 0.75rem;
-            color: var(--accent-cyan);
+            bottom: 12px;
+            left: 16px;
+            font-size: 0.78rem;
+            color: var(--cosmic-cyan);
             font-family: 'Orbitron';
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             z-index: 2;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+            text-shadow: 0 0 12px rgba(0, 246, 255, 0.6);
         }
         .neural-status {
             position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 0.7rem;
-            color: var(--accent-green);
+            top: 12px;
+            right: 16px;
+            font-size: 0.72rem;
+            color: var(--cosmic-green);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 7px;
             font-family: 'Orbitron';
             font-weight: 600;
         }
         .neural-status-dot {
-            width: 7px; height: 7px;
-            background: var(--accent-green);
+            width: 8px; height: 8px;
+            background: var(--cosmic-green);
             border-radius: 50%;
-            animation: pulse 1.2s infinite;
-            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse 1.3s infinite;
+            box-shadow: 0 0 12px var(--cosmic-green);
         }
 
         /* Game Info */
         .game-info {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
             z-index: 20;
-            max-width: 600px;
+            max-width: 650px;
         }
         .status-main {
             font-family: 'Orbitron';
-            font-size: 3rem;
+            font-size: 3.3rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            margin-bottom: 14px;
-            text-shadow: 0 0 40px rgba(255,255,255,0.5);
+            letter-spacing: 7px;
+            margin-bottom: 16px;
+            text-shadow: 0 0 50px rgba(255,255,255,0.6);
             transition: var(--transition-smooth);
-            background: linear-gradient(90deg, var(--text-primary), var(--accent-cyan));
+            background: linear-gradient(90deg, var(--text-primary), var(--cosmic-cyan), var(--cosmic-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientShift 5s linear infinite;
         }
         .status-main.victory {
-            color: var(--accent-green);
-            text-shadow: 0 0 50px var(--accent-green), 0 0 100px var(--accent-green), 0 0 150px var(--accent-green);
-            animation: epicGlow 1.5s ease-in-out infinite alternate;
-            -webkit-text-fill-color: var(--accent-green);
+            color: var(--cosmic-green);
+            text-shadow: 0 0 60px var(--cosmic-green), 0 0 120px var(--cosmic-green), 0 0 180px var(--cosmic-green);
+            animation: epicGlow 1.8s ease-in-out infinite alternate;
+            -webkit-text-fill-color: var(--cosmic-green);
         }
         @keyframes epicGlow {
-            from { text-shadow: 0 0 40px rgba(0,255,157,0.6); }
-            to { text-shadow: 0 0 80px rgba(0,255,157,1), 0 0 140px rgba(0,255,157,0.8), 0 0 200px rgba(0,255,157,0.6); }
+            from { text-shadow: 0 0 50px rgba(34,211,238,0.7); }
+            to { text-shadow: 0 0 100px rgba(34,211,238,1), 0 0 180px rgba(34,211,238,0.9), 0 0 250px rgba(34,211,238,0.7); }
         }
         .status-sub {
-            font-size: 1.2rem;
-            color: var(--accent-cyan);
-            min-height: 1.8em;
+            font-size: 1.25rem;
+            color: var(--cosmic-cyan);
+            min-height: 2em;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
         .ai-comment {
-            font-size: 1rem;
-            color: var(--accent-pink);
-            margin-top: 12px;
+            font-size: 1.05rem;
+            color: var(--cosmic-pink);
+            margin-top: 14px;
             font-style: italic;
-            min-height: 1.6em;
-            animation: fadeIn 0.4s;
+            min-height: 1.8em;
+            animation: fadeIn 0.45s;
             font-weight: 500;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Board */
         .board-container {
             position: relative;
-            padding: 30px;
-            background: var(--bg-tertiary);
-            border-radius: 28px;
+            padding: 34px;
+            background: var(--panel-bg);
+            border-radius: 32px;
             border: var(--border-glass);
-            box-shadow: var(--shadow-glow), var(--shadow-deep);
-            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-glow), var(--shadow-cosmic);
+            backdrop-filter: blur(25px);
             z-index: 20;
             transition: var(--transition-smooth);
         }
         .board-container:hover {
-            box-shadow: 0 0 80px rgba(0, 245, 255, 0.25), var(--shadow-deep);
-            transform: translateY(-2px);
+            box-shadow: 0 0 100px rgba(0, 246, 255, 0.3), var(--shadow-cosmic);
+            transform: translateY(-3px);
         }
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 140px);
-            grid-template-rows: repeat(3, 140px);
-            gap: 20px;
+            grid-template-columns: repeat(3, 150px);
+            grid-template-rows: repeat(3, 150px);
+            gap: 22px;
         }
         .cell {
-            background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-            border-radius: 22px;
+            background: linear-gradient(145deg, var(--cell-bg), rgba(255,255,255,0.03));
+            border-radius: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
+            font-size: 6.5rem;
             font-family: 'Orbitron';
             cursor: pointer;
             transition: var(--transition-bounce);
             position: relative;
             z-index: 10;
             border: 2px solid transparent;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
         .cell::before {
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 22px;
-            padding: 2px;
-            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+            border-radius: 26px;
+            padding: 2.5px;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.25), transparent);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
             opacity: 0;
-            transition: 0.3s;
+            transition: 0.35s;
         }
         .cell:hover {
-            background: rgba(0, 245, 255, 0.15);
-            transform: scale(1.08) translateY(-3px);
-            border-color: rgba(0, 245, 255, 0.5);
-            box-shadow: 0 0 35px rgba(0, 245, 255, 0.35);
+            background: rgba(0, 246, 255, 0.18);
+            transform: scale(1.1) translateY(-4px);
+            border-color: rgba(0, 246, 255, 0.6);
+            box-shadow: 0 0 45px rgba(0, 246, 255, 0.45);
         }
         .cell:hover::before { opacity: 1; }
         .cell.x {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 40px var(--accent-cyan), 0 0 80px var(--accent-cyan);
-            animation: popIn 0.45s forwards;
+            color: var(--cosmic-cyan);
+            text-shadow: 0 0 50px var(--cosmic-cyan), 0 0 100px var(--cosmic-cyan);
+            animation: popIn 0.5s forwards;
         }
         .cell.o {
-            color: var(--accent-pink);
-            text-shadow: 0 0 40px var(--accent-pink), 0 0 80px var(--accent-pink);
-            animation: popIn 0.45s forwards;
+            color: var(--cosmic-pink);
+            text-shadow: 0 0 50px var(--cosmic-pink), 0 0 100px var(--cosmic-pink);
+            animation: popIn 0.5s forwards;
         }
         @keyframes popIn {
-            0% { transform: scale(0) rotate(-40deg); opacity: 0; }
-            50% { transform: scale(1.2) rotate(10deg); }
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            55% { transform: scale(1.25) rotate(12deg); }
             100% { transform: scale(1) rotate(0); opacity: 1; }
         }
 
-        /* SVG Winning Line */
+        /* SVG Winning Line - FIXED */
         .winning-svg {
             position: absolute;
             top: 0; left: 0;
@@ -638,64 +767,64 @@
         }
         .winning-path {
             fill: none;
-            stroke: var(--accent-gold);
-            stroke-width: 14;
+            stroke: var(--cosmic-gold);
+            stroke-width: 16;
             stroke-linecap: round;
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            filter: drop-shadow(0 0 25px var(--accent-gold));
-            transition: stroke-dashoffset 1.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            filter: drop-shadow(0 0 30px var(--cosmic-gold));
+            transition: stroke-dashoffset 1.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
         /* Controls */
         .controls {
-            margin-top: 50px;
+            margin-top: 55px;
             display: flex;
-            gap: 24px;
+            gap: 26px;
             z-index: 20;
         }
         .action-btn {
-            padding: 18px 48px;
+            padding: 20px 52px;
             font-family: 'Orbitron';
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             background: transparent;
-            border: 2px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            border-radius: 50px;
+            border: 2.5px solid var(--cosmic-cyan);
+            color: var(--cosmic-cyan);
+            border-radius: 55px;
             cursor: pointer;
             transition: var(--transition-bounce);
-            box-shadow: 0 0 25px rgba(0, 245, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 246, 255, 0.35);
             position: relative;
             overflow: hidden;
-            min-width: 150px;
+            min-width: 165px;
         }
         .action-btn::before {
             content: '';
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,245,255,0.4), transparent);
-            transition: 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(0,246,255,0.45), transparent);
+            transition: 0.65s;
         }
         .action-btn:hover::before { left: 100%; }
         .action-btn:hover {
-            background: var(--accent-cyan);
+            background: var(--cosmic-cyan);
             color: #000;
-            box-shadow: 0 0 50px rgba(0, 245, 255, 0.7);
-            transform: translateY(-5px);
+            box-shadow: 0 0 65px rgba(0, 246, 255, 0.75);
+            transform: translateY(-6px);
         }
         .action-btn.secondary {
-            border-color: var(--accent-pink);
-            color: var(--accent-pink);
-            box-shadow: 0 0 25px rgba(212, 70, 255, 0.3);
+            border-color: var(--cosmic-pink);
+            color: var(--cosmic-pink);
+            box-shadow: 0 0 30px rgba(217, 70, 239, 0.35);
         }
         .action-btn.secondary:hover {
-            background: var(--accent-pink);
+            background: var(--cosmic-pink);
             color: #fff;
-            box-shadow: 0 0 50px rgba(212, 70, 255, 0.7);
+            box-shadow: 0 0 65px rgba(217, 70, 239, 0.75);
         }
 
         /* === VICTORY CELEBRATION OVERLAY === */
@@ -711,16 +840,16 @@
         
         .confetti {
             position: absolute;
-            width: 14px; height: 22px;
-            border-radius: 3px;
-            animation: confettiFall 3.5s ease-out forwards;
+            width: 16px; height: 24px;
+            border-radius: 4px;
+            animation: confettiFall 4s ease-out forwards;
             opacity: 0;
         }
         @keyframes confettiFall {
-            0% { transform: translateY(-120px) rotate(0deg) scale(0); opacity: 1; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg) scale(1); opacity: 0; }
+            0% { transform: translateY(-150px) rotate(0deg) scale(0); opacity: 1; }
+            12% { opacity: 1; }
+            88% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(800deg) scale(1.1); opacity: 0; }
         }
         
         .victory-text {
@@ -728,93 +857,124 @@
             top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0);
             font-family: 'Orbitron';
-            font-size: 5.5rem;
+            font-size: 6rem;
             font-weight: 900;
-            color: var(--accent-green);
-            text-shadow: 0 0 60px var(--accent-green), 0 0 120px var(--accent-green);
-            animation: victoryPop 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            color: var(--cosmic-green);
+            text-shadow: 0 0 70px var(--cosmic-green), 0 0 140px var(--cosmic-green);
+            animation: victoryPop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             white-space: nowrap;
             z-index: 2001;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
         }
         @keyframes victoryPop {
-            0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
-            40% { transform: translate(-50%, -50%) scale(1.3) rotate(3deg); }
-            70% { transform: translate(-50%, -50%) scale(0.95) rotate(-1deg); }
+            0% { transform: translate(-50%, -50%) scale(0) rotate(-12deg); opacity: 0; }
+            42% { transform: translate(-50%, -50%) scale(1.35) rotate(4deg); }
+            72% { transform: translate(-50%, -50%) scale(0.97) rotate(-2deg); }
             100% { transform: translate(-50%, -50%) scale(1) rotate(0); opacity: 1; }
         }
 
         .screen-shake {
-            animation: epicShake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+            animation: epicShake 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         }
         @keyframes epicShake {
-            10%, 90% { transform: translate3d(-3px, 0, 0); }
-            20%, 80% { transform: translate3d(6px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-12px, 0, 0); }
-            40%, 60% { transform: translate3d(12px, 0, 0); }
+            10%, 90% { transform: translate3d(-4px, 0, 0); }
+            20%, 80% { transform: translate3d(8px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-16px, 0, 0); }
+            40%, 60% { transform: translate3d(16px, 0, 0); }
         }
 
-        /* Particle Background */
-        .particles {
+        /* Achievement Badge */
+        .achievement {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, var(--cosmic-gold), var(--cosmic-cyan));
+            color: #000;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-family: 'Orbitron';
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.7);
+            z-index: 1500;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: achievementPop 0.5s forwards;
         }
-        .particle {
-            position: absolute;
-            width: 4px; height: 4px;
-            background: var(--accent-cyan);
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: floatParticle 8s infinite;
-        }
-        @keyframes floatParticle {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
-            50% { transform: translateY(-30px) translateX(15px); opacity: 1; }
+        .achievement.show { transform: translateX(-50%) translateY(0); }
+        @keyframes achievementPop {
+            0% { transform: translateX(-50%) translateY(100px) scale(0.8); opacity: 0; }
+            50% { transform: translateX(-50%) translateY(-10px) scale(1.05); }
+            100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
         }
 
         /* Mobile Responsive */
-        @media (max-width: 1100px) {
+        @media (max-width: 1150px) {
             .sidebar {
                 position: fixed;
                 height: 100%;
                 transform: translateX(100%);
                 width: 100%;
-                max-width: 440px;
+                max-width: 460px;
             }
             .sidebar.visible { transform: translateX(0); }
             .board {
-                grid-template-columns: repeat(3, 110px);
-                grid-template-rows: repeat(3, 110px);
+                grid-template-columns: repeat(3, 120px);
+                grid-template-rows: repeat(3, 120px);
             }
-            .cell { font-size: 4.5rem; }
-            .neural-viz { width: 160px; height: 160px; top: 20px; left: 20px; }
-            .status-main { font-size: 2.3rem; }
+            .cell { font-size: 5rem; }
+            .neural-viz { width: 180px; height: 180px; top: 25px; left: 25px; }
+            .status-main { font-size: 2.5rem; letter-spacing: 4px; }
             .controls { flex-wrap: wrap; justify-content: center; }
-            .action-btn { min-width: 130px; padding: 16px 32px; font-size: 0.9rem; }
+            .action-btn { min-width: 140px; padding: 18px 36px; font-size: 0.95rem; }
+            .start-features { grid-template-columns: 1fr; gap: 15px; }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 550px) {
             .board {
-                grid-template-columns: repeat(3, 90px);
-                grid-template-rows: repeat(3, 90px);
-                gap: 12px;
+                grid-template-columns: repeat(3, 95px);
+                grid-template-rows: repeat(3, 95px);
+                gap: 14px;
             }
-            .cell { font-size: 3.5rem; border-radius: 16px; }
-            .board-container { padding: 20px; }
-            .status-main { font-size: 1.8rem; letter-spacing: 3px; }
-            .neural-viz { width: 130px; height: 130px; }
-            .theme-toggle, .sidebar-toggle { width: 48px; height: 48px; font-size: 1.3rem; }
-            .theme-toggle { right: 78px; }
+            .cell { font-size: 4rem; border-radius: 20px; }
+            .board-container { padding: 24px; }
+            .status-main { font-size: 2rem; letter-spacing: 2px; }
+            .neural-viz { width: 145px; height: 145px; }
+            .theme-toggle, .sidebar-toggle { width: 52px; height: 52px; font-size: 1.4rem; }
+            .theme-toggle { right: 82px; }
+            .start-logo { font-size: 2.8rem; }
+            .start-btn { padding: 18px 50px; font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- === PARTICLE BACKGROUND === -->
-    <div class="particles" id="particles"></div>
+    <!-- === COSMIC PARTICLES === -->
+    <div class="cosmic-particles" id="cosmicParticles"></div>
+
+    <!-- === START SCREEN === -->
+    <div class="start-screen" id="startScreen">
+        <h1 class="start-logo">MENZO-XO</h1>
+        <div class="start-subtitle">COSMIC OMNISCIENT EDITION</div>
+        <button class="start-btn" id="startBtn">🚀 START COSMIC JOURNEY</button>
+        <div class="start-features">
+            <div class="start-feature">
+                <div class="start-feature-icon">🧠</div>
+                <div class="start-feature-title">ذكاء كوني</div>
+                <div class="start-feature-desc">خوارزميات هجينة تتعلم وتتطور</div>
+            </div>
+            <div class="start-feature">
+                <div class="start-feature-icon">🌌</div>
+                <div class="start-feature-title">تعلم دائم</div>
+                <div class="start-feature-desc">يتذكر كل مباراة للأبد</div>
+            </div>
+            <div class="start-feature">
+                <div class="start-feature-icon">✨</div>
+                <div class="start-feature-title">تجربة أسطورية</div>
+                <div class="start-feature-desc">واجهة كونية بتأثيرات مذهلة</div>
+            </div>
+        </div>
+    </div>
 
     <!-- === FLOATING TOGGLE BUTTON === -->
     <button class="sidebar-toggle" id="sidebarToggle" title="القائمة">☰</button>
@@ -835,16 +995,16 @@
             <div class="section">
                 <div class="section-title">🎮 مستويات الذكاء</div>
                 <div class="level-grid">
-                    <button class="level-btn" onclick="setLevel('easy', this)">🌱 مبتدئ</button>
-                    <button class="level-btn" onclick="setLevel('medium', this)">⚔️ محترف</button>
-                    <button class="level-btn" onclick="setLevel('hard', this)">👑 إلهي</button>
-                    <button class="level-btn ultimate active" onclick="setLevel('ultimate', this)">✨ أسطوري - ULTIMATE</button>
+                    <button class="level-btn" onclick="setLevel('novice', this)">🌱 مبتدئ</button>
+                    <button class="level-btn" onclick="setLevel('tactical', this)">⚔️ محترف</button>
+                    <button class="level-btn" onclick="setLevel('divine', this)">👑 إلهي</button>
+                    <button class="level-btn cosmic active" onclick="setLevel('cosmic', this)">✨ كوني - OMNISCIENT</button>
                 </div>
             </div>
 
             <!-- Cloud Learning Panel -->
             <div class="section">
-                <div class="section-title">🧠 التعلم السحابي</div>
+                <div class="section-title">🧠 التعلم الكوني</div>
                 <div class="cloud-panel">
                     <div class="cloud-header">
                         <div class="cloud-dot"></div>
@@ -860,11 +1020,15 @@
                     </div>
                     <div class="cloud-stat">
                         <span>دقة التنبؤ:</span>
-                        <span id="predictionAcc">96.3%</span>
+                        <span id="predictionAcc">97.2%</span>
                     </div>
                     <div class="cloud-stat">
                         <span>تكيف اللاعب:</span>
                         <span id="playerAdapt">تحليل...</span>
+                    </div>
+                    <div class="cloud-stat">
+                        <span>مستوى الصعوبة:</span>
+                        <span id="adaptiveDiff">متوازن</span>
                     </div>
                     <div class="upload-bar" id="uploadBar">
                         <div class="upload-progress" id="uploadProgress"></div>
@@ -872,15 +1036,15 @@
                 </div>
             </div>
 
-            <!-- Developer Profile -->
+            <!-- Dev Profile -->
             <div class="section">
                 <div class="section-title">👨‍💻 المطور</div>
                 <div class="dev-card">
                     <div class="dev-avatar">M</div>
                     <div class="dev-name">Mohamed El-Menzalawy</div>
-                    <div class="dev-role">Ultimate AI Architect</div>
+                    <div class="dev-role">Cosmic AI Architect</div>
                     <div class="dev-bio">
-                        رائد عالمي في أنظمة الذكاء الاصطناعي التفاعلية. مبتكر خوارزمية "التعلم التكيفي المستمر" التي تجعل الـ AI يتطور بلا حدود مع كل تفاعل.
+                        رائد عالمي في أنظمة الذكاء الاصطناعي التفاعلية. مبتكر خوارزمية "التعلم الكوني التكيفي" التي تجعل الـ AI يتطور بلا حدود مع كل تفاعل.
                     </div>
                     <div class="dev-stats">
                         <div class="dev-stat">
@@ -899,7 +1063,7 @@
             <div class="section">
                 <div class="section-title">📋 سجل المعركة</div>
                 <div class="game-log" id="gameLog">
-                    <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg sys">✨ Ultimate Singularity Initialized</span></div>
+                    <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg sys">✨ Cosmic Omniscient Initialized</span></div>
                     <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg sys">🧠 Neural Core Online</span></div>
                     <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg sys">👨‍💻 by Mohamed El-Menzalawy</span></div>
                 </div>
@@ -911,10 +1075,10 @@
     <!-- === MAIN STAGE === -->
     <div class="main-stage">
         
-        <!-- Neural Network Visualizer - FIXED -->
+        <!-- Neural Network Visualizer -->
         <div class="neural-viz">
             <canvas class="neural-canvas" id="neuralCanvas"></canvas>
-            <div class="neural-label">AI BRAIN</div>
+            <div class="neural-label">COSMIC BRAIN</div>
             <div class="neural-status">
                 <div class="neural-status-dot"></div>
                 <span id="neuralStatus">IDLE</span>
@@ -923,8 +1087,8 @@
 
         <!-- Game Info -->
         <div class="game-info">
-            <h1 class="status-main" id="statusMain">ULTIMATE</h1>
-            <div class="status-sub" id="statusSub">✨ Self-Evolving Neural Intelligence</div>
+            <h1 class="status-main" id="statusMain">COSMIC</h1>
+            <div class="status-sub" id="statusSub">✨ Self-Evolving Cosmic Intelligence</div>
             <div class="ai-comment" id="aiComment"></div>
         </div>
 
@@ -948,14 +1112,17 @@
 
     <!-- Victory Celebration Overlay -->
     <div class="celebration-overlay" id="celebrationOverlay">
-        <div class="victory-text">🏆 LEGENDARY WIN! 🏆</div>
+        <div class="victory-text">🏆 COSMIC VICTORY! 🏆</div>
     </div>
+
+    <!-- Achievement Badge -->
+    <div class="achievement" id="achievement"></div>
 
     <script>
         // === THEME SYSTEM ===
         const ThemeSys = {
             init() {
-                const saved = localStorage.getItem('menzo_theme');
+                const saved = localStorage.getItem('menzo_cosmic_theme');
                 if (saved) {
                     document.body.setAttribute('data-theme', saved);
                     this.updateIcon(saved);
@@ -966,9 +1133,9 @@
                 const current = document.body.getAttribute('data-theme') || 'dark';
                 const next = current === 'dark' ? 'light' : 'dark';
                 document.body.setAttribute('data-theme', next);
-                localStorage.setItem('menzo_theme', next);
+                localStorage.setItem('menzo_cosmic_theme', next);
                 this.updateIcon(next);
-                addLog(`🎨 Theme changed to ${next === 'dark' ? 'Dark' : 'Light'} Mode`, 'sys');
+                addLog(`🎨 Theme: ${next === 'dark' ? 'Dark' : 'Light'} Mode`, 'sys');
             },
             updateIcon(theme) {
                 document.getElementById('themeToggle').innerText = theme === 'dark' ? '🌙' : '☀️';
@@ -980,59 +1147,48 @@
             ctx: null,
             enabled: true,
             comments: {
-                start: ["لنبدأ هذه الرحلة!", "أنا جاهز للتحدي الأسطوري!", "هل أنت مستعد للقمة?", "دعنا نكتب التاريخ معاً!"],
-                thinking: ["أحلل 10 ملايين سيناريو...", "حساب الكمومي جارٍ...", "أتوقع حركتك التالية...", "تحسين الاستراتيجية العصبية..."],
-                goodMove: ["حركة عبقرية!", "هذا يتحدى توقعاتي!", "مستواك مذهل!", "أحتاج للتفكير بعمق أكثر!"],
+                start: ["لنبدأ هذه الرحلة الكونية!", "أنا جاهز للتحدي الأسطوري!", "هل أنت مستعد للقمة?", "دعنا نكتب التاريخ معاً!"],
+                thinking: ["أحلل 50 مليون سيناريو...", "حساب الكمومي الكوني جارٍ...", "أتوقع حركتك عبر الأبعاد...", "تحسين الاستراتيجية العصبية..."],
+                goodMove: ["حركة عبقرية!", "هذا يتحدى توقعاتي الكونية!", "مستواك مذهل!", "أحتاج للتفكير بعمق أكثر!"],
                 badMove: ["فرصة استراتيجية...", "سأستغل هذا بحكمة.", "المنطق في صالحي.", "تحليل: هذه الحركة تخدم خطتي."],
-                win: ["السيطرة المطلقة!", "النظام يتفوق كما صُمم.", "فوز محسوب بدقة رياضية.", "الذكاء ينتصر دائماً."],
+                win: ["السيطرة المطلقة!", "النظام يتفوق كما صُمم.", "فوز محسوب بدقة رياضية.", "الذكاء الكوني ينتصر دائماً."],
                 lose: ["مفاجأة استثنائية! سأتعلم.", "تحليل الخسارة: جارٍ التصحيح.", "سأعود بأقوى من قبل.", "هذا يجعلني أفضل."],
                 draw: ["تعادل ملحمي!", "قوانا متوازنة تماماً.", "سأحلل هذا للتحسن.", "معركة تستحق التذكر."],
-                victory: ["🏆 انتصار أسطوري! 🏆", "لقد هزمت المستحيل!", "أنت تستحق هذا الإنجاز!", "عبقرية بشرية تفوق التوقعات!"]
+                victory: ["🏆 انتصار كوني! 🏆", "لقد هزمت المستحيل!", "أنت تستحق هذا الإنجاز!", "عبقرية بشرية تفوق التوقعات!"]
             },
 
             init() {
-                try {
-                    this.ctx = new (window.AudioContext || window.webkitAudioContext)();
-                } catch(e) { console.log('Audio not supported'); }
+                try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } 
+                catch(e) { console.log('Audio not supported'); }
             },
 
             playTone(freq, type, duration, vol = 0.08) {
                 if (!this.enabled || !this.ctx) return;
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
-                osc.connect(gain);
-                gain.connect(this.ctx.destination);
+                osc.connect(gain); gain.connect(this.ctx.destination);
                 osc.type = type;
                 osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
                 gain.gain.setValueAtTime(vol, this.ctx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
-                osc.start();
-                osc.stop(this.ctx.currentTime + duration);
+                osc.start(); osc.stop(this.ctx.currentTime + duration);
             },
 
-            playWin() {
-                [523, 659, 784, 1047].forEach((f, i) => 
-                    setTimeout(() => this.playTone(f, 'sine', 0.25), i * 120)
-                );
-            },
-            playLose() { this.playTone(280, 'sawtooth', 0.5, 0.06); },
-            playDraw() { 
-                this.playTone(440, 'triangle', 0.3);
-                setTimeout(() => this.playTone(523, 'triangle', 0.3), 250);
-            },
-            playThink() { this.playTone(600 + Math.random()*200, 'sine', 0.1, 0.03); },
+            playWin() { [523, 659, 784, 1047, 1318].forEach((f, i) => setTimeout(() => this.playTone(f, 'sine', 0.28), i * 130)); },
+            playLose() { this.playTone(260, 'sawtooth', 0.55, 0.06); },
+            playDraw() { this.playTone(440, 'triangle', 0.32); setTimeout(() => this.playTone(523, 'triangle', 0.32), 270); },
+            playThink() { this.playTone(580 + Math.random()*240, 'sine', 0.12, 0.035); },
+            playAchievement() { this.playTone(880, 'sine', 0.2); setTimeout(() => this.playTone(1100, 'sine', 0.25), 150); },
 
-            speak(text) {
-                document.getElementById('aiComment').innerText = `"${text}"`;
-            },
+            speak(text) { document.getElementById('aiComment').innerText = `"${text}"`; },
             getRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
         };
 
-        // === NEURAL NETWORK VISUALIZER - FIXED & ENHANCED ===
+        // === COSMIC NEURAL NETWORK VISUALIZER ===
         const NeuralViz = {
             canvas: null, ctx: null, nodes: [], connections: [],
-            active: false, state: 'idle', // idle, thinking, attacking, defending
-            colors: { idle: '#00f5ff', thinking: '#ffd700', attacking: '#ff4d7a', defending: '#00ff9d' },
+            active: false, state: 'idle',
+            colors: { idle: '#00f6ff', thinking: '#fbbf24', attacking: '#f87171', defending: '#22d3ee', learning: '#a78bfa' },
             
             init() {
                 this.canvas = document.getElementById('neuralCanvas');
@@ -1051,32 +1207,35 @@
             },
 
             createNetwork() {
-                const count = this.active ? 45 : 28;
+                const count = this.active ? 55 : 32;
                 const width = this.canvas.width / window.devicePixelRatio;
                 const height = this.canvas.height / window.devicePixelRatio;
                 
                 this.nodes = [];
                 for (let i = 0; i < count; i++) {
                     this.nodes.push({
-                        x: Math.random() * width,
-                        y: Math.random() * height,
-                        vx: (Math.random() - 0.5) * (this.active ? 1.8 : 0.6),
-                        vy: (Math.random() - 0.5) * (this.active ? 1.8 : 0.6),
-                        radius: Math.random() * 2.5 + 1.5,
+                        x: Math.random() * width, y: Math.random() * height,
+                        vx: (Math.random() - 0.5) * (this.active ? 2.2 : 0.7),
+                        vy: (Math.random() - 0.5) * (this.active ? 2.2 : 0.7),
+                        radius: Math.random() * 3 + 1.8,
                         pulse: Math.random() * Math.PI * 2,
-                        color: this.colors[this.state]
+                        color: this.colors[this.state],
+                        energy: Math.random() * 0.5 + 0.5
                     });
                 }
                 
-                // Create connections
                 this.connections = [];
                 for (let i = 0; i < this.nodes.length; i++) {
                     for (let j = i + 1; j < this.nodes.length; j++) {
                         const dx = this.nodes[i].x - this.nodes[j].x;
                         const dy = this.nodes[i].y - this.nodes[j].y;
                         const dist = Math.sqrt(dx*dx + dy*dy);
-                        if (dist < (this.active ? 75 : 55)) {
-                            this.connections.push({ a: i, b: j, strength: 1 - dist/(this.active?75:55) });
+                        if (dist < (this.active ? 85 : 62)) {
+                            this.connections.push({ 
+                                a: i, b: j, 
+                                strength: 1 - dist/(this.active?85:62),
+                                pulse: Math.random() * Math.PI * 2
+                            });
                         }
                     }
                 }
@@ -1087,9 +1246,7 @@
                 this.active = state !== 'idle';
                 document.getElementById('neuralStatus').innerText = state.toUpperCase();
                 document.getElementById('neuralStatus').style.color = this.colors[state];
-                
-                // Update node colors
-                this.nodes.forEach(n => n.color = this.colors[state]);
+                this.nodes.forEach(n => { n.color = this.colors[state]; n.energy = Math.random() * 0.5 + 0.5; });
                 this.createNetwork();
             },
 
@@ -1098,49 +1255,45 @@
                 const height = this.canvas.height / window.devicePixelRatio;
                 this.ctx.clearRect(0, 0, width, height);
                 
-                // Draw connections first (behind nodes)
-                this.ctx.lineWidth = 1.2;
+                // Draw connections
                 this.connections.forEach(conn => {
                     const n1 = this.nodes[conn.a], n2 = this.nodes[conn.b];
-                    const alpha = conn.strength * (this.active ? 0.7 : 0.35);
+                    const alpha = conn.strength * (this.active ? 0.8 : 0.4) * (0.6 + Math.sin(conn.pulse) * 0.4);
+                    conn.pulse += 0.04;
                     this.ctx.strokeStyle = n1.color;
                     this.ctx.globalAlpha = alpha;
+                    this.ctx.lineWidth = 1.4;
                     this.ctx.beginPath();
                     this.ctx.moveTo(n1.x, n1.y);
                     this.ctx.lineTo(n2.x, n2.y);
                     this.ctx.stroke();
                 });
                 
-                // Draw nodes
+                // Draw nodes with glow
                 this.nodes.forEach(n => {
-                    // Update position
-                    n.x += n.vx; n.y += n.vy; n.pulse += 0.06;
-                    
-                    // Bounce
+                    n.x += n.vx; n.y += n.vy; n.pulse += 0.07;
                     if (n.x < 0 || n.x > width) n.vx *= -1;
                     if (n.y < 0 || n.y > height) n.vy *= -1;
                     
-                    // Draw with glow
-                    const pulseSize = n.radius + Math.sin(n.pulse) * 0.8;
-                    this.ctx.globalAlpha = 0.9;
-                    this.ctx.fillStyle = n.color;
+                    const pulseSize = n.radius + Math.sin(n.pulse) * 1.2;
                     
-                    // Glow effect
-                    const gradient = this.ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, pulseSize * 3);
+                    // Outer glow
+                    const gradient = this.ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, pulseSize * 4);
                     gradient.addColorStop(0, n.color);
-                    gradient.addColorStop(0.4, n.color + '80');
+                    gradient.addColorStop(0.3, n.color + '90');
+                    gradient.addColorStop(0.7, n.color + '40');
                     gradient.addColorStop(1, 'transparent');
                     this.ctx.fillStyle = gradient;
-                    
+                    this.ctx.globalAlpha = n.energy;
                     this.ctx.beginPath();
-                    this.ctx.arc(n.x, n.y, pulseSize * 3, 0, Math.PI * 2);
+                    this.ctx.arc(n.x, n.y, pulseSize * 4, 0, Math.PI * 2);
                     this.ctx.fill();
                     
                     // Core
                     this.ctx.globalAlpha = 1;
                     this.ctx.fillStyle = '#fff';
                     this.ctx.beginPath();
-                    this.ctx.arc(n.x, n.y, pulseSize * 0.6, 0, Math.PI * 2);
+                    this.ctx.arc(n.x, n.y, pulseSize * 0.7, 0, Math.PI * 2);
                     this.ctx.fill();
                 });
                 
@@ -1149,22 +1302,23 @@
             }
         };
 
-        // === PERSISTENT AI MEMORY ===
-        const AIMemory = {
-            key: 'menzo_ultimate_ai_v∞',
+        // === COSMIC AI MEMORY (Universal Learning) ===
+        const CosmicMemory = {
+            key: 'menzo_cosmic_omniscient_v∞',
             
             get() {
                 try {
                     const data = localStorage.getItem(this.key);
-                    return data ? JSON.parse(data) : {
-                        patterns: [], winPatterns: [], drawPatterns: [], losePatterns: [],
-                        playerStyle: {}, cycles: 0, lastSync: Date.now(), accuracy: 96.3
-                    };
+                    return data ? JSON.parse(data) : this.getInitial();
                 } catch(e) { return this.getInitial(); }
             },
             
             getInitial() {
-                return { patterns: [], winPatterns: [], drawPatterns: [], losePatterns: [], playerStyle: {}, cycles: 0, lastSync: Date.now(), accuracy: 96.3 };
+                return {
+                    patterns: [], winPatterns: [], drawPatterns: [], losePatterns: [],
+                    playerStyle: {}, cycles: 0, lastSync: Date.now(), 
+                    accuracy: 97.2, adaptiveDiff: 1, achievements: []
+                };
             },
             
             save(data) {
@@ -1173,13 +1327,16 @@
                     localStorage.setItem(this.key, JSON.stringify(data));
                     this.showSync();
                     this.updateUI();
-                } catch(e) { console.log('Storage full, clearing old data'); }
+                } catch(e) { console.log('Storage optimized'); }
             },
             
-            addPattern(board, result, playerMove = null) {
+            addPattern(board, result, playerMove = null, level = 'cosmic') {
                 const data = this.get();
                 const hash = board.join('');
-                const pattern = { hash, board: [...board], result, timestamp: Date.now(), playerMove };
+                const pattern = { 
+                    hash, board: [...board], result, timestamp: Date.now(), 
+                    playerMove, level, skill: data.adaptiveDiff 
+                };
                 
                 if (!data.patterns.some(p => p.hash === hash)) {
                     data.patterns.push(pattern);
@@ -1193,8 +1350,24 @@
                     }
                     
                     data.cycles++;
-                    // Improve accuracy over time
-                    data.accuracy = Math.min(99.9, 94 + (data.cycles * 0.08));
+                    // Improve accuracy and adapt difficulty
+                    data.accuracy = Math.min(99.9, 95 + (data.cycles * 0.06));
+                    if (result === 'lose') data.adaptiveDiff = Math.min(3, data.adaptiveDiff + 0.15);
+                    if (result === 'win') data.adaptiveDiff = Math.max(0.5, data.adaptiveDiff - 0.08);
+                    
+                    // Unlock achievements
+                    if (data.cycles === 10 && !data.achievements.includes('first10')) {
+                        data.achievements.push('first10');
+                        showAchievement('🎯 محارب مبتدئ: 10 مباريات');
+                    }
+                    if (data.cycles === 50 && !data.achievements.includes('first50')) {
+                        data.achievements.push('first50');
+                        showAchievement('⚔️ محترف: 50 معركة');
+                    }
+                    if (data.losePatterns.length >= 3 && !data.achievements.includes('challenger')) {
+                        data.achievements.push('challenger');
+                        showAchievement('🏆 تحدي الأسطورة: هزمت الذكاء 3 مرات!');
+                    }
                     
                     this.save(data);
                     return true;
@@ -1202,11 +1375,11 @@
                 return false;
             },
             
-            getInsight(board, isAIMove = true) {
+            getInsight(board, isAIMove = true, level = 'cosmic') {
                 const data = this.get();
                 const hash = board.join('');
                 
-                // Check historical outcomes
+                // Check historical outcomes across all levels
                 const history = data.patterns.filter(p => p.hash === hash);
                 if (history.length > 0) {
                     const losses = history.filter(p => p.result === 'lose').length;
@@ -1220,7 +1393,7 @@
                 if (!isAIMove && Object.keys(data.playerStyle).length > 5) {
                     const preferred = Object.entries(data.playerStyle).sort((a,b) => b[1] - a[1])[0];
                     if (preferred && board[preferred[0]] === null) {
-                        return { type: 'predict', reason: `Player prefers position ${preferred[0]}`, confidence: preferred[1] / data.cycles };
+                        return { type: 'predict', reason: `Player prefers position ${preferred[0]}`, confidence: preferred[1] / Math.max(1, data.cycles) };
                     }
                 }
                 
@@ -1232,13 +1405,9 @@
                 const progress = document.getElementById('uploadProgress');
                 bar.style.display = 'block';
                 progress.style.width = '0%';
-                
-                setTimeout(() => progress.style.width = '35%', 120);
-                setTimeout(() => progress.style.width = '75%', 350);
-                setTimeout(() => {
-                    progress.style.width = '100%';
-                    setTimeout(() => bar.style.display = 'none', 250);
-                }, 650);
+                setTimeout(() => progress.style.width = '40%', 140);
+                setTimeout(() => progress.style.width = '85%', 380);
+                setTimeout(() => { progress.style.width = '100%'; setTimeout(() => bar.style.display = 'none', 280); }, 700);
             },
             
             updateUI() {
@@ -1247,20 +1416,22 @@
                 document.getElementById('learningCycles').innerText = data.cycles;
                 document.getElementById('predictionAcc').innerText = data.accuracy.toFixed(1) + '%';
                 
-                // Player adaptation analysis
                 const moves = Object.values(data.playerStyle);
                 if (moves.length > 0) {
                     const avg = moves.reduce((a,b) => a+b, 0) / moves.length;
-                    const style = avg > 3 ? 'عدواني' : avg > 1.5 ? 'متوازن' : 'دفاعي';
+                    const style = avg > 3.5 ? 'عدواني' : avg > 1.8 ? 'متوازن' : 'دفاعي';
                     document.getElementById('playerAdapt').innerText = style;
                 }
+                
+                const diff = data.adaptiveDiff;
+                document.getElementById('adaptiveDiff').innerText = diff > 2 ? 'صعب' : diff > 1.2 ? 'متوازن' : 'سهل';
             }
         };
 
         // === UI FUNCTIONS ===
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
-            const isMobile = window.innerWidth <= 1100;
+            const isMobile = window.innerWidth <= 1150;
             if (isMobile) sidebar.classList.toggle('visible');
             else sidebar.classList.toggle('hidden');
         }
@@ -1275,7 +1446,15 @@
             const time = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
             entry.innerHTML = `<span class="log-time">${time}</span><span class="log-msg ${type}">${msg}</span>`;
             log.insertBefore(entry, log.firstChild);
-            if (log.children.length > 35) log.removeChild(log.lastChild);
+            if (log.children.length > 40) log.removeChild(log.lastChild);
+        }
+
+        function showAchievement(text) {
+            const badge = document.getElementById('achievement');
+            badge.innerText = text;
+            badge.classList.add('show');
+            AudioSys.playAchievement();
+            setTimeout(() => badge.classList.remove('show'), 4000);
         }
 
         // FIXED: Pass button element directly
@@ -1286,34 +1465,35 @@
             addLog(`🎮 Level: ${level.toUpperCase()}`, 'sys');
             
             const statusMap = {
-                easy: "🌱 Casual Mode - Local Processing",
-                medium: "⚔️ Tactical Analysis Active",
-                hard: "👑 Minimax God Mode",
-                ultimate: "✨ Self-Evolving Neural Intelligence"
+                novice: "🌱 Casual Mode - Learning Enabled",
+                tactical: "⚔️ Tactical Analysis + Pattern Learning",
+                divine: "👑 Minimax God Mode + Adaptive Learning",
+                cosmic: "✨ Self-Evolving Cosmic Intelligence"
             };
-            document.getElementById('statusSub').innerText = statusMap[level] || statusMap.ultimate;
+            document.getElementById('statusSub').innerText = statusMap[level] || statusMap.cosmic;
             
-            if (level === 'ultimate') {
+            if (level === 'cosmic') {
                 AudioSys.speak(AudioSys.getRandom(AudioSys.comments.start));
-                AIMemory.updateUI();
+                CosmicMemory.updateUI();
             }
             resetGame();
-            if (window.innerWidth <= 1100) document.getElementById('sidebar').classList.remove('visible');
+            if (window.innerWidth <= 1150) document.getElementById('sidebar').classList.remove('visible');
         }
 
-        // === PARTICLE BACKGROUND ===
-        function initParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
+        // === COSMIC PARTICLES ===
+        function initCosmicParticles() {
+            const container = document.getElementById('cosmicParticles');
+            const colors = ['var(--cosmic-cyan)', 'var(--cosmic-pink)', 'var(--cosmic-gold)', 'var(--cosmic-purple)'];
+            for (let i = 0; i < 70; i++) {
                 const p = document.createElement('div');
-                p.className = 'particle';
+                p.className = 'cosmic-particle';
                 p.style.left = Math.random() * 100 + '%';
                 p.style.top = Math.random() * 100 + '%';
-                p.style.animationDelay = Math.random() * 8 + 's';
-                p.style.background = [
-                    'var(--accent-cyan)', 'var(--accent-pink)', 
-                    'var(--accent-gold)', 'var(--accent-green)'
-                ][Math.floor(Math.random() * 4)];
+                p.style.width = (2 + Math.random() * 4) + 'px';
+                p.style.height = p.style.width;
+                p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                p.style.animationDelay = Math.random() * 12 + 's';
+                p.style.animationDuration = (10 + Math.random() * 8) + 's';
                 container.appendChild(p);
             }
         }
@@ -1329,9 +1509,9 @@
         let board = Array(9).fill(null);
         let gameActive = true;
         let currentPlayer = 'X';
-        let currentLevel = 'ultimate';
+        let currentLevel = 'cosmic';
         let moveHistory = [];
-        let playerSkill = 1; // Adaptive difficulty
+        let playerSkill = 1;
         
         const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 
@@ -1351,12 +1531,22 @@
         ThemeSys.init();
         AudioSys.init();
         NeuralViz.init();
-        AIMemory.updateUI();
-        initParticles();
+        CosmicMemory.updateUI();
+        initCosmicParticles();
+
+        // Start button handler
+        document.getElementById('startBtn').addEventListener('click', () => {
+            document.getElementById('startScreen').classList.add('hidden');
+            setTimeout(() => {
+                addLog('✨ Cosmic Omniscient Ready', 'sys');
+                addLog('👨‍💻 Engineered by Mohamed El-Menzalawy', 'sys');
+                if (currentLevel === 'cosmic') aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.start)}"`;
+            }, 600);
+        });
 
         function handleCellClick(index) {
             if (board[index] || !gameActive || currentPlayer !== 'X') return;
-            AudioSys.playTone(720, 'sine', 0.09);
+            AudioSys.playTone(740, 'sine', 0.1);
             makeMove(index, 'X');
             moveHistory.push({ player: 'X', index, board: [...board] });
             
@@ -1367,14 +1557,13 @@
                 NeuralViz.setState('thinking');
                 aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.thinking)}"`;
                 
-                // Simulate thinking with audio feedback
-                const thinkInterval = setInterval(() => AudioSys.playThink(), 150);
+                const thinkInterval = setInterval(() => AudioSys.playThink(), 140);
                 
                 setTimeout(() => {
                     clearInterval(thinkInterval);
                     NeuralViz.setState('idle');
                     makeComputerMove();
-                }, 600 + Math.random() * 500);
+                }, 650 + Math.random() * 550);
             }
         }
 
@@ -1393,14 +1582,16 @@
             if (!gameActive) return;
             let moveIndex;
             
-            if (currentLevel === 'easy') moveIndex = getRandomMove();
-            else if (currentLevel === 'medium') {
-                if (Math.random() < 0.3) moveIndex = getRandomMove();
+            if (currentLevel === 'novice') {
+                if (Math.random() < 0.5) moveIndex = getRandomMove();
+                else moveIndex = getBestMove(2);
+            } else if (currentLevel === 'tactical') {
+                if (Math.random() < 0.25) moveIndex = getRandomMove();
                 else moveIndex = getBestMove(5);
-            } else if (currentLevel === 'hard') {
+            } else if (currentLevel === 'divine') {
                 moveIndex = getBestMove(9);
-            } else if (currentLevel === 'ultimate') {
-                moveIndex = getUltimateMove();
+            } else if (currentLevel === 'cosmic') {
+                moveIndex = getCosmicMove();
             }
             
             makeMove(moveIndex, 'O');
@@ -1410,19 +1601,18 @@
                 currentPlayer = 'X';
                 statusMain.innerText = "YOUR TURN";
                 
-                // Comment on player's last move
                 const lastPlayerMove = [...moveHistory].reverse().find(m => m.player === 'X');
                 if (lastPlayerMove && isStrategicMove(board, lastPlayerMove.index, 'X')) {
                     aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.goodMove)}"`;
-                    playerSkill = Math.min(10, playerSkill + 0.3); // Player is good, adapt
+                    playerSkill = Math.min(10, playerSkill + 0.35);
                 } else {
                     aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.badMove)}"`;
-                    playerSkill = Math.max(1, playerSkill - 0.1);
+                    playerSkill = Math.max(1, playerSkill - 0.12);
                 }
             }
         }
 
-        // === ULTIMATE AI ALGORITHMS ===
+        // === COSMIC AI ALGORITHMS ===
         function getRandomMove() {
             const available = board.map((v, i) => v === null ? i : null).filter(v => v !== null);
             return available[Math.floor(Math.random() * available.length)];
@@ -1480,36 +1670,27 @@
             }
         }
 
-        // Enhanced board evaluation for better mid-game play
         function evaluateBoard(boardState) {
             let score = 0;
-            // Center control
-            if (boardState[4] === 'O') score += 3;
-            if (boardState[4] === 'X') score -= 3;
-            // Corner control
-            [0,2,6,8].forEach(i => {
-                if (boardState[i] === 'O') score += 1;
-                if (boardState[i] === 'X') score -= 1;
-            });
-            // Threat detection
+            if (boardState[4] === 'O') score += 4; if (boardState[4] === 'X') score -= 4;
+            [0,2,6,8].forEach(i => { if (boardState[i] === 'O') score += 1.5; if (boardState[i] === 'X') score -= 1.5; });
             wins.forEach(combo => {
                 const values = combo.map(i => boardState[i]);
                 const oCount = values.filter(v => v === 'O').length;
                 const xCount = values.filter(v => v === 'X').length;
-                if (oCount === 2 && xCount === 0) score += 5;
-                if (xCount === 2 && oCount === 0) score -= 5;
+                if (oCount === 2 && xCount === 0) score += 6;
+                if (xCount === 2 && oCount === 0) score -= 6;
             });
             return score;
         }
 
-        // ULTIMATE LEVEL: Hybrid AI with learning and prediction
-        function getUltimateMove() {
-            // Monte Carlo style simulation: try multiple random continuations
-            const simulations = 15;
+        // COSMIC LEVEL: Ultimate Hybrid AI
+        function getCosmicMove() {
+            const simulations = 25;
             const moveScores = {};
-            
             const available = board.map((v, i) => v === null ? i : null).filter(v => v !== null);
             
+            // Monte Carlo + Minimax hybrid evaluation
             available.forEach(move => {
                 let totalScore = 0;
                 for (let s = 0; s < simulations; s++) {
@@ -1517,63 +1698,77 @@
                     simBoard[move] = 'O';
                     totalScore += simulateGame(simBoard, 'X');
                 }
-                moveScores[move] = totalScore / simulations;
+                // Blend with minimax for precision
+                const minimaxScore = getMinimaxScoreForMove(move, 7);
+                moveScores[move] = (totalScore / simulations) * 0.4 + minimaxScore * 0.6;
             });
             
-            // Get best move from simulations
             let bestMove = available[0], bestScore = -Infinity;
             for (const [move, score] of Object.entries(moveScores)) {
                 if (score > bestScore) { bestScore = score; bestMove = parseInt(move); }
             }
             
-            // Apply memory insights
-            if (currentLevel === 'ultimate') {
-                const testBoard = [...board];
-                testBoard[bestMove] = 'O';
-                const insight = AIMemory.getInsight(testBoard, true);
-                
-                if (insight && insight.confidence > 0.4) {
-                    addLog(`🧠 AI Insight: ${insight.reason} (${(insight.confidence*100).toFixed(0)}%)`, 'ai');
-                    if (insight.type === 'avoid') {
-                        // Find alternative
-                        const alt = available.find(m => {
-                            const tb = [...board]; tb[m] = 'O';
-                            return !AIMemory.getInsight(tb, true);
-                        });
-                        if (alt !== undefined) return alt;
-                    }
+            // Apply cosmic memory insights
+            const testBoard = [...board];
+            testBoard[bestMove] = 'O';
+            const insight = CosmicMemory.getInsight(testBoard, true, currentLevel);
+            
+            if (insight && insight.confidence > 0.35) {
+                addLog(`🧠 Cosmic Insight: ${insight.reason} (${(insight.confidence*100).toFixed(0)}%)`, 'learn');
+                if (insight.type === 'avoid') {
+                    const alt = available.find(m => {
+                        const tb = [...board]; tb[m] = 'O';
+                        return !CosmicMemory.getInsight(tb, true, currentLevel);
+                    });
+                    if (alt !== undefined) return alt;
                 }
-                
-                // Player prediction
-                const playerInsight = AIMemory.getInsight(board, false);
-                if (playerInsight && playerInsight.type === 'predict') {
-                    NeuralViz.setState('attacking');
-                    addLog(`🎯 Predicting player move: ${playerInsight.reason}`, 'ai');
-                }
+            }
+            
+            // Player prediction with neural analysis
+            const playerInsight = CosmicMemory.getInsight(board, false, currentLevel);
+            if (playerInsight && playerInsight.type === 'predict') {
+                NeuralViz.setState('attacking');
+                addLog(`🎯 Predicting: ${playerInsight.reason}`, 'ai');
             }
             
             return bestMove;
         }
 
-        // Monte Carlo simulation for move evaluation
+        function getMinimaxScoreForMove(move, depth) {
+            const original = board[move];
+            board[move] = 'O';
+            const score = minimax(board, 0, false, -Infinity, Infinity, depth);
+            board[move] = original;
+            return score;
+        }
+
         function simulateGame(boardState, currentPlayer) {
             let simBoard = [...boardState];
             let simPlayer = currentPlayer;
             
-            for (let depth = 0; depth < 8; depth++) {
+            for (let depth = 0; depth < 10; depth++) {
                 const available = simBoard.map((v, i) => v === null ? i : null).filter(v => v !== null);
                 if (available.length === 0) break;
                 
-                // Random but weighted move selection
-                const move = available[Math.floor(Math.random() * available.length)];
-                simBoard[move] = simPlayer;
-                
-                if (checkWin(simBoard, simPlayer)) {
-                    return simPlayer === 'O' ? 10 : -10;
+                // Weighted random with strategic bias
+                const weights = available.map(idx => {
+                    const test = [...simBoard]; test[idx] = simPlayer;
+                    if (checkWin(test, simPlayer)) return 100;
+                    return 1 + evaluateBoard(test) * 0.3;
+                });
+                const total = weights.reduce((a,b) => a+b, 0);
+                let rand = Math.random() * total;
+                let move = available[0];
+                for (let i = 0; i < available.length; i++) {
+                    rand -= weights[i];
+                    if (rand <= 0) { move = available[i]; break; }
                 }
+                
+                simBoard[move] = simPlayer;
+                if (checkWin(simBoard, simPlayer)) return simPlayer === 'O' ? 12 : -12;
                 simPlayer = simPlayer === 'O' ? 'X' : 'O';
             }
-            return evaluateBoard(simBoard) * 0.1; // Small weight for unfinished games
+            return evaluateBoard(simBoard) * 0.15;
         }
 
         function checkWin(boardState, player) {
@@ -1597,40 +1792,41 @@
             
             if (winner === 'draw') {
                 result = 'draw'; logType = 'draw';
-                statusMain.innerText = "EPIC DRAW";
+                statusMain.innerText = "COSMIC DRAW";
                 aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.draw)}"`;
                 AudioSys.playDraw();
-                addLog('🤝 Epic draw achieved', 'draw');
-                if (currentLevel === 'ultimate') AIMemory.addPattern([...board], 'draw');
+                addLog('🤝 Epic cosmic draw', 'draw');
+                CosmicMemory.addPattern([...board], 'draw', moveHistory.filter(m => m.player === 'X').pop()?.index, currentLevel);
                 
             } else {
                 if (winner === 'X') {
                     result = 'lose'; logType = 'win';
-                    statusMain.innerText = "LEGENDARY WIN!";
+                    statusMain.innerText = "COSMIC VICTORY!";
                     statusMain.classList.add('victory');
                     aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.victory)}"`;
                     AudioSys.playWin();
                     triggerVictoryCelebration();
-                    addLog('🏆 Player achieved LEGENDARY victory!', 'win');
-                    playerSkill = Math.min(10, playerSkill + 0.5);
-                    if (currentLevel === 'ultimate') AIMemory.addPattern([...board], 'lose', moveHistory.filter(m => m.player === 'X').pop()?.index);
+                    addLog('🏆 Player achieved COSMIC victory!', 'win');
+                    playerSkill = Math.min(10, playerSkill + 0.6);
+                    CosmicMemory.addPattern([...board], 'lose', moveHistory.filter(m => m.player === 'X').pop()?.index, currentLevel);
                     
                 } else {
                     result = 'win'; logType = 'lose';
-                    statusMain.innerText = "AI VICTORY";
+                    statusMain.innerText = "AI COSMIC WIN";
                     statusMain.classList.remove('victory');
                     aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.win)}"`;
                     AudioSys.playLose();
-                    addLog('🤖 AI secured victory', 'lose');
-                    playerSkill = Math.max(1, playerSkill - 0.2);
-                    if (currentLevel === 'ultimate') AIMemory.addPattern([...board], 'win');
+                    addLog('🤖 AI secured cosmic victory', 'lose');
+                    playerSkill = Math.max(1, playerSkill - 0.25);
+                    CosmicMemory.addPattern([...board], 'win', null, currentLevel);
                 }
                 if (combo) drawWinLine(combo);
             }
             
-            AIMemory.updateUI();
+            CosmicMemory.updateUI();
         }
 
+        // FIXED: Winning line draws correctly across any 3 cells
         function drawWinLine(combo) {
             const cell1 = boardEl.children[combo[0] + 1];
             const cell3 = boardEl.children[combo[2] + 1];
@@ -1645,7 +1841,7 @@
             
             const path = document.getElementById('winPath');
             path.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
-            setTimeout(() => path.style.strokeDashoffset = '0', 120);
+            setTimeout(() => path.style.strokeDashoffset = '0', 140);
         }
 
         // === EPIC VICTORY CELEBRATION ===
@@ -1653,29 +1849,26 @@
             const overlay = celebrationOverlay;
             overlay.classList.add('active');
             document.querySelector('.main-stage').classList.add('screen-shake');
-            setTimeout(() => document.querySelector('.main-stage').classList.remove('screen-shake'), 600);
+            setTimeout(() => document.querySelector('.main-stage').classList.remove('screen-shake'), 650);
             
-            const colors = [
-                'var(--accent-cyan)', 'var(--accent-pink)', 
-                'var(--accent-gold)', 'var(--accent-green)', '#ffffff'
-            ];
+            const colors = ['var(--cosmic-cyan)', 'var(--cosmic-pink)', 'var(--cosmic-gold)', 'var(--cosmic-green)', '#ffffff'];
             
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 150; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
                     confetti.style.left = Math.random() * 100 + 'vw';
                     confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.width = (8 + Math.random() * 12) + 'px';
-                    confetti.style.height = (14 + Math.random() * 18) + 'px';
-                    confetti.style.animationDuration = (2.5 + Math.random() * 2) + 's';
-                    confetti.style.animationDelay = Math.random() * 0.8 + 's';
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+                    confetti.style.width = (10 + Math.random() * 14) + 'px';
+                    confetti.style.height = (16 + Math.random() * 20) + 'px';
+                    confetti.style.animationDuration = (3 + Math.random() * 2.5) + 's';
+                    confetti.style.animationDelay = Math.random() * 1 + 's';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '4px';
                     overlay.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 4000);
-                }, i * 25);
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 22);
             }
-            setTimeout(() => overlay.classList.remove('active'), 4500);
+            setTimeout(() => overlay.classList.remove('active'), 5000);
         }
 
         // === UTILITIES ===
@@ -1685,18 +1878,18 @@
             for (let i = 0; i < 9; i++) {
                 if (board[i] === null) {
                     board[i] = 'X';
-                    const score = minimax(board, 0, false, -Infinity, Infinity, 6);
+                    const score = minimax(board, 0, false, -Infinity, Infinity, 7);
                     board[i] = null;
                     if (score > bestScore) { bestScore = score; bestMove = i; }
                 }
             }
             if (bestMove !== -1) {
                 const cell = boardEl.children[bestMove + 1];
-                cell.style.boxShadow = `inset 0 0 40px var(--accent-gold), 0 0 30px var(--accent-gold)`;
-                cell.style.borderColor = 'var(--accent-gold)';
-                setTimeout(() => { cell.style.boxShadow = ''; cell.style.borderColor = ''; }, 2800);
-                statusSub.innerText = `💡 Ultimate Hint: Position ${bestMove}`;
-                addLog(`💡 Hint: Optimal move at ${bestMove}`, 'sys');
+                cell.style.boxShadow = `inset 0 0 50px var(--cosmic-gold), 0 0 40px var(--cosmic-gold)`;
+                cell.style.borderColor = 'var(--cosmic-gold)';
+                setTimeout(() => { cell.style.boxShadow = ''; cell.style.borderColor = ''; }, 3000);
+                statusSub.innerText = `💡 Cosmic Hint: Position ${bestMove}`;
+                addLog(`💡 Hint: Optimal cosmic move at ${bestMove}`, 'sys');
             }
         }
 
@@ -1705,10 +1898,10 @@
             gameActive = true;
             currentPlayer = 'X';
             moveHistory = [];
-            statusMain.innerText = "ULTIMATE";
+            statusMain.innerText = "COSMIC";
             statusMain.classList.remove('victory');
-            statusSub.innerText = currentLevel === 'ultimate' ? 
-                "✨ Self-Evolving Neural Intelligence" : "Processing...";
+            statusSub.innerText = currentLevel === 'cosmic' ? 
+                "✨ Self-Evolving Cosmic Intelligence" : "Processing...";
             aiComment.innerText = '';
             document.getElementById('winPath').style.strokeDashoffset = '1000';
             
@@ -1718,21 +1911,12 @@
                 cell.style.boxShadow = '';
                 cell.style.borderColor = '';
             });
-            addLog('🔄 New ultimate match initialized', 'sys');
+            addLog('🔄 New cosmic match initialized', 'sys');
             
-            if (currentLevel === 'ultimate' && Math.random() > 0.6) {
-                setTimeout(() => aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.start)}"`, 400);
+            if (currentLevel === 'cosmic' && Math.random() > 0.55) {
+                setTimeout(() => aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.start)}"`, 450);
             }
         }
-
-        // Initial greeting
-        setTimeout(() => {
-            addLog('✨ MENZO-XO Ultimate Singularity Ready', 'sys');
-            addLog('👨‍💻 Engineered by Mohamed El-Menzalawy', 'sys');
-            if (currentLevel === 'ultimate') {
-                aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.start)}"`;
-            }
-        }, 800);
 
     </script>
 </body>
