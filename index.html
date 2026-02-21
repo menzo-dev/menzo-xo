@@ -4,92 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MENZO-XO: COSMIC OMNISCIENT</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="https://img.icons8.com/?size=100&id=121367&format=png&color=00f0ff">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
-            --cosmic-bg: #010103;
-            --cosmic-gradient-1: radial-gradient(ellipse at 20% 80%, rgba(120, 0, 255, 0.15) 0%, transparent 50%);
-            --cosmic-gradient-2: radial-gradient(ellipse at 80% 20%, rgba(0, 200, 255, 0.15) 0%, transparent 50%);
-            --cosmic-gradient-3: radial-gradient(ellipse at 50% 50%, rgba(255, 100, 200, 0.08) 0%, transparent 60%);
-            
-            --sidebar-bg: rgba(8, 12, 28, 0.96);
-            --panel-bg: rgba(15, 22, 45, 0.88);
-            --cell-bg: rgba(25, 35, 65, 0.7);
-            
+            --bg-dark: #0a0c14;
+            --bg-light: #eef2f6;
+            --primary-cyan: #00f0ff;
+            --primary-pink: #ff44e0;
+            --primary-gold: #ffd966;
+            --primary-green: #32ffaa;
+            --primary-purple: #b87cff;
+            --primary-red: #ff6b6b;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
             --text-primary: #ffffff;
-            --text-secondary: #b8c5e0;
-            --text-dim: #7a8aa8;
-            
-            --cosmic-cyan: #00f6ff;
-            --cosmic-pink: #d946ef;
-            --cosmic-gold: #fbbf24;
-            --cosmic-green: #22d3ee;
-            --cosmic-purple: #a78bfa;
-            --cosmic-red: #f87171;
-            
-            --glow-cyan: 0 0 25px rgba(0, 246, 255, 0.6), 0 0 50px rgba(0, 246, 255, 0.3);
-            --glow-pink: 0 0 25px rgba(217, 70, 239, 0.6), 0 0 50px rgba(217, 70, 239, 0.3);
-            --glow-gold: 0 0 25px rgba(251, 191, 36, 0.6), 0 0 50px rgba(251, 191, 36, 0.3);
-            
-            --border-glass: 1px solid rgba(255, 255, 255, 0.15);
-            --shadow-cosmic: 0 20px 60px rgba(0, 0, 0, 0.7);
-            --shadow-glow: 0 0 80px rgba(0, 246, 255, 0.2);
-            
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --text-secondary: #b0c4de;
+            --shadow-glow: 0 0 30px rgba(0, 240, 255, 0.3);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         [data-theme="light"] {
-            --cosmic-bg: #f0f4ff;
-            --cosmic-gradient-1: radial-gradient(ellipse at 20% 80%, rgba(120, 0, 255, 0.08) 0%, transparent 50%);
-            --cosmic-gradient-2: radial-gradient(ellipse at 80% 20%, rgba(0, 150, 255, 0.08) 0%, transparent 50%);
-            --cosmic-gradient-3: radial-gradient(ellipse at 50% 50%, rgba(255, 100, 200, 0.04) 0%, transparent 60%);
-            
-            --sidebar-bg: rgba(240, 244, 255, 0.97);
-            --panel-bg: rgba(255, 255, 255, 0.92);
-            --cell-bg: rgba(230, 235, 255, 0.8);
-            
-            --text-primary: #1a1f36;
-            --text-secondary: #4a5568;
-            --text-dim: #718096;
-            
-            --cosmic-cyan: #0891b2;
-            --cosmic-pink: #a21caf;
-            --cosmic-gold: #b45309;
-            --cosmic-green: #0e7490;
-            --cosmic-purple: #7c3aed;
-            --cosmic-red: #dc2626;
-            
-            --glow-cyan: 0 0 20px rgba(8, 145, 178, 0.4);
-            --glow-pink: 0 0 20px rgba(162, 28, 175, 0.4);
-            --glow-gold: 0 0 20px rgba(180, 83, 9, 0.4);
-            
-            --border-glass: 1px solid rgba(0, 0, 0, 0.1);
-            --shadow-cosmic: 0 20px 60px rgba(0, 0, 0, 0.15);
-            --shadow-glow: 0 0 60px rgba(8, 145, 178, 0.15);
+            --bg-dark: #f0f4fa;
+            --bg-light: #ffffff;
+            --primary-cyan: #0077be;
+            --primary-pink: #c2185b;
+            --primary-gold: #b8860b;
+            --primary-green: #2e7d32;
+            --primary-purple: #6a1b9a;
+            --primary-red: #b71c1c;
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --text-primary: #1a1f2e;
+            --text-secondary: #2c3e50;
+            --shadow-glow: 0 0 30px rgba(0, 119, 190, 0.2);
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background: var(--cosmic-bg);
-            color: var(--text-primary);
             font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
             height: 100vh;
             overflow: hidden;
-            display: flex;
-            transition: var(--transition-smooth);
-            background-image: var(--cosmic-gradient-1), var(--cosmic-gradient-2), var(--cosmic-gradient-3);
+            transition: var(--transition);
+            position: relative;
         }
 
-        /* === COSMIC PARTICLES === */
+        /* ========== COSMIC PARTICLES ========== */
         .cosmic-particles {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
         }
         .cosmic-particle {
             position: absolute;
@@ -104,475 +81,397 @@
             75% { transform: translateY(-25px) translateX(20px) scale(1.05); opacity: 0.9; }
         }
 
-        /* === START SCREEN === */
-        .start-screen {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--cosmic-bg), #0a0a1a);
+        /* ========== GLOWING TEXT ========== */
+        .glow-text {
+            text-shadow: 0 0 10px var(--primary-cyan), 0 0 20px var(--primary-cyan), 0 0 30px var(--primary-cyan);
+            animation: glowPulse 3s infinite;
+        }
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 10px var(--primary-cyan), 0 0 20px var(--primary-cyan); }
+            50% { text-shadow: 0 0 20px var(--primary-pink), 0 0 40px var(--primary-pink); }
+            100% { text-shadow: 0 0 10px var(--primary-cyan), 0 0 20px var(--primary-cyan); }
+        }
+
+        /* Main layout */
+        .app {
+            display: flex;
+            height: 100vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 380px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid var(--glass-border);
             display: flex;
             flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+            z-index: 100;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+        }
+        .sidebar.collapsed {
+            transform: translateX(100%);
+        }
+        .sidebar-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            z-index: 3000;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
-        .start-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        
-        .start-logo {
-            font-family: 'Orbitron';
-            font-size: 4rem;
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
             font-weight: 900;
-            background: linear-gradient(90deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold), var(--cosmic-cyan));
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-pink), var(--primary-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 300% auto;
-            animation: gradientShift 4s linear infinite, titleGlow 2s ease-in-out infinite alternate;
-            margin-bottom: 20px;
-            text-align: center;
+            animation: gradientShift 5s infinite;
         }
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        @keyframes titleGlow {
-            from { text-shadow: 0 0 30px rgba(0, 246, 255, 0.5); }
-            to { text-shadow: 0 0 60px rgba(217, 70, 239, 0.8), 0 0 100px rgba(251, 191, 36, 0.6); }
-        }
-        
-        .start-subtitle {
-            font-size: 1.4rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            text-align: center;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        
-        .start-btn {
-            padding: 22px 70px;
-            font-family: 'Orbitron';
-            font-size: 1.4rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink));
-            border: none;
-            border-radius: 60px;
-            color: #000;
-            cursor: pointer;
-            box-shadow: var(--glow-cyan), 0 0 80px rgba(217, 70, 239, 0.5);
-            transition: var(--transition-bounce);
-            position: relative;
-            overflow: hidden;
-            animation: pulseBtn 2.5s infinite;
-        }
-        .start-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.7s;
-        }
-        .start-btn:hover::before { left: 100%; }
-        .start-btn:hover {
-            transform: scale(1.08) translateY(-4px);
-            box-shadow: 0 0 50px rgba(0, 246, 255, 0.9), 0 0 100px rgba(217, 70, 239, 0.7);
-        }
-        @keyframes pulseBtn {
-            0%, 100% { box-shadow: var(--glow-cyan), 0 0 80px rgba(217, 70, 239, 0.5); }
-            50% { box-shadow: 0 0 70px rgba(0, 246, 255, 0.9), 0 0 120px rgba(217, 70, 239, 0.8); }
-        }
-        
-        .start-features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 50px;
-            max-width: 800px;
-        }
-        .start-feature {
-            text-align: center;
-            padding: 15px;
-            background: var(--panel-bg);
-            border-radius: 16px;
-            border: var(--border-glass);
-        }
-        .start-feature-icon { font-size: 2rem; margin-bottom: 10px; }
-        .start-feature-title { font-weight: 700; color: var(--cosmic-cyan); margin-bottom: 5px; }
-        .start-feature-desc { font-size: 0.85rem; color: var(--text-dim); }
-
-        /* === FLOATING TOGGLE BUTTON === */
-        .sidebar-toggle {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink));
-            border: none;
-            border-radius: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
-            color: #000;
-            box-shadow: var(--glow-cyan);
-            z-index: 1000;
-            transition: var(--transition-bounce);
-            animation: floatBtn 4s ease-in-out infinite;
-        }
-        .sidebar-toggle:hover {
-            transform: scale(1.15) rotate(4deg);
-            box-shadow: 0 0 45px rgba(0, 246, 255, 0.8), 0 0 80px rgba(217, 70, 239, 0.6);
-        }
-        @keyframes floatBtn {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        /* === THEME TOGGLE === */
-        .theme-toggle {
-            position: fixed;
-            top: 25px;
-            right: 92px;
-            width: 56px;
-            height: 56px;
-            background: var(--panel-bg);
-            border: var(--border-glass);
-            border-radius: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            box-shadow: var(--shadow-cosmic);
-            z-index: 1000;
-            transition: var(--transition-bounce);
-        }
-        .theme-toggle:hover {
-            transform: scale(1.12) rotate(12deg);
-            background: linear-gradient(135deg, var(--cosmic-gold), var(--cosmic-cyan));
-            color: #000;
-        }
-
-        /* === SIDEBAR === */
-        .sidebar {
-            width: 460px;
-            background: var(--sidebar-bg);
-            border-left: var(--border-glass);
-            display: flex;
-            flex-direction: column;
-            padding: 0;
-            transition: var(--transition-smooth);
-            z-index: 500;
-            position: relative;
-            box-shadow: var(--shadow-cosmic);
-            backdrop-filter: blur(25px);
-        }
-        .sidebar.hidden { transform: translateX(100%); }
-
-        .sidebar-header {
-            padding: 30px 34px;
-            border-bottom: var(--border-glass);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--panel-bg);
-        }
-        .logo {
-            font-family: 'Orbitron';
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: gradientShift 3s linear infinite;
-        }
-
-        .sidebar-close {
+        .close-sidebar {
             background: none;
             border: none;
             color: var(--text-primary);
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             cursor: pointer;
-            padding: 10px;
-            border-radius: 12px;
-            transition: 0.25s;
+            opacity: 0.7;
+            transition: var(--transition);
         }
-        .sidebar-close:hover { background: rgba(255,255,255,0.12); }
+        .close-sidebar:hover { opacity: 1; transform: scale(1.1); }
 
         .sidebar-content {
             flex: 1;
             overflow-y: auto;
-            padding: 26px 34px;
-        }
-        .sidebar-content::-webkit-scrollbar { width: 6px; }
-        .sidebar-content::-webkit-scrollbar-thumb { 
-            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink)); 
-            border-radius: 6px; 
+            padding: 20px;
         }
 
-        .section { margin-bottom: 34px; }
+        .section {
+            margin-bottom: 30px;
+        }
         .section-title {
-            font-family: 'Orbitron';
-            color: var(--cosmic-cyan);
+            font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
-            margin: 26px 0 20px;
+            color: var(--primary-cyan);
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 700;
+            text-shadow: 0 0 10px var(--primary-cyan);
         }
         .section-title::before {
             content: '';
             width: 5px;
-            height: 22px;
-            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink));
+            height: 20px;
+            background: linear-gradient(to bottom, var(--primary-cyan), var(--primary-pink));
             border-radius: 3px;
-            box-shadow: 0 0 15px var(--cosmic-cyan);
+            box-shadow: 0 0 15px var(--primary-cyan);
         }
 
-        /* Level Buttons */
-        .level-grid { display: grid; gap: 14px; }
+        /* Level buttons */
+        .level-grid {
+            display: grid;
+            gap: 10px;
+        }
         .level-btn {
-            width: 100%;
-            padding: 18px 24px;
-            background: var(--panel-bg);
-            border: var(--border-glass);
+            padding: 15px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             color: var(--text-secondary);
-            font-family: 'Rajdhani';
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
             text-align: right;
             cursor: pointer;
-            border-radius: 16px;
-            transition: var(--transition-bounce);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
+            text-shadow: 0 0 5px currentColor;
         }
         .level-btn::before {
             content: '';
             position: absolute;
-            left: 0; top: 0; height: 100%;
-            width: 5px;
-            background: transparent;
-            transition: 0.35s;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-cyan), var(--primary-pink));
+            transform: scaleY(0);
+            transition: transform 0.3s;
         }
         .level-btn:hover {
-            background: rgba(0, 246, 255, 0.14);
-            color: var(--cosmic-cyan);
-            border-color: var(--cosmic-cyan);
-            padding-right: 32px;
-            transform: translateX(5px);
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--primary-cyan);
+            border-color: var(--primary-cyan);
+            padding-right: 25px;
+            box-shadow: 0 0 20px var(--primary-cyan);
         }
-        .level-btn:hover::before { 
-            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink)); 
-            box-shadow: 0 0 18px var(--cosmic-cyan);
-        }
+        .level-btn:hover::before { transform: scaleY(1); }
         .level-btn.active {
-            background: linear-gradient(135deg, rgba(0,246,255,0.2), rgba(217,70,239,0.15));
-            color: var(--text-primary);
-            border: 2px solid var(--cosmic-cyan);
-            box-shadow: var(--glow-cyan);
-            font-weight: 800;
-        }
-        .level-btn.active::before { 
-            background: linear-gradient(var(--cosmic-cyan), var(--cosmic-pink)); 
-            box-shadow: 0 0 25px var(--cosmic-cyan);
+            background: linear-gradient(135deg, rgba(0,240,255,0.15), rgba(255,68,224,0.15));
+            border: 2px solid var(--primary-cyan);
+            color: white;
+            box-shadow: 0 0 20px var(--primary-cyan);
         }
         .level-btn.cosmic {
-            border-color: var(--cosmic-gold);
-            color: var(--cosmic-gold);
-            background: rgba(251, 191, 36, 0.1);
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
         }
-        .level-btn.cosmic:hover,
-        .level-btn.cosmic.active {
-            border-color: var(--cosmic-gold);
-            color: var(--text-primary);
-            background: linear-gradient(135deg, rgba(251,191,36,0.25), rgba(0,246,255,0.18));
-            box-shadow: var(--glow-gold);
+        .level-btn.cosmic:hover {
+            border-color: var(--primary-gold);
+            color: white;
+            box-shadow: 0 0 20px var(--primary-gold);
         }
-        .level-btn.cosmic::before { background: linear-gradient(var(--cosmic-gold), var(--cosmic-cyan)); }
 
-        /* Cloud Learning Panel */
-        .cloud-panel {
-            background: linear-gradient(135deg, var(--panel-bg), rgba(35, 45, 80, 0.7));
-            border: 1px solid var(--cosmic-green);
-            border-radius: 18px;
-            padding: 22px;
-            margin-top: 10px;
-            box-shadow: 0 0 30px rgba(34, 211, 238, 0.18);
-        }
-        .cloud-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .cloud-dot {
-            width: 12px; height: 12px;
-            background: var(--cosmic-green);
-            border-radius: 50%;
-            box-shadow: 0 0 18px var(--cosmic-green);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.65; transform:scale(0.92); } }
-        
-        .cloud-stat {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.92rem;
-            margin-bottom: 12px;
-            color: var(--text-secondary);
-        }
-        .cloud-stat span:last-child {
-            color: var(--text-primary);
-            font-family: 'Orbitron';
+        /* Quick Play button */
+        .quick-play {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-cyan));
+            border: none;
+            border-radius: 16px;
+            color: black;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
             font-weight: 700;
-        }
-        .upload-bar {
-            height: 6px;
-            background: rgba(255,255,255,0.14);
-            border-radius: 4px;
-            margin-top: 16px;
-            overflow: hidden;
-            display: none;
-        }
-        .upload-progress {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold));
-            transition: width 0.4s ease;
-            box-shadow: 0 0 18px var(--cosmic-cyan);
-            border-radius: 4px;
-        }
-
-        /* Dev Profile */
-        .dev-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-            border: var(--border-glass);
-            border-radius: 20px;
-            padding: 26px;
-            text-align: center;
-            box-shadow: var(--shadow-cosmic);
-        }
-        .dev-avatar {
-            width: 88px; height: 88px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold));
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.4rem;
-            font-weight: 900;
-            color: #000;
-            font-family: 'Orbitron';
-            box-shadow: var(--glow-cyan);
-            animation: floatAvatar 6s ease-in-out infinite;
-            position: relative;
+            gap: 10px;
+            box-shadow: 0 0 20px var(--primary-green);
         }
-        .dev-avatar::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--cosmic-cyan), var(--cosmic-pink), var(--cosmic-gold), var(--cosmic-cyan));
-            animation: rotateGlow 4s linear infinite;
-            z-index: -1;
-            opacity: 0.7;
+        .quick-play:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px var(--primary-green);
         }
-        @keyframes floatAvatar { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        .dev-name {
-            font-family: 'Orbitron';
-            font-size: 1.45rem;
-            color: var(--text-primary);
-            margin-bottom: 8px;
+
+        /* PvP Toggle */
+        .pvp-toggle {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
             font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 0 20px var(--primary-purple);
+        }
+        .pvp-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px var(--primary-purple);
+        }
+
+        /* Leaderboard button */
+        .leaderboard-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-purple));
+            border: none;
+            border-radius: 16px;
+            color: black;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 0 20px var(--primary-gold);
+        }
+        .leaderboard-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px var(--primary-gold);
+        }
+
+        /* Daily Challenge button */
+        .daily-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-green));
+            border: none;
+            border-radius: 16px;
+            color: black;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 0 20px var(--primary-cyan);
+        }
+        .daily-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px var(--primary-cyan);
+        }
+
+        /* Cloud panel */
+        .cloud-panel {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        .cloud-stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .cloud-stat span:last-child {
+            color: var(--primary-cyan);
+            font-weight: 700;
+            text-shadow: 0 0 8px var(--primary-cyan);
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-cyan));
+            transition: width 0.5s;
+            box-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        /* Dev card */
+        .dev-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+        .dev-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-pink), var(--primary-gold));
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: black;
+            font-family: 'Orbitron', sans-serif;
+            animation: pulseAvatar 3s infinite;
+        }
+        @keyframes pulseAvatar {
+            0%,100% { box-shadow: 0 0 20px var(--primary-cyan); }
+            50% { box-shadow: 0 0 50px var(--primary-pink); }
+        }
+        .dev-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px var(--primary-cyan);
         }
         .dev-role {
-            font-size: 0.95rem;
-            color: var(--cosmic-cyan);
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 18px;
-            font-weight: 600;
+            color: var(--primary-cyan);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px var(--primary-cyan);
         }
         .dev-bio {
-            font-size: 0.92rem;
-            color: var(--text-dim);
-            line-height: 1.8;
-            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
             margin-bottom: 20px;
         }
         .dev-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.12);
+            gap: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--glass-border);
         }
-        .dev-stat { text-align: center; }
         .dev-stat-val {
-            display: block;
-            font-family: 'Orbitron';
-            font-size: 1.35rem;
-            color: var(--cosmic-green);
-            margin-bottom: 5px;
-            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary-green);
+            text-shadow: 0 0 10px var(--primary-green);
         }
-        .dev-stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; }
+        .dev-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
 
-        /* Game Log */
+        /* Game log */
         .game-log {
-            height: 160px;
+            height: 150px;
             overflow-y: auto;
-            background: var(--panel-bg);
+            background: var(--glass-bg);
             border-radius: 16px;
-            padding: 16px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.84rem;
-            color: var(--text-dim);
-            border: var(--border-glass);
+            padding: 15px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border: 1px solid var(--glass-border);
         }
         .log-entry {
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
-            gap: 12px;
-            animation: slideIn 0.35s ease;
+            gap: 10px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--glass-border);
+            animation: slideIn 0.3s;
         }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
-        .log-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .log-time { color: var(--cosmic-cyan); font-weight: 600; min-width: 65px; font-family: 'Orbitron'; font-size: 0.78rem; }
-        .log-msg.win { color: var(--cosmic-green); font-weight: 600; }
-        .log-msg.lose { color: var(--cosmic-red); font-weight: 600; }
-        .log-msg.draw { color: var(--cosmic-gold); font-weight: 600; }
-        .log-msg.ai { color: var(--cosmic-pink); font-weight: 600; }
-        .log-msg.sys { color: var(--cosmic-cyan); font-style: italic; }
-        .log-msg.learn { color: var(--cosmic-purple); font-weight: 600; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .log-time {
+            color: var(--primary-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            min-width: 60px;
+            text-shadow: 0 0 5px var(--primary-cyan);
+        }
+        .log-msg.win { color: var(--primary-green); text-shadow: 0 0 5px var(--primary-green); }
+        .log-msg.lose { color: var(--primary-red); text-shadow: 0 0 5px var(--primary-red); }
+        .log-msg.draw { color: var(--primary-gold); text-shadow: 0 0 5px var(--primary-gold); }
+        .log-msg.ai { color: var(--primary-pink); text-shadow: 0 0 5px var(--primary-pink); }
+        .log-msg.sys { color: var(--primary-cyan); text-shadow: 0 0 5px var(--primary-cyan); }
 
-        /* === MAIN STAGE === */
+        /* Main stage */
         .main-stage {
             flex: 1;
             display: flex;
@@ -583,181 +482,160 @@
             padding: 20px;
         }
 
-        /* Neural Network Visualizer - COSMIC UPGRADE */
+        /* Neural visualizer */
         .neural-viz {
             position: absolute;
-            top: 40px;
-            left: 40px;
-            width: 220px;
-            height: 220px;
-            background: var(--panel-bg);
-            border: var(--border-glass);
+            top: 30px;
+            left: 30px;
+            width: 200px;
+            height: 200px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: var(--shadow-cosmic), 0 0 40px rgba(0, 246, 255, 0.15);
-            z-index: 15;
-            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-glow);
+            transition: all 0.5s;
         }
-        .neural-canvas { width: 100%; height: 100%; display: block; }
+        .neural-viz.attacking { box-shadow: 0 0 40px var(--primary-red); }
+        .neural-viz.defending { box-shadow: 0 0 40px var(--primary-green); }
+        .neural-viz.thinking { box-shadow: 0 0 40px var(--primary-gold); }
+        .neural-viz.learning { box-shadow: 0 0 40px var(--primary-purple); }
+        .neural-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
         .neural-label {
             position: absolute;
-            bottom: 12px;
-            left: 16px;
-            font-size: 0.78rem;
-            color: var(--cosmic-cyan);
-            font-family: 'Orbitron';
+            bottom: 10px;
+            left: 15px;
+            font-size: 0.7rem;
+            color: var(--primary-cyan);
+            font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
-            z-index: 2;
-            font-weight: 700;
-            text-shadow: 0 0 12px rgba(0, 246, 255, 0.6);
+            text-shadow: 0 0 8px var(--primary-cyan);
         }
         .neural-status {
             position: absolute;
-            top: 12px;
-            right: 16px;
-            font-size: 0.72rem;
-            color: var(--cosmic-green);
+            top: 10px;
+            right: 15px;
+            font-size: 0.7rem;
+            color: var(--primary-green);
             display: flex;
             align-items: center;
-            gap: 7px;
-            font-family: 'Orbitron';
-            font-weight: 600;
+            gap: 5px;
+            text-shadow: 0 0 5px var(--primary-green);
         }
-        .neural-status-dot {
-            width: 8px; height: 8px;
-            background: var(--cosmic-green);
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-green);
             border-radius: 50%;
-            animation: pulse 1.3s infinite;
-            box-shadow: 0 0 12px var(--cosmic-green);
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 10px var(--primary-green);
         }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
 
-        /* Game Info */
+        /* Game info */
         .game-info {
             text-align: center;
-            margin-bottom: 45px;
+            margin-bottom: 30px;
             z-index: 20;
-            max-width: 650px;
+            max-width: 700px;
+            width: 100%;
         }
         .status-main {
-            font-family: 'Orbitron';
-            font-size: 3.3rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 7px;
-            margin-bottom: 16px;
-            text-shadow: 0 0 50px rgba(255,255,255,0.6);
-            transition: var(--transition-smooth);
-            background: linear-gradient(90deg, var(--text-primary), var(--cosmic-cyan), var(--cosmic-pink));
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-cyan), var(--primary-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: gradientShift 5s linear infinite;
+            animation: gradientShift 5s infinite;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0,240,255,0.5);
         }
         .status-main.victory {
-            color: var(--cosmic-green);
-            text-shadow: 0 0 60px var(--cosmic-green), 0 0 120px var(--cosmic-green), 0 0 180px var(--cosmic-green);
-            animation: epicGlow 1.8s ease-in-out infinite alternate;
-            -webkit-text-fill-color: var(--cosmic-green);
-        }
-        @keyframes epicGlow {
-            from { text-shadow: 0 0 50px rgba(34,211,238,0.7); }
-            to { text-shadow: 0 0 100px rgba(34,211,238,1), 0 0 180px rgba(34,211,238,0.9), 0 0 250px rgba(34,211,238,0.7); }
+            color: var(--primary-green);
+            -webkit-text-fill-color: var(--primary-green);
+            text-shadow: 0 0 40px var(--primary-green);
         }
         .status-sub {
-            font-size: 1.25rem;
-            color: var(--cosmic-cyan);
-            min-height: 2em;
-            font-weight: 600;
-            letter-spacing: 0.8px;
+            font-size: 1.1rem;
+            color: var(--primary-cyan);
+            min-height: 2rem;
+            text-shadow: 0 0 10px var(--primary-cyan);
         }
         .ai-comment {
-            font-size: 1.05rem;
-            color: var(--cosmic-pink);
-            margin-top: 14px;
-            font-style: italic;
-            min-height: 1.8em;
-            animation: fadeIn 0.45s;
-            font-weight: 500;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: var(--primary-pink);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid var(--glass-border);
+            animation: fadeIn 0.5s, glowPulse 2s infinite;
+            max-width: 600px;
+            box-shadow: 0 0 30px var(--primary-pink);
+            text-shadow: 0 0 8px var(--primary-pink);
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 20px var(--primary-pink); }
+            50% { box-shadow: 0 0 40px var(--primary-pink); }
+            100% { box-shadow: 0 0 20px var(--primary-pink); }
+        }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
         /* Board */
         .board-container {
             position: relative;
-            padding: 34px;
-            background: var(--panel-bg);
-            border-radius: 32px;
-            border: var(--border-glass);
-            box-shadow: var(--shadow-glow), var(--shadow-cosmic);
-            backdrop-filter: blur(25px);
-            z-index: 20;
-            transition: var(--transition-smooth);
-        }
-        .board-container:hover {
-            box-shadow: 0 0 100px rgba(0, 246, 255, 0.3), var(--shadow-cosmic);
-            transform: translateY(-3px);
+            padding: 25px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            box-shadow: var(--shadow-glow);
+            width: fit-content;
+            margin: 0 auto;
         }
         .board {
             display: grid;
-            grid-template-columns: repeat(3, 150px);
-            grid-template-rows: repeat(3, 150px);
-            gap: 22px;
+            grid-template-columns: repeat(3, minmax(100px, 130px));
+            grid-template-rows: repeat(3, minmax(100px, 130px));
+            gap: 15px;
+            justify-content: center;
         }
         .cell {
-            background: linear-gradient(145deg, var(--cell-bg), rgba(255,255,255,0.03));
-            border-radius: 26px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6.5rem;
-            font-family: 'Orbitron';
+            font-size: min(5rem, 12vw);
+            font-family: 'Orbitron', sans-serif;
             cursor: pointer;
-            transition: var(--transition-bounce);
+            transition: var(--transition);
             position: relative;
-            z-index: 10;
-            border: 2px solid transparent;
-            backdrop-filter: blur(8px);
-        }
-        .cell::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 26px;
-            padding: 2.5px;
-            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.25), transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            opacity: 0;
-            transition: 0.35s;
+            backdrop-filter: blur(10px);
+            aspect-ratio: 1/1;
         }
         .cell:hover {
-            background: rgba(0, 246, 255, 0.18);
-            transform: scale(1.1) translateY(-4px);
-            border-color: rgba(0, 246, 255, 0.6);
-            box-shadow: 0 0 45px rgba(0, 246, 255, 0.45);
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--primary-cyan);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--primary-cyan);
         }
-        .cell:hover::before { opacity: 1; }
-        .cell.x {
-            color: var(--cosmic-cyan);
-            text-shadow: 0 0 50px var(--cosmic-cyan), 0 0 100px var(--cosmic-cyan);
-            animation: popIn 0.5s forwards;
-        }
-        .cell.o {
-            color: var(--cosmic-pink);
-            text-shadow: 0 0 50px var(--cosmic-pink), 0 0 100px var(--cosmic-pink);
-            animation: popIn 0.5s forwards;
-        }
-        @keyframes popIn {
-            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
-            55% { transform: scale(1.25) rotate(12deg); }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
+        .cell.x { color: var(--primary-cyan); text-shadow: 0 0 30px var(--primary-cyan); }
+        .cell.o { color: var(--primary-pink); text-shadow: 0 0 30px var(--primary-pink); }
 
-        /* SVG Winning Line - FIXED */
+        /* Winning line SVG */
         .winning-svg {
             position: absolute;
             top: 0; left: 0;
@@ -767,1157 +645,1678 @@
         }
         .winning-path {
             fill: none;
-            stroke: var(--cosmic-gold);
-            stroke-width: 16;
+            stroke: white;
+            stroke-width: 12;
             stroke-linecap: round;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            filter: drop-shadow(0 0 30px var(--cosmic-gold));
-            transition: stroke-dashoffset 1.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.8));
+            transition: stroke-dashoffset 1s ease-out;
         }
 
         /* Controls */
         .controls {
-            margin-top: 55px;
+            margin-top: 30px;
             display: flex;
-            gap: 26px;
-            z-index: 20;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .action-btn {
-            padding: 20px 52px;
-            font-family: 'Orbitron';
-            font-size: 1.05rem;
+            padding: 12px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
             background: transparent;
-            border: 2.5px solid var(--cosmic-cyan);
-            color: var(--cosmic-cyan);
-            border-radius: 55px;
+            border: 2px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            border-radius: 50px;
             cursor: pointer;
-            transition: var(--transition-bounce);
-            box-shadow: 0 0 30px rgba(0, 246, 255, 0.35);
-            position: relative;
-            overflow: hidden;
-            min-width: 165px;
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(0,240,255,0.3);
+            min-width: 120px;
+            text-shadow: 0 0 5px var(--primary-cyan);
         }
-        .action-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,246,255,0.45), transparent);
-            transition: 0.65s;
-        }
-        .action-btn:hover::before { left: 100%; }
         .action-btn:hover {
-            background: var(--cosmic-cyan);
-            color: #000;
-            box-shadow: 0 0 65px rgba(0, 246, 255, 0.75);
-            transform: translateY(-6px);
+            background: var(--primary-cyan);
+            color: black;
+            box-shadow: 0 0 40px var(--primary-cyan);
+            transform: translateY(-3px);
         }
         .action-btn.secondary {
-            border-color: var(--cosmic-pink);
-            color: var(--cosmic-pink);
-            box-shadow: 0 0 30px rgba(217, 70, 239, 0.35);
+            border-color: var(--primary-pink);
+            color: var(--primary-pink);
+            box-shadow: 0 0 20px rgba(255,68,224,0.3);
         }
         .action-btn.secondary:hover {
-            background: var(--cosmic-pink);
-            color: #fff;
-            box-shadow: 0 0 65px rgba(217, 70, 239, 0.75);
+            background: var(--primary-pink);
+            color: white;
         }
 
-        /* === VICTORY CELEBRATION OVERLAY === */
-        .celebration-overlay {
+        /* Floating action buttons */
+        .floating-buttons {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            gap: 10px;
+            z-index: 200;
+        }
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 18px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            text-shadow: 0 0 5px currentColor;
+        }
+        .float-btn:hover {
+            border-color: var(--primary-cyan);
+            color: var(--primary-cyan);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--primary-cyan);
+        }
+
+        .bottom-buttons {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            display: flex;
+            gap: 10px;
+            z-index: 200;
+        }
+
+        /* Mission badge */
+        #missionBadge {
+            position: fixed;
+            top: 100px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-purple));
+            padding: 10px 18px;
+            border-radius: 40px;
+            color: black;
+            font-weight: bold;
+            z-index: 150;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 0 25px var(--primary-gold);
+            font-size: 0.9rem;
+        }
+
+        /* Achievement toast */
+        .achievement-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-cyan));
+            color: black;
+            padding: 15px 40px;
+            border-radius: 60px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            box-shadow: 0 0 50px gold;
+            z-index: 1000;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s;
+            white-space: nowrap;
+            font-size: 1.1rem;
+            opacity: 0;
+        }
+        .achievement-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 30px;
+            width: 500px;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 0 0 60px var(--primary-cyan);
+        }
+        .modal h2 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-cyan);
+            text-shadow: 0 0 15px var(--primary-cyan);
+        }
+        .modal button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-pink));
+            border: none;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 0 20px var(--primary-cyan);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        #winRateBar {
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        #winRateFill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-cyan));
+            box-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+        .achievement-item.unlocked {
+            background: rgba(50,255,170,0.2);
+            border: 1px solid var(--primary-green);
+        }
+
+        /* Settings sliders */
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        .slider-container label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-primary);
+        }
+        .slider-container input {
+            width: 100%;
+            accent-color: var(--primary-cyan);
+        }
+
+        /* Leaderboard items */
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+        .leaderboard-rank {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-shadow: 0 0 10px var(--primary-gold);
+        }
+
+        /* Tour overlay */
+        .tour-overlay {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 2000;
-            display: none;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .celebration-overlay.active { display: block; }
-        
-        .confetti {
-            position: absolute;
-            width: 16px; height: 24px;
-            border-radius: 4px;
-            animation: confettiFall 4s ease-out forwards;
-            opacity: 0;
+        .tour-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--primary-cyan);
+            border-radius: 40px;
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 0 60px var(--primary-cyan);
         }
-        @keyframes confettiFall {
-            0% { transform: translateY(-150px) rotate(0deg) scale(0); opacity: 1; }
-            12% { opacity: 1; }
-            88% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(800deg) scale(1.1); opacity: 0; }
+        .tour-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-cyan);
+            text-shadow: 0 0 20px var(--primary-cyan);
         }
-        
-        .victory-text {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            font-family: 'Orbitron';
-            font-size: 6rem;
-            font-weight: 900;
-            color: var(--cosmic-green);
-            text-shadow: 0 0 70px var(--cosmic-green), 0 0 140px var(--cosmic-green);
-            animation: victoryPop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            white-space: nowrap;
-            z-index: 2001;
-            letter-spacing: 5px;
+        .tour-card p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--text-primary);
         }
-        @keyframes victoryPop {
-            0% { transform: translate(-50%, -50%) scale(0) rotate(-12deg); opacity: 0; }
-            42% { transform: translate(-50%, -50%) scale(1.35) rotate(4deg); }
-            72% { transform: translate(-50%, -50%) scale(0.97) rotate(-2deg); }
-            100% { transform: translate(-50%, -50%) scale(1) rotate(0); opacity: 1; }
+        .tour-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
         }
-
-        .screen-shake {
-            animation: epicShake 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        .tour-btn {
+            padding: 12px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        @keyframes epicShake {
-            10%, 90% { transform: translate3d(-4px, 0, 0); }
-            20%, 80% { transform: translate3d(8px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-16px, 0, 0); }
-            40%, 60% { transform: translate3d(16px, 0, 0); }
+        .tour-btn.next {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-pink));
+            color: black;
         }
-
-        /* Achievement Badge */
-        .achievement {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, var(--cosmic-gold), var(--cosmic-cyan));
-            color: #000;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-family: 'Orbitron';
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 0 40px rgba(251, 191, 36, 0.7);
-            z-index: 1500;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: achievementPop 0.5s forwards;
+        .tour-btn.prev {
+            background: transparent;
+            border: 2px solid var(--text-secondary);
+            color: var(--text-secondary);
         }
-        .achievement.show { transform: translateX(-50%) translateY(0); }
-        @keyframes achievementPop {
-            0% { transform: translateX(-50%) translateY(100px) scale(0.8); opacity: 0; }
-            50% { transform: translateX(-50%) translateY(-10px) scale(1.05); }
-            100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+        .tour-btn.skip {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+        .tour-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px var(--primary-cyan);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 1150px) {
+        /* Mobile responsive */
+        @media (max-width: 1000px) {
             .sidebar {
                 position: fixed;
-                height: 100%;
+                height: 100vh;
                 transform: translateX(100%);
-                width: 100%;
-                max-width: 460px;
             }
             .sidebar.visible { transform: translateX(0); }
-            .board {
-                grid-template-columns: repeat(3, 120px);
-                grid-template-rows: repeat(3, 120px);
-            }
-            .cell { font-size: 5rem; }
-            .neural-viz { width: 180px; height: 180px; top: 25px; left: 25px; }
-            .status-main { font-size: 2.5rem; letter-spacing: 4px; }
-            .controls { flex-wrap: wrap; justify-content: center; }
-            .action-btn { min-width: 140px; padding: 18px 36px; font-size: 0.95rem; }
-            .start-features { grid-template-columns: 1fr; gap: 15px; }
+            .board { grid-template-columns: repeat(3, 100px); grid-template-rows: repeat(3, 100px); }
+            .cell { font-size: 4rem; }
+            .neural-viz { width: 140px; height: 140px; top: 15px; left: 15px; }
+            .status-main { font-size: 2.2rem; }
+            .floating-buttons { top: 15px; right: 15px; }
+            .bottom-buttons { bottom: 15px; left: 15px; }
+            #missionBadge { top: 80px; left: 15px; }
         }
-
-        @media (max-width: 550px) {
-            .board {
-                grid-template-columns: repeat(3, 95px);
-                grid-template-rows: repeat(3, 95px);
-                gap: 14px;
-            }
-            .cell { font-size: 4rem; border-radius: 20px; }
-            .board-container { padding: 24px; }
-            .status-main { font-size: 2rem; letter-spacing: 2px; }
-            .neural-viz { width: 145px; height: 145px; }
-            .theme-toggle, .sidebar-toggle { width: 52px; height: 52px; font-size: 1.4rem; }
-            .theme-toggle { right: 82px; }
-            .start-logo { font-size: 2.8rem; }
-            .start-btn { padding: 18px 50px; font-size: 1.2rem; }
+        @media (max-width: 600px) {
+            .board { grid-template-columns: repeat(3, 85px); grid-template-rows: repeat(3, 85px); gap: 10px; }
+            .cell { font-size: 3.5rem; border-radius: 20px; }
+            .status-main { font-size: 1.8rem; letter-spacing: 3px; }
+            .action-btn { padding: 10px 20px; min-width: 100px; font-size: 0.9rem; }
+            .float-btn { width: 45px; height: 45px; font-size: 1.3rem; }
+            .neural-viz { width: 120px; height: 120px; }
+            .game-info { margin-bottom: 20px; }
+            .controls { margin-top: 20px; gap: 10px; }
+            .ai-comment { font-size: 1rem; padding: 10px 20px; }
+        }
+        @media (max-width: 400px) {
+            .board { grid-template-columns: repeat(3, 70px); grid-template-rows: repeat(3, 70px); }
+            .cell { font-size: 2.8rem; }
+            .status-main { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-
-    <!-- === COSMIC PARTICLES === -->
+    <!-- Cosmic Particles -->
     <div class="cosmic-particles" id="cosmicParticles"></div>
 
-    <!-- === START SCREEN === -->
-    <div class="start-screen" id="startScreen">
-        <h1 class="start-logo">MENZO-XO</h1>
-        <div class="start-subtitle">COSMIC OMNISCIENT EDITION</div>
-        <button class="start-btn" id="startBtn">🚀 START COSMIC JOURNEY</button>
-        <div class="start-features">
-            <div class="start-feature">
-                <div class="start-feature-icon">🧠</div>
-                <div class="start-feature-title">ذكاء كوني</div>
-                <div class="start-feature-desc">خوارزميات هجينة تتعلم وتتطور</div>
-            </div>
-            <div class="start-feature">
-                <div class="start-feature-icon">🌌</div>
-                <div class="start-feature-title">تعلم دائم</div>
-                <div class="start-feature-desc">يتذكر كل مباراة للأبد</div>
-            </div>
-            <div class="start-feature">
-                <div class="start-feature-icon">✨</div>
-                <div class="start-feature-title">تجربة أسطورية</div>
-                <div class="start-feature-desc">واجهة كونية بتأثيرات مذهلة</div>
-            </div>
+    <!-- Background Music (hidden) -->
+    <audio id="bgMusic" loop preload="auto"></audio>
+
+    <!-- Start Screen -->
+    <div class="start-screen" id="startScreen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-dark); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:3000; transition:0.5s;">
+        <h1 class="start-logo" style="font-family:Orbitron; font-size:clamp(2.5rem, 8vw, 4rem); font-weight:900; background:linear-gradient(135deg, var(--primary-cyan), var(--primary-pink), var(--primary-gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:20px; text-shadow:0 0 30px rgba(0,240,255,0.5);">MENZO-XO</h1>
+        <div style="font-size:clamp(1rem, 4vw, 1.5rem); color:var(--text-secondary); margin-bottom:40px; text-shadow:0 0 10px var(--primary-cyan);">COSMIC OMNISCIENT v7.0</div>
+        <button class="start-btn" id="startBtn" style="padding:clamp(15px, 4vw, 20px) clamp(40px, 10vw, 60px); font-family:Orbitron; font-size:clamp(1.2rem, 4vw, 1.5rem); background:linear-gradient(135deg, var(--primary-cyan), var(--primary-pink)); border:none; border-radius:60px; color:black; cursor:pointer; box-shadow:0 0 50px var(--primary-cyan); transition:0.3s;">🚀 START JOURNEY</button>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px, 3vw, 30px); margin-top:60px; max-width:800px; padding:0 20px;">
+            <div class="feature" style="text-align:center; padding:clamp(10px, 2vw, 20px); background:var(--glass-bg); border-radius:20px;"><div style="font-size:clamp(2rem, 5vw, 3rem);">🧠</div><div style="font-weight:700;">ذكاء هجين</div><div style="color:var(--text-secondary);">MCTS + Q-Learning</div></div>
+            <div class="feature" style="text-align:center; padding:clamp(10px, 2vw, 20px); background:var(--glass-bg); border-radius:20px;"><div style="font-size:clamp(2rem, 5vw, 3rem);">🏆</div><div style="font-weight:700;">10000+ إنجاز</div><div style="color:var(--text-secondary);">تحديات لا نهائية</div></div>
+            <div class="feature" style="text-align:center; padding:clamp(10px, 2vw, 20px); background:var(--glass-bg); border-radius:20px;"><div style="font-size:clamp(2rem, 5vw, 3rem);">🎯</div><div style="font-weight:700;">مهام حقيقية</div><div style="color:var(--text-secondary);">12 مهمة تفاعلية</div></div>
         </div>
     </div>
 
-    <!-- === FLOATING TOGGLE BUTTON === -->
-    <button class="sidebar-toggle" id="sidebarToggle" title="القائمة">☰</button>
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <button class="float-btn" id="sidebarToggle">☰</button>
+        <button class="float-btn" id="themeToggle">🌙</button>
+        <button class="float-btn" id="statsToggle">📊</button>
+    </div>
+    <div class="bottom-buttons">
+        <button class="float-btn" id="achievementsBtn">🏆</button>
+        <button class="float-btn" id="settingsBtn">⚙️</button>
+    </div>
 
-    <!-- === THEME TOGGLE === -->
-    <button class="theme-toggle" id="themeToggle" title="الوضع الليلي/النهاري">🌙</button>
-
-    <!-- === SIDEBAR === -->
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="logo">MENZO-XO</div>
-            <button class="sidebar-close" id="closeSidebar">✕</button>
+            <div class="logo">MENZO-XO v7.0</div>
+            <button class="close-sidebar" id="closeSidebar">✕</button>
         </div>
-
         <div class="sidebar-content">
-            
-            <!-- Levels -->
+            <button class="quick-play" id="quickPlayBtn">⚡ لعب سريع</button>
+            <button class="pvp-toggle" id="pvpToggle"><span>👥</span> <span id="pvpText">وضع PvP</span></button>
+            <button class="leaderboard-btn" id="leaderboardBtn">🏆 المتصدرين</button>
+            <button class="daily-btn" id="dailyBtn">📅 التحدي اليومي</button>
+
             <div class="section">
                 <div class="section-title">🎮 مستويات الذكاء</div>
-                <div class="level-grid">
-                    <button class="level-btn" onclick="setLevel('novice', this)">🌱 مبتدئ</button>
-                    <button class="level-btn" onclick="setLevel('tactical', this)">⚔️ محترف</button>
-                    <button class="level-btn" onclick="setLevel('divine', this)">👑 إلهي</button>
-                    <button class="level-btn cosmic active" onclick="setLevel('cosmic', this)">✨ كوني - OMNISCIENT</button>
+                <div class="level-grid" id="levelGrid">
+                    <button class="level-btn" data-level="novice">🌱 مبتدئ</button>
+                    <button class="level-btn" data-level="tactical">⚔️ محترف</button>
+                    <button class="level-btn" data-level="divine">👑 إلهي</button>
+                    <button class="level-btn cosmic" data-level="cosmic">✨ كوني</button>
+                    <button class="level-btn cosmic" data-level="mythic">🔥 أسطوري (MCTS)</button>
                 </div>
             </div>
 
-            <!-- Cloud Learning Panel -->
             <div class="section">
                 <div class="section-title">🧠 التعلم الكوني</div>
                 <div class="cloud-panel">
-                    <div class="cloud-header">
-                        <div class="cloud-dot"></div>
-                        <span style="font-weight:700;color:var(--text-primary);">Neural Sync Active</span>
-                    </div>
-                    <div class="cloud-stat">
-                        <span>أنماط محفوظة:</span>
-                        <span id="savedPatterns">0</span>
-                    </div>
-                    <div class="cloud-stat">
-                        <span>دورات تعلم:</span>
-                        <span id="learningCycles">0</span>
-                    </div>
-                    <div class="cloud-stat">
-                        <span>دقة التنبؤ:</span>
-                        <span id="predictionAcc">97.2%</span>
-                    </div>
-                    <div class="cloud-stat">
-                        <span>تكيف اللاعب:</span>
-                        <span id="playerAdapt">تحليل...</span>
-                    </div>
-                    <div class="cloud-stat">
-                        <span>مستوى الصعوبة:</span>
-                        <span id="adaptiveDiff">متوازن</span>
-                    </div>
-                    <div class="upload-bar" id="uploadBar">
-                        <div class="upload-progress" id="uploadProgress"></div>
-                    </div>
+                    <div class="cloud-stat"><span>أنماط محفوظة:</span> <span id="savedPatterns">0</span></div>
+                    <div class="cloud-stat"><span>دورات تعلم:</span> <span id="learningCycles">0</span></div>
+                    <div class="cloud-stat"><span>دقة التنبؤ:</span> <span id="predictionAcc">97.2%</span></div>
+                    <div class="cloud-stat"><span>تكيف اللاعب:</span> <span id="playerAdapt">تحليل...</span></div>
+                    <div class="cloud-stat"><span>مستوى الصعوبة:</span> <span id="adaptiveDiff">متوازن</span></div>
                 </div>
             </div>
 
-            <!-- Dev Profile -->
+            <div class="section">
+                <div class="section-title">📊 تقدم الإنجازات</div>
+                <div class="cloud-panel">
+                    <div class="cloud-stat"><span>الإنجازات المكتملة:</span> <span id="achievementProgress">0 / 10000</span></div>
+                    <div class="progress-bar"><div class="progress-fill" id="achievementProgressBar" style="width:0%"></div></div>
+                </div>
+            </div>
+
             <div class="section">
                 <div class="section-title">👨‍💻 المطور</div>
                 <div class="dev-card">
                     <div class="dev-avatar">M</div>
                     <div class="dev-name">Mohamed El-Menzalawy</div>
-                    <div class="dev-role">Cosmic AI Architect</div>
-                    <div class="dev-bio">
-                        رائد عالمي في أنظمة الذكاء الاصطناعي التفاعلية. مبتكر خوارزمية "التعلم الكوني التكيفي" التي تجعل الـ AI يتطور بلا حدود مع كل تفاعل.
-                    </div>
+                    <div class="dev-role">COSMIC AI ARCHITECT</div>
+                    <div class="dev-bio">رائد عالمي في أنظمة الذكاء الاصطناعي التفاعلية. مبتكر خوارزمية "التعلم الكوني التكيفي".</div>
                     <div class="dev-stats">
-                        <div class="dev-stat">
-                            <span class="dev-stat-val">v∞</span>
-                            <span class="dev-stat-label">الإصدار</span>
-                        </div>
-                        <div class="dev-stat">
-                            <span class="dev-stat-val">100%</span>
-                            <span class="dev-stat-label">العبقرية</span>
-                        </div>
+                        <div><span class="dev-stat-val">v7.0</span><div class="dev-stat-label">الإصدار</div></div>
+                        <div><span class="dev-stat-val">∞</span><div class="dev-stat-label">العبقرية</div></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Game Log -->
             <div class="section">
                 <div class="section-title">📋 سجل المعركة</div>
                 <div class="game-log" id="gameLog">
-                    <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg sys">✨ Cosmic Omniscient Initialized</span></div>
-                    <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg sys">🧠 Neural Core Online</span></div>
-                    <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg sys">👨‍💻 by Mohamed El-Menzalawy</span></div>
+                    <div class="log-entry"><span class="log-time">--:--</span><span class="log-msg sys">✨ Cosmic AI ready</span></div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- === MAIN STAGE === -->
+    <!-- Main Stage -->
     <div class="main-stage">
-        
-        <!-- Neural Network Visualizer -->
-        <div class="neural-viz">
+        <div class="neural-viz" id="neuralViz">
             <canvas class="neural-canvas" id="neuralCanvas"></canvas>
             <div class="neural-label">COSMIC BRAIN</div>
-            <div class="neural-status">
-                <div class="neural-status-dot"></div>
-                <span id="neuralStatus">IDLE</span>
-            </div>
+            <div class="neural-status"><span class="status-dot"></span><span id="neuralStatus">IDLE</span></div>
         </div>
 
-        <!-- Game Info -->
         <div class="game-info">
             <h1 class="status-main" id="statusMain">COSMIC</h1>
-            <div class="status-sub" id="statusSub">✨ Self-Evolving Cosmic Intelligence</div>
-            <div class="ai-comment" id="aiComment"></div>
+            <div class="status-sub" id="statusSub">✨ Self-Evolving Intelligence</div>
+            <div class="ai-comment" id="aiComment">"أهلاً بك في المعركة الكونية!"</div>
         </div>
 
-        <!-- Board -->
         <div class="board-container">
             <svg class="winning-svg">
                 <path id="winPath" class="winning-path" d="" />
             </svg>
-            <div class="board" id="board">
-                <!-- Cells generated by JS -->
+            <div class="board" id="board"></div>
+        </div>
+
+        <div class="controls">
+            <button class="action-btn" id="hintBtn">💡 تلميح</button>
+            <button class="action-btn secondary" id="resetBtn">🔄 إعادة</button>
+        </div>
+    </div>
+
+    <!-- Mission Badge -->
+    <div id="missionBadge"><span>🎯</span> <span id="missionText"></span></div>
+
+    <!-- Achievement Toast -->
+    <div class="achievement-toast" id="achievementToast"></div>
+
+    <!-- Tour Overlay -->
+    <div class="tour-overlay" id="tourOverlay" style="display: none;">
+        <div class="tour-card">
+            <h2 id="tourTitle">مرحباً بك 👋</h2>
+            <p id="tourDesc">هذا دليل سريع لمكونات اللعبة.</p>
+            <div class="tour-buttons">
+                <button class="tour-btn prev" id="tourPrev">السابق</button>
+                <button class="tour-btn next" id="tourNext">التالي</button>
+                <button class="tour-btn skip" id="tourSkip">تخطي</button>
             </div>
         </div>
+    </div>
 
-        <!-- Controls -->
-        <div class="controls">
-            <button class="action-btn" onclick="getHint()">💡 تلميح</button>
-            <button class="action-btn secondary" onclick="resetGame()">🔄 إعادة</button>
+    <!-- Modals -->
+    <div class="modal" id="statsModal">
+        <h2>📊 إحصائيات كونية</h2>
+        <div class="stats-grid">
+            <div class="stat-item"><span class="stat-value" id="statTotalGames">0</span><div>المباريات</div></div>
+            <div class="stat-item"><span class="stat-value" id="statWins">0</span><div>فوز</div></div>
+            <div class="stat-item"><span class="stat-value" id="statLosses">0</span><div>خسارة</div></div>
+            <div class="stat-item"><span class="stat-value" id="statDraws">0</span><div>تعادل</div></div>
         </div>
-
+        <div>نسبة الفوز: <span id="winRate">0%</span></div>
+        <div id="winRateBar"><div id="winRateFill" style="width:0%"></div></div>
+        <div style="margin-top:15px;">متوسط الحركات: <span id="avgMoves">0</span></div>
+        <div>أسرع فوز: <span id="fastestWin">---</span></div>
+        <div>أطول سلسلة انتصارات: <span id="bestStreak">0</span></div>
+        <div>إجمالي الوقت: <span id="totalTime">0</span> ث</div>
+        <canvas id="statsChart" width="300" height="100" style="width:100%; height:100px; background:rgba(0,0,0,0.2); border-radius:10px; margin-top:15px;"></canvas>
+        <button id="closeStatsBtn">إغلاق</button>
     </div>
 
-    <!-- Victory Celebration Overlay -->
-    <div class="celebration-overlay" id="celebrationOverlay">
-        <div class="victory-text">🏆 COSMIC VICTORY! 🏆</div>
+    <div class="modal" id="achievementsModal">
+        <h2>🏆 الإنجازات الكونية</h2>
+        <div style="text-align:center; margin-bottom:10px;"><span id="achievementCount">0</span> / <span id="totalAchievements">10000+</span></div>
+        <div id="achievementsList"></div>
+        <button id="closeAchievementsBtn">إغلاق</button>
     </div>
 
-    <!-- Achievement Badge -->
-    <div class="achievement" id="achievement"></div>
+    <div class="modal" id="leaderboardModal">
+        <h2>🏅 المتصدرين</h2>
+        <div style="margin-bottom:15px;">
+            <input type="text" id="playerName" placeholder="اسمك" value="Player" style="padding:10px; border-radius:20px; border:none; width:100%; background:var(--glass-bg); color:var(--text-primary);">
+        </div>
+        <div id="leaderboardList"></div>
+        <button id="closeLeaderboardBtn">إغلاق</button>
+    </div>
+
+    <div class="modal" id="dailyModal">
+        <h2>📅 التحدي اليومي</h2>
+        <div style="text-align:center; margin-bottom:20px;" id="dailyDesc"></div>
+        <div class="progress-bar"><div class="progress-fill" id="dailyProgress" style="width:0%"></div></div>
+        <div style="margin:15px 0;" id="dailyReward"></div>
+        <button id="claimDailyBtn" style="display:none;">استلام المكافأة</button>
+        <button id="closeDailyBtn">إغلاق</button>
+    </div>
+
+    <div class="modal" id="settingsModal">
+        <h2>⚙️ الإعدادات</h2>
+        <div class="slider-container">
+            <label><span>مستوى الموسيقى</span> <span id="musicVolValue">0.3</span></label>
+            <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.3">
+        </div>
+        <div class="slider-container">
+            <label><span>مستوى المؤثرات</span> <span id="sfxVolValue">0.5</span></label>
+            <input type="range" id="sfxVolume" min="0" max="1" step="0.01" value="0.5">
+        </div>
+        <div style="margin-bottom:15px;">
+            <label style="display:flex; align-items:center; gap:10px;">
+                <span>اختر الأغنية:</span>
+                <select id="songSelect">
+                    <option value="0">🌌 Cosmic Dream</option>
+                    <option value="1">⚡ Galactic Battle</option>
+                    <option value="2">🌀 Nebula Relax</option>
+                    <option value="3">🚀 Space Odyssey</option>
+                    <option value="4">💫 Quantum Pulse</option>
+                </select>
+            </label>
+        </div>
+        <div style="margin-bottom:15px;">
+            <label><input type="checkbox" id="soundEffects" checked> المؤثرات الصوتية</label>
+        </div>
+        <div style="margin-bottom:15px;">
+            <label><input type="checkbox" id="bgMusicToggle" checked> الموسيقى الخلفية</label>
+        </div>
+        <button id="resetGameOnlyBtn">🔄 إعادة ضبط اللعبة فقط</button>
+        <button id="closeSettingsBtn">إغلاق</button>
+    </div>
 
     <script>
-        // === THEME SYSTEM ===
-        const ThemeSys = {
-            init() {
-                const saved = localStorage.getItem('menzo_cosmic_theme');
-                if (saved) {
-                    document.body.setAttribute('data-theme', saved);
-                    this.updateIcon(saved);
+        (function() {
+            // ==================== CONFIG ====================
+            const App = {
+                board: Array(9).fill(null),
+                gameActive: true,
+                currentPlayer: 'X',
+                currentLevel: 'cosmic',
+                moveHistory: [],
+                moveCount: 0,
+                isPvP: false,
+                wins: [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]],
+                aiComments: [
+                    "أنا أفكر في 50 مليون سيناريو...",
+                    "حركة ذكية! لكني مستعد.",
+                    "سأحسب كل الاحتمالات.",
+                    "هل أنت متأكد من هذه الخطوة؟",
+                    "الكون في صفي اليوم.",
+                    "مذهل! لم أتوقع ذلك.",
+                    "سأتعلم من هذه المباراة.",
+                    "أنت خصم قوي.",
+                    "دعني أركز قليلاً...",
+                    "هذا يتحدى توقعاتي!"
+                ],
+                totalPlayTime: 0,
+                playTimeInterval: null,
+                bestStreak: 0,
+                currentStreak: 0,
+                hasUsedHint: false,
+                hasChangedTheme: false,
+                hasPlayedMusic: false,
+                levelsTried: []
+            };
+
+            // ==================== STORAGE ====================
+            const Storage = {
+                key: 'menzo_ai_v7',
+                get() {
+                    try {
+                        return JSON.parse(localStorage.getItem(this.key)) || this.default();
+                    } catch { return this.default(); }
+                },
+                default() {
+                    return {
+                        patterns: [],
+                        stats: { totalGames:0, wins:0, losses:0, draws:0, history:[], totalMoves:0, fastestWin:9, bestStreak:0, totalTime:0 },
+                        qTable: {},
+                        achievements: {},
+                        missions: { completed: [], current:0 },
+                        settings: { sound:true, music:true, musicVol:0.3, sfxVol:0.5, currentSong:0 },
+                        tutorialShown: false,
+                        leaderboard: [],
+                        daily: { date: '', challenge: null, completed: false }
+                    };
+                },
+                save(data) {
+                    localStorage.setItem(this.key, JSON.stringify(data));
                 }
-                document.getElementById('themeToggle').addEventListener('click', () => this.toggle());
-            },
-            toggle() {
-                const current = document.body.getAttribute('data-theme') || 'dark';
-                const next = current === 'dark' ? 'light' : 'dark';
-                document.body.setAttribute('data-theme', next);
-                localStorage.setItem('menzo_cosmic_theme', next);
-                this.updateIcon(next);
-                addLog(`🎨 Theme: ${next === 'dark' ? 'Dark' : 'Light'} Mode`, 'sys');
-            },
-            updateIcon(theme) {
-                document.getElementById('themeToggle').innerText = theme === 'dark' ? '🌙' : '☀️';
+            };
+
+            // ==================== AUDIO ====================
+            const AudioSys = {
+                ctx: null,
+                enabled: true,
+                volume: 0.5,
+                init() {
+                    try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+                },
+                play(freq, type='sine', dur=0.2, vol=null) {
+                    if (!this.enabled || !this.ctx) return;
+                    const v = (vol !== null) ? vol : this.volume;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.connect(gain); gain.connect(this.ctx.destination);
+                    osc.type = type;
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(v, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+                    osc.start(); osc.stop(this.ctx.currentTime + dur);
+                },
+                win() { [523,659,784,1047].forEach((f,i)=>setTimeout(()=>this.play(f,'sine',0.25),i*150)); },
+                lose() { this.play(220,'sawtooth',0.5,0.08); },
+                draw() { this.play(440,'triangle',0.3); setTimeout(()=>this.play(523,'triangle',0.3),250); },
+                think() { this.play(600+Math.random()*200,'sine',0.1,0.03); },
+                achievement() { this.play(880,'sine',0.2); setTimeout(()=>this.play(1100,'sine',0.25),150); }
+            };
+
+            // ==================== BACKGROUND MUSIC ====================
+            const Music = {
+                audio: document.getElementById('bgMusic'),
+                isPlaying: false,
+                volume: 0.3,
+                songs: [
+                    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+                    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+                    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+                    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+                    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3'
+                ],
+                currentSong: 0,
+                init() {
+                    this.audio.volume = this.volume;
+                },
+                loadSong(index) {
+                    this.currentSong = index;
+                    this.audio.src = this.songs[index];
+                    this.audio.load();
+                    if(this.isPlaying) this.audio.play().catch(()=>{});
+                },
+                play() {
+                    this.audio.play().catch(()=>{});
+                    this.isPlaying = true;
+                    if(!App.hasPlayedMusic) {
+                        App.hasPlayedMusic = true;
+                        Missions.checkCondition('music');
+                    }
+                },
+                pause() {
+                    this.audio.pause();
+                    this.isPlaying = false;
+                },
+                toggle() {
+                    if(this.isPlaying) this.pause();
+                    else this.play();
+                },
+                setVolume(vol) {
+                    this.volume = vol;
+                    this.audio.volume = vol;
+                }
+            };
+
+            // ==================== Q-LEARNING + MCTS ====================
+            const QLearning = {
+                table: {},
+                lr: 0.15,
+                df: 0.9,
+                eps: 0.25,
+                memory: [],
+                getKey(board) { return board.map(c=>c||'-').join(''); },
+                getQ(state, action) {
+                    if (!this.table[state]) this.table[state] = {};
+                    return this.table[state][action] || 0;
+                },
+                update(state, action, reward, nextState) {
+                    if (!this.table[state]) this.table[state] = {};
+                    const old = this.getQ(state, action);
+                    const maxNext = Math.max(...Object.values(this.table[nextState]||{0:0}));
+                    this.table[state][action] = old + this.lr * (reward + this.df * maxNext - old);
+                    this.memory.push({state, action, reward, nextState});
+                    if(this.memory.length > 200) this.memory.shift();
+                },
+                replay() {
+                    if(this.memory.length < 20) return;
+                    for(let exp of this.memory) {
+                        const old = this.getQ(exp.state, exp.action);
+                        const maxNext = Math.max(...Object.values(this.table[exp.nextState]||{0:0}));
+                        this.table[exp.state][exp.action] = old + this.lr * (exp.reward + this.df * maxNext - old);
+                    }
+                },
+                choose(board, avail) {
+                    const state = this.getKey(board);
+                    if (Math.random() < this.eps) return avail[Math.floor(Math.random()*avail.length)];
+                    let best = avail[0], bestVal = -Infinity;
+                    avail.forEach(a => { let v = this.getQ(state,a); if(v>bestVal){bestVal=v;best=a;} });
+                    return best;
+                },
+                decay() { this.eps = Math.max(0.05, this.eps*0.995); },
+                load() { const d=Storage.get(); if(d.qTable) this.table=d.qTable; },
+                save() { const d=Storage.get(); d.qTable=this.table; Storage.save(d); }
+            };
+
+            // MCTS (Monte Carlo Tree Search) - improved
+            function mcts(board, player, iterations=200) {
+                let available = board.map((v,i)=> v===null ? i : null).filter(v=>v!==null);
+                if(available.length===0) return -1;
+                let scores = new Array(9).fill(0);
+                for(let move of available) {
+                    for(let i=0; i<iterations; i++) {
+                        let simBoard = [...board];
+                        simBoard[move] = player;
+                        let result = simulateRandomGame(simBoard, player==='O'?'X':'O');
+                        if(result === player) scores[move] += 2;
+                        else if(result === 'draw') scores[move] += 1;
+                    }
+                }
+                let best = available[0];
+                let bestScore = scores[best];
+                available.forEach(m => { if(scores[m] > bestScore) { bestScore = scores[m]; best = m; } });
+                return best;
             }
-        };
 
-        // === AUDIO SYSTEM ===
-        const AudioSys = {
-            ctx: null,
-            enabled: true,
-            comments: {
-                start: ["لنبدأ هذه الرحلة الكونية!", "أنا جاهز للتحدي الأسطوري!", "هل أنت مستعد للقمة?", "دعنا نكتب التاريخ معاً!"],
-                thinking: ["أحلل 50 مليون سيناريو...", "حساب الكمومي الكوني جارٍ...", "أتوقع حركتك عبر الأبعاد...", "تحسين الاستراتيجية العصبية..."],
-                goodMove: ["حركة عبقرية!", "هذا يتحدى توقعاتي الكونية!", "مستواك مذهل!", "أحتاج للتفكير بعمق أكثر!"],
-                badMove: ["فرصة استراتيجية...", "سأستغل هذا بحكمة.", "المنطق في صالحي.", "تحليل: هذه الحركة تخدم خطتي."],
-                win: ["السيطرة المطلقة!", "النظام يتفوق كما صُمم.", "فوز محسوب بدقة رياضية.", "الذكاء الكوني ينتصر دائماً."],
-                lose: ["مفاجأة استثنائية! سأتعلم.", "تحليل الخسارة: جارٍ التصحيح.", "سأعود بأقوى من قبل.", "هذا يجعلني أفضل."],
-                draw: ["تعادل ملحمي!", "قوانا متوازنة تماماً.", "سأحلل هذا للتحسن.", "معركة تستحق التذكر."],
-                victory: ["🏆 انتصار كوني! 🏆", "لقد هزمت المستحيل!", "أنت تستحق هذا الإنجاز!", "عبقرية بشرية تفوق التوقعات!"]
-            },
+            function simulateRandomGame(board, nextPlayer) {
+                let sim = [...board];
+                let cur = nextPlayer;
+                for(let d=0; d<10; d++) {
+                    let avail = sim.map((v,i)=> v===null?i:null).filter(v=>v!==null);
+                    if(avail.length===0) return 'draw';
+                    let move = avail[Math.floor(Math.random()*avail.length)];
+                    sim[move] = cur;
+                    if(checkWin(sim, cur)) return cur;
+                    cur = cur==='O'?'X':'O';
+                }
+                return 'draw';
+            }
 
-            init() {
-                try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } 
-                catch(e) { console.log('Audio not supported'); }
-            },
-
-            playTone(freq, type, duration, vol = 0.08) {
-                if (!this.enabled || !this.ctx) return;
-                const osc = this.ctx.createOscillator();
-                const gain = this.ctx.createGain();
-                osc.connect(gain); gain.connect(this.ctx.destination);
-                osc.type = type;
-                osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-                gain.gain.setValueAtTime(vol, this.ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
-                osc.start(); osc.stop(this.ctx.currentTime + duration);
-            },
-
-            playWin() { [523, 659, 784, 1047, 1318].forEach((f, i) => setTimeout(() => this.playTone(f, 'sine', 0.28), i * 130)); },
-            playLose() { this.playTone(260, 'sawtooth', 0.55, 0.06); },
-            playDraw() { this.playTone(440, 'triangle', 0.32); setTimeout(() => this.playTone(523, 'triangle', 0.32), 270); },
-            playThink() { this.playTone(580 + Math.random()*240, 'sine', 0.12, 0.035); },
-            playAchievement() { this.playTone(880, 'sine', 0.2); setTimeout(() => this.playTone(1100, 'sine', 0.25), 150); },
-
-            speak(text) { document.getElementById('aiComment').innerText = `"${text}"`; },
-            getRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-        };
-
-        // === COSMIC NEURAL NETWORK VISUALIZER ===
-        const NeuralViz = {
-            canvas: null, ctx: null, nodes: [], connections: [],
-            active: false, state: 'idle',
-            colors: { idle: '#00f6ff', thinking: '#fbbf24', attacking: '#f87171', defending: '#22d3ee', learning: '#a78bfa' },
-            
-            init() {
-                this.canvas = document.getElementById('neuralCanvas');
-                this.ctx = this.canvas.getContext('2d');
-                this.resize();
-                window.addEventListener('resize', () => this.resize());
-                this.createNetwork();
-                this.animate();
-            },
-
-            resize() {
-                const container = this.canvas.parentElement;
-                this.canvas.width = container.offsetWidth * window.devicePixelRatio;
-                this.canvas.height = container.offsetHeight * window.devicePixelRatio;
-                this.ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-            },
-
-            createNetwork() {
-                const count = this.active ? 55 : 32;
-                const width = this.canvas.width / window.devicePixelRatio;
-                const height = this.canvas.height / window.devicePixelRatio;
-                
-                this.nodes = [];
-                for (let i = 0; i < count; i++) {
-                    this.nodes.push({
-                        x: Math.random() * width, y: Math.random() * height,
-                        vx: (Math.random() - 0.5) * (this.active ? 2.2 : 0.7),
-                        vy: (Math.random() - 0.5) * (this.active ? 2.2 : 0.7),
-                        radius: Math.random() * 3 + 1.8,
-                        pulse: Math.random() * Math.PI * 2,
-                        color: this.colors[this.state],
-                        energy: Math.random() * 0.5 + 0.5
+            // ==================== STATS ====================
+            const Stats = {
+                total:0, wins:0, losses:0, draws:0, history:[], totalMoves:0, fastestWin:9, bestStreak:0, totalTime:0,
+                init() { const d=Storage.get().stats; Object.assign(this, d); },
+                add(result, moves) {
+                    this.total++;
+                    if(result==='win') { 
+                        this.wins++; 
+                        if(moves<this.fastestWin) this.fastestWin = moves;
+                        App.currentStreak++;
+                        if(App.currentStreak > this.bestStreak) this.bestStreak = App.currentStreak;
+                    } else if(result==='lose') { 
+                        this.losses++;
+                        App.currentStreak = 0;
+                    } else { 
+                        this.draws++;
+                        App.currentStreak = 0;
+                    }
+                    this.totalMoves += moves;
+                    this.history.push(result==='win'?1:(result==='lose'?-1:0));
+                    if(this.history.length>20) this.history.shift();
+                    this.save();
+                    this.updateUI();
+                },
+                save() { const d=Storage.get(); d.stats={...this}; Storage.save(d); },
+                updateUI() {
+                    document.getElementById('statTotalGames').innerText = this.total;
+                    document.getElementById('statWins').innerText = this.wins;
+                    document.getElementById('statLosses').innerText = this.losses;
+                    document.getElementById('statDraws').innerText = this.draws;
+                    let rate = this.total ? (this.wins/this.total*100).toFixed(1) : 0;
+                    document.getElementById('winRate').innerText = rate+'%';
+                    document.getElementById('winRateFill').style.width = rate+'%';
+                    document.getElementById('avgMoves').innerText = this.total ? (this.totalMoves/this.total).toFixed(1) : 0;
+                    document.getElementById('fastestWin').innerText = this.fastestWin===9?'---':this.fastestWin;
+                    document.getElementById('bestStreak').innerText = this.bestStreak;
+                    document.getElementById('totalTime').innerText = Math.floor(this.totalTime/60)+'m '+ (this.totalTime%60)+'s';
+                    let ctx = document.getElementById('statsChart').getContext('2d');
+                    ctx.clearRect(0,0,300,100);
+                    let w = 300/20;
+                    this.history.forEach((v,i) => {
+                        ctx.fillStyle = v===1?'#32ffaa':(v===-1?'#ff6b6b':'#ffd966');
+                        ctx.fillRect(i*w, 100-Math.abs(v)*30, w-2, Math.abs(v)*30);
                     });
                 }
-                
-                this.connections = [];
-                for (let i = 0; i < this.nodes.length; i++) {
-                    for (let j = i + 1; j < this.nodes.length; j++) {
-                        const dx = this.nodes[i].x - this.nodes[j].x;
-                        const dy = this.nodes[i].y - this.nodes[j].y;
-                        const dist = Math.sqrt(dx*dx + dy*dy);
-                        if (dist < (this.active ? 85 : 62)) {
-                            this.connections.push({ 
-                                a: i, b: j, 
-                                strength: 1 - dist/(this.active?85:62),
-                                pulse: Math.random() * Math.PI * 2
-                            });
+            };
+
+            // ==================== ACHIEVEMENTS (10000+) ====================
+            const Achievements = {
+                list: {},
+                unlockedCount: 0,
+                init() {
+                    const saved = Storage.get().achievements || {};
+                    // Generate dynamic achievements up to 10000
+                    for(let i=1; i<=2000; i+=5) {
+                        this.list[`win_${i}`] = { name: `${i} انتصار`, desc: `حقق ${i} انتصاراً`, unlocked: false };
+                        this.list[`lose_${i}`] = { name: `${i} خسارة`, desc: `اخسر ${i} مباراة`, unlocked: false };
+                        this.list[`draw_${i}`] = { name: `${i} تعادل`, desc: `تعادل ${i} مرة`, unlocked: false };
+                    }
+                    for(let i=3; i<=500; i+=2) {
+                        this.list[`streak_${i}`] = { name: `سلسلة ${i}`, desc: `افوز ${i} مرات متتالية`, unlocked: false };
+                    }
+                    // Specials
+                    this.list['first_win'] = { name: 'أول انتصار', desc: 'احقق أول فوز', unlocked: false };
+                    this.list['no_corner'] = { name: 'تحدي الأركان', desc: 'اربح بدون استخدام الأركان', unlocked: false };
+                    this.list['mythic_win'] = { name: 'قاهر الأساطير', desc: 'اهزم الذكاء في المستوى الأسطوري', unlocked: false };
+                    this.list['pvp_win'] = { name: 'منافس شرس', desc: 'اربح في وضع PvP', unlocked: false };
+                    this.list['speed_demon'] = { name: 'شيطان السرعة', desc: 'اربح في أقل من 5 حركات', unlocked: false };
+                    this.list['time_master'] = { name: 'سيد الوقت', desc: 'العب لمدة ساعة كاملة', unlocked: false };
+                    // Merge saved state
+                    for(let id in saved) if(this.list[id]) this.list[id].unlocked = saved[id].unlocked;
+                    this.unlockedCount = Object.values(this.list).filter(a=>a.unlocked).length;
+                    this.updateProgress();
+                },
+                checkAll() {
+                    for(let id in this.list) {
+                        if(this.list[id].unlocked) continue;
+                        if(this.condition(id)) this.unlock(id);
+                    }
+                },
+                condition(id) {
+                    if(id.startsWith('win_')) { let n=parseInt(id.split('_')[1]); return Stats.wins >= n; }
+                    if(id.startsWith('lose_')) { let n=parseInt(id.split('_')[1]); return Stats.losses >= n; }
+                    if(id.startsWith('draw_')) { let n=parseInt(id.split('_')[1]); return Stats.draws >= n; }
+                    if(id.startsWith('streak_')) { let n=parseInt(id.split('_')[1]); return Stats.bestStreak >= n; }
+                    if(id==='first_win') return Stats.wins>=1;
+                    if(id==='no_corner') {
+                        let data=Storage.get();
+                        let corners=[0,2,6,8];
+                        return data.patterns.some(p=>p.result==='lose' && corners.every(c=>p.board[c]!=='X'));
+                    }
+                    if(id==='mythic_win') {
+                        let data=Storage.get();
+                        return data.patterns.some(p=>p.level==='mythic' && p.result==='lose');
+                    }
+                    if(id==='pvp_win') {
+                        return localStorage.getItem('pvpWin') === 'true';
+                    }
+                    if(id==='speed_demon') return Stats.fastestWin < 5;
+                    if(id==='time_master') return Stats.totalTime >= 3600;
+                    return false;
+                },
+                unlock(id) {
+                    if(!this.list[id] || this.list[id].unlocked) return;
+                    this.list[id].unlocked = true;
+                    this.unlockedCount++;
+                    this.showToast(`🏆 ${this.list[id].name}: ${this.list[id].desc}`);
+                    AudioSys.achievement();
+                    this.save();
+                    this.updateProgress();
+                },
+                showToast(text) {
+                    let el = document.getElementById('achievementToast');
+                    el.innerText = text;
+                    el.classList.add('show');
+                    setTimeout(()=>el.classList.remove('show'), 4000);
+                },
+                save() {
+                    let toSave = {};
+                    for(let id in this.list) toSave[id] = { unlocked: this.list[id].unlocked };
+                    let d=Storage.get(); d.achievements=toSave; Storage.save(d);
+                },
+                updateProgress() {
+                    let total = Object.keys(this.list).length;
+                    document.getElementById('achievementProgress').innerText = `${this.unlockedCount} / ${total}`;
+                    document.getElementById('achievementProgressBar').style.width = (this.unlockedCount/total*100)+'%';
+                },
+                renderModal() {
+                    let listDiv = document.getElementById('achievementsList');
+                    listDiv.innerHTML = '';
+                    let sorted = Object.entries(this.list).sort((a,b)=> a[1].unlocked === b[1].unlocked ? 0 : a[1].unlocked ? -1 : 1);
+                    sorted.slice(0, 100).forEach(([id,ach]) => {
+                        let div = document.createElement('div');
+                        div.className = `achievement-item ${ach.unlocked?'unlocked':''}`;
+                        div.innerHTML = `<div style="font-size:2rem;">🏆</div><div><div style="font-weight:bold;">${ach.name}</div><div style="font-size:0.8rem;">${ach.desc}</div></div><div style="margin-right:auto;">${ach.unlocked?'✅':'🔒'}</div>`;
+                        listDiv.appendChild(div);
+                    });
+                    document.getElementById('achievementCount').innerText = this.unlockedCount;
+                    document.getElementById('totalAchievements').innerText = Object.keys(this.list).length;
+                }
+            };
+
+            // ==================== REAL MISSIONS (12 missions) ====================
+            const Missions = {
+                list: [
+                    { id:'m1', name: '👋 مرحباً', desc: 'افتح اللعبة لأول مرة', condition: ()=> true }, // تفتح تلقائياً عند البداية
+                    { id:'m2', name: '🎵 عاشق الموسيقى', desc: 'شغل الموسيقى الخلفية', condition: ()=> App.hasPlayedMusic },
+                    { id:'m3', name: '🌓 مغير الثيم', desc: 'غير الثيم إلى النهاري', condition: ()=> App.hasChangedTheme },
+                    { id:'m4', name: '💡 مستخدم التلميح', desc: 'استخدم زر التلميح', condition: ()=> App.hasUsedHint },
+                    { id:'m5', name: '🎮 لاعب مبتدئ', desc: 'العب 5 مباريات', condition: ()=> Stats.total >= 5 },
+                    { id:'m6', name: '🏅 لاعب محترف', desc: 'العب 10 مباريات', condition: ()=> Stats.total >= 10 },
+                    { id:'m7', name: '👑 لاعب أسطوري', desc: 'العب 25 مباراة', condition: ()=> Stats.total >= 25 },
+                    { id:'m8', name: '🔥 متحمس', desc: 'اربح 3 مباريات متتالية', condition: ()=> Stats.bestStreak >= 3 },
+                    { id:'m9', name: '⚡ لا يقهر', desc: 'اربح 5 مباريات متتالية', condition: ()=> Stats.bestStreak >= 5 },
+                    { id:'m10', name: '🧠 قاهر الذكاء', desc: 'اهزم الذكاء في المستوى الأسطوري', condition: ()=> {
+                        let data=Storage.get(); return data.patterns.some(p=>p.level==='mythic' && p.result==='lose');
+                    }},
+                    { id:'m11', name: '🌀 تحدي الأركان', desc: 'اربح بدون استخدام الأركان', condition: ()=> {
+                        let data=Storage.get();
+                        let corners=[0,2,6,8];
+                        return data.patterns.some(p=>p.result==='lose' && corners.every(c=>p.board[c]!=='X'));
+                    }},
+                    { id:'m12', name: '💨 سريع جداً', desc: 'اربح في أقل من 7 حركات', condition: ()=> Stats.fastestWin < 7 },
+                ],
+                currentIdx: 0,
+                completed: [],
+                init() {
+                    let d = Storage.get().missions;
+                    if(d) { 
+                        this.completed = d.completed; 
+                        this.currentIdx = d.current;
+                    }
+                    this.updateBadge();
+                    // Check first mission immediately (welcome)
+                    this.checkCondition('welcome');
+                },
+                checkCondition(trigger) {
+                    if(this.currentIdx >= this.list.length) return;
+                    let mission = this.list[this.currentIdx];
+                    if(!this.completed.includes(mission.id) && mission.condition()) {
+                        this.completed.push(mission.id);
+                        Achievements.showToast(`🎯 مهمة مكتملة: ${mission.name} - ${mission.desc}`);
+                        AudioSys.achievement();
+                        this.currentIdx++;
+                        if(this.currentIdx >= this.list.length) Achievements.showToast('🏁 أكملت جميع المهام! تهانينا!');
+                        this.save();
+                        this.updateBadge();
+                    }
+                },
+                save() {
+                    let d=Storage.get(); d.missions={completed:this.completed, current:this.currentIdx}; Storage.save(d);
+                },
+                updateBadge() {
+                    if(this.currentIdx < this.list.length) {
+                        document.getElementById('missionBadge').style.display = 'flex';
+                        document.getElementById('missionText').innerText = this.list[this.currentIdx].desc;
+                    } else {
+                        document.getElementById('missionBadge').style.display = 'none';
+                    }
+                }
+            };
+
+            // ==================== DAILY CHALLENGE ====================
+            const Daily = {
+                challenges: [
+                    { desc: 'اربح 3 مباريات متتالية', target: 'streak3', reward: '🌟 نجمة ذهبية' },
+                    { desc: 'العب 5 مباريات بدون خسارة', target: 'noLose5', reward: '🛡️ درع كوني' },
+                    { desc: 'اربح مباراة في المستوى الأسطوري', target: 'mythicWin', reward: '🔥 شعلة أسطورية' },
+                    { desc: 'حقق أسرع فوز (أقل من 7 حركات)', target: 'fast7', reward: '⚡ برق' },
+                ],
+                current: null,
+                completed: false,
+                progress: 0,
+                init() {
+                    let data = Storage.get().daily;
+                    let today = new Date().toDateString();
+                    if(data.date === today) {
+                        this.current = data.challenge;
+                        this.completed = data.completed;
+                    } else {
+                        this.generateNew();
+                    }
+                },
+                generateNew() {
+                    let idx = Math.floor(Math.random() * this.challenges.length);
+                    this.current = this.challenges[idx];
+                    this.completed = false;
+                    this.progress = 0;
+                    this.save();
+                },
+                save() {
+                    let d = Storage.get();
+                    d.daily = { date: new Date().toDateString(), challenge: this.current, completed: this.completed };
+                    Storage.save(d);
+                },
+                checkProgress() {
+                    if(this.completed) return;
+                    let completed = false;
+                    if(this.current.target === 'streak3' && Stats.bestStreak >= 3) completed = true;
+                    if(this.current.target === 'mythicWin' && Storage.get().patterns.some(p=>p.level==='mythic' && p.result==='lose')) completed = true;
+                    if(this.current.target === 'fast7' && Stats.fastestWin < 7) completed = true;
+                    if(completed) {
+                        this.completed = true;
+                        this.save();
+                        Achievements.showToast(`🎁 أكملت التحدي اليومي: ${this.current.reward}`);
+                    }
+                },
+                renderModal() {
+                    document.getElementById('dailyDesc').innerText = this.current ? this.current.desc : 'لا يوجد تحدٍ اليوم';
+                    document.getElementById('dailyReward').innerText = this.current ? `المكافأة: ${this.current.reward}` : '';
+                    document.getElementById('dailyProgress').style.width = this.completed ? '100%' : '0%';
+                    document.getElementById('claimDailyBtn').style.display = this.completed ? 'block' : 'none';
+                }
+            };
+
+            // ==================== LEADERBOARD ====================
+            const Leaderboard = {
+                entries: [],
+                init() {
+                    const data = Storage.get();
+                    this.entries = data.leaderboard || [];
+                },
+                addEntry(name, wins, fastestWin, achievements) {
+                    this.entries.push({ name, wins, fastestWin, achievements, date: Date.now() });
+                    this.entries.sort((a,b) => b.wins - a.wins || a.fastestWin - b.fastestWin || b.achievements - a.achievements);
+                    if(this.entries.length > 10) this.entries = this.entries.slice(0,10);
+                    this.save();
+                },
+                save() {
+                    const d = Storage.get();
+                    d.leaderboard = this.entries;
+                    Storage.save(d);
+                },
+                renderModal() {
+                    const listDiv = document.getElementById('leaderboardList');
+                    listDiv.innerHTML = '';
+                    if(this.entries.length === 0) {
+                        listDiv.innerHTML = '<div style="text-align:center;">لا توجد نتائج بعد</div>';
+                        return;
+                    }
+                    this.entries.forEach((entry, idx) => {
+                        const div = document.createElement('div');
+                        div.className = 'leaderboard-item';
+                        div.innerHTML = `
+                            <div class="leaderboard-rank">#${idx+1}</div>
+                            <div style="flex:1;">
+                                <div style="font-weight:bold;">${entry.name}</div>
+                                <div style="font-size:0.8rem;">${entry.wins} فوز | أسرع فوز: ${entry.fastestWin} | ${entry.achievements} إنجاز</div>
+                            </div>
+                        `;
+                        listDiv.appendChild(div);
+                    });
+                }
+            };
+
+            // ==================== GAME ENGINE ====================
+            let boardEl, cells, winPath;
+            function initBoard() {
+                boardEl = document.getElementById('board');
+                boardEl.innerHTML = '<svg class="winning-svg"><path id="winPath" class="winning-path" d="" /></svg>';
+                winPath = document.getElementById('winPath');
+                for(let i=0; i<9; i++) {
+                    let cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.dataset.index = i;
+                    cell.addEventListener('click', ()=>handleCellClick(i));
+                    boardEl.appendChild(cell);
+                }
+                cells = document.querySelectorAll('.cell');
+            }
+
+            function handleCellClick(idx) {
+                if(!App.gameActive) return;
+                if(App.isPvP) {
+                    if(App.board[idx]) return;
+                    makeMove(idx, App.currentPlayer);
+                    App.moveHistory.push({player:App.currentPlayer, idx});
+                    if(App.gameActive) {
+                        App.currentPlayer = App.currentPlayer==='X'?'O':'X';
+                        document.getElementById('statusMain').innerText = App.currentPlayer==='X'?'PLAYER X':'PLAYER O';
+                        updateAIComment('حان دور اللاعب ' + (App.currentPlayer==='X'?'X':'O'));
+                    }
+                } else {
+                    if(App.board[idx] || App.currentPlayer!=='X') return;
+                    AudioSys.play(740,'sine',0.1);
+                    makeMove(idx, 'X');
+                    App.moveHistory.push({player:'X', idx});
+                    if(App.gameActive) {
+                        App.currentPlayer = 'O';
+                        document.getElementById('statusMain').innerText = 'AI THINKING';
+                        NeuralViz.setState('thinking');
+                        updateAIComment(App.aiComments[Math.floor(Math.random()*App.aiComments.length)]);
+                        setTimeout(() => { 
+                            NeuralViz.setState('idle'); 
+                            makeAIMove(); 
+                        }, 600 + Math.random()*400);
+                    }
+                }
+            }
+
+            function makeMove(idx, player) {
+                App.board[idx] = player;
+                cells[idx].innerText = player;
+                cells[idx].classList.add(player.toLowerCase());
+                App.moveCount++;
+                let winCombo = checkWin(App.board, player);
+                if(winCombo) endGame(player, winCombo);
+                else if(!App.board.includes(null)) endGame('draw');
+            }
+
+            function checkWin(board, player) {
+                return App.wins.find(combo => combo.every(i => board[i]===player)) || null;
+            }
+
+            function endGame(winner, combo=null) {
+                App.gameActive = false;
+                NeuralViz.setState('idle');
+                if(winner==='draw') {
+                    document.getElementById('statusMain').innerText = 'DRAW';
+                    AudioSys.draw();
+                    updateAIComment('تعادل ملحمي!');
+                    addLog('🤝 تعادل', 'draw');
+                    Storage.get().patterns.push({board:[...App.board], result:'draw', level:App.currentLevel});
+                    Stats.add('draw', App.moveCount);
+                } else {
+                    let playerWon = (winner==='X');
+                    if(playerWon) {
+                        document.getElementById('statusMain').innerText = 'VICTORY!';
+                        document.getElementById('statusMain').classList.add('victory');
+                        AudioSys.win();
+                        updateAIComment('أنت منتصي! أحسنت!');
+                        addLog('🏆 فوز', 'win');
+                        Storage.get().patterns.push({board:[...App.board], result:'lose', level:App.currentLevel, playerMove:App.moveHistory.find(m=>m.player==='X')?.idx});
+                        Stats.add('win', App.moveCount);
+                        if(App.isPvP) localStorage.setItem('pvpWin', 'true');
+                    } else {
+                        document.getElementById('statusMain').innerText = 'AI WINS';
+                        AudioSys.lose();
+                        updateAIComment('لقد تفوقت عليك هذه المرة!');
+                        addLog('🤖 خسارة', 'lose');
+                        Storage.get().patterns.push({board:[...App.board], result:'win', level:App.currentLevel});
+                        Stats.add('lose', App.moveCount);
+                    }
+                    if(combo) drawWinLine(combo);
+                }
+                Storage.save(Storage.get());
+                Achievements.checkAll();
+                Missions.checkCondition('game');
+                Daily.checkProgress();
+                // Q-Learning update
+                let lastMove = App.moveHistory[App.moveHistory.length-1];
+                if(lastMove && lastMove.player==='O') {
+                    let prevBoard = [...App.board];
+                    prevBoard[lastMove.idx] = null;
+                    let state = QLearning.getKey(prevBoard);
+                    let nextState = QLearning.getKey(App.board);
+                    let reward = winner==='O' ? 10 : (winner==='draw'?2:-10);
+                    QLearning.update(state, lastMove.idx, reward, nextState);
+                    QLearning.decay();
+                    QLearning.replay();
+                }
+                // Update leaderboard with default name
+                let playerName = document.getElementById('playerName')?.value || 'Player';
+                Leaderboard.addEntry(playerName, Stats.wins, Stats.fastestWin, Achievements.unlockedCount);
+            }
+
+            function drawWinLine(combo) {
+                let rect = boardEl.getBoundingClientRect();
+                let c1 = cells[combo[0]].getBoundingClientRect();
+                let c2 = cells[combo[2]].getBoundingClientRect();
+                let x1 = c1.left + c1.width/2 - rect.left;
+                let y1 = c1.top + c1.height/2 - rect.top;
+                let x2 = c2.left + c2.width/2 - rect.left;
+                let y2 = c2.top + c2.height/2 - rect.top;
+                winPath.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
+                winPath.style.strokeDashoffset = '0';
+            }
+
+            function updateAIComment(text) {
+                document.getElementById('aiComment').innerHTML = `"${text}"`;
+            }
+
+            function makeAIMove() {
+                if(!App.gameActive || App.isPvP) return;
+                let available = App.board.map((v,i)=> v===null ? i : null).filter(v=>v!==null);
+                if(available.length===0) return;
+                let move;
+                if(App.currentLevel==='novice') move = Math.random()<0.5 ? available[Math.floor(Math.random()*available.length)] : getBestMove(2);
+                else if(App.currentLevel==='tactical') move = Math.random()<0.25 ? available[Math.floor(Math.random()*available.length)] : getBestMove(5);
+                else if(App.currentLevel==='divine') move = getBestMove(9);
+                else if(App.currentLevel==='cosmic') move = getCosmicMove();
+                else if(App.currentLevel==='mythic') {
+                    // Hybrid: MCTS + Q-Learning + Minimax
+                    let r = Math.random();
+                    if(r<0.4) move = QLearning.choose(App.board, available);
+                    else if(r<0.7) move = getBestMove(9);
+                    else move = mcts(App.board, 'O', 100);
+                }
+                makeMove(move, 'O');
+                App.moveHistory.push({player:'O', idx:move, board:[...App.board]});
+                if(App.gameActive) {
+                    App.currentPlayer = 'X';
+                    document.getElementById('statusMain').innerText = 'YOUR TURN';
+                    updateAIComment('الآن دورك، أرني ما لديك.');
+                }
+            }
+
+            function getBestMove(depth) {
+                let bestScore = -Infinity, best = -1;
+                for(let i=0;i<9;i++) {
+                    if(App.board[i]===null) {
+                        App.board[i]='O';
+                        let score = minimax(App.board, 0, false, -Infinity, Infinity, depth);
+                        App.board[i]=null;
+                        if(score>bestScore) { bestScore=score; best=i; }
+                    }
+                }
+                return best;
+            }
+
+            function minimax(board, depth, isMax, alpha, beta, limit) {
+                if(checkWin(board,'O')) return 10-depth;
+                if(checkWin(board,'X')) return depth-10;
+                if(!board.includes(null)) return 0;
+                if(depth>=limit) return evaluate(board);
+                if(isMax) {
+                    let best=-Infinity;
+                    for(let i=0;i<9;i++) {
+                        if(board[i]===null) {
+                            board[i]='O';
+                            best = Math.max(best, minimax(board,depth+1,false,alpha,beta,limit));
+                            board[i]=null;
+                            alpha = Math.max(alpha, best);
+                            if(beta<=alpha) break;
                         }
                     }
-                }
-            },
-
-            setState(state) {
-                this.state = state;
-                this.active = state !== 'idle';
-                document.getElementById('neuralStatus').innerText = state.toUpperCase();
-                document.getElementById('neuralStatus').style.color = this.colors[state];
-                this.nodes.forEach(n => { n.color = this.colors[state]; n.energy = Math.random() * 0.5 + 0.5; });
-                this.createNetwork();
-            },
-
-            animate() {
-                const width = this.canvas.width / window.devicePixelRatio;
-                const height = this.canvas.height / window.devicePixelRatio;
-                this.ctx.clearRect(0, 0, width, height);
-                
-                // Draw connections
-                this.connections.forEach(conn => {
-                    const n1 = this.nodes[conn.a], n2 = this.nodes[conn.b];
-                    const alpha = conn.strength * (this.active ? 0.8 : 0.4) * (0.6 + Math.sin(conn.pulse) * 0.4);
-                    conn.pulse += 0.04;
-                    this.ctx.strokeStyle = n1.color;
-                    this.ctx.globalAlpha = alpha;
-                    this.ctx.lineWidth = 1.4;
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(n1.x, n1.y);
-                    this.ctx.lineTo(n2.x, n2.y);
-                    this.ctx.stroke();
-                });
-                
-                // Draw nodes with glow
-                this.nodes.forEach(n => {
-                    n.x += n.vx; n.y += n.vy; n.pulse += 0.07;
-                    if (n.x < 0 || n.x > width) n.vx *= -1;
-                    if (n.y < 0 || n.y > height) n.vy *= -1;
-                    
-                    const pulseSize = n.radius + Math.sin(n.pulse) * 1.2;
-                    
-                    // Outer glow
-                    const gradient = this.ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, pulseSize * 4);
-                    gradient.addColorStop(0, n.color);
-                    gradient.addColorStop(0.3, n.color + '90');
-                    gradient.addColorStop(0.7, n.color + '40');
-                    gradient.addColorStop(1, 'transparent');
-                    this.ctx.fillStyle = gradient;
-                    this.ctx.globalAlpha = n.energy;
-                    this.ctx.beginPath();
-                    this.ctx.arc(n.x, n.y, pulseSize * 4, 0, Math.PI * 2);
-                    this.ctx.fill();
-                    
-                    // Core
-                    this.ctx.globalAlpha = 1;
-                    this.ctx.fillStyle = '#fff';
-                    this.ctx.beginPath();
-                    this.ctx.arc(n.x, n.y, pulseSize * 0.7, 0, Math.PI * 2);
-                    this.ctx.fill();
-                });
-                
-                this.ctx.globalAlpha = 1;
-                requestAnimationFrame(() => this.animate());
-            }
-        };
-
-        // === COSMIC AI MEMORY (Universal Learning) ===
-        const CosmicMemory = {
-            key: 'menzo_cosmic_omniscient_v∞',
-            
-            get() {
-                try {
-                    const data = localStorage.getItem(this.key);
-                    return data ? JSON.parse(data) : this.getInitial();
-                } catch(e) { return this.getInitial(); }
-            },
-            
-            getInitial() {
-                return {
-                    patterns: [], winPatterns: [], drawPatterns: [], losePatterns: [],
-                    playerStyle: {}, cycles: 0, lastSync: Date.now(), 
-                    accuracy: 97.2, adaptiveDiff: 1, achievements: []
-                };
-            },
-            
-            save(data) {
-                data.lastSync = Date.now();
-                try {
-                    localStorage.setItem(this.key, JSON.stringify(data));
-                    this.showSync();
-                    this.updateUI();
-                } catch(e) { console.log('Storage optimized'); }
-            },
-            
-            addPattern(board, result, playerMove = null, level = 'cosmic') {
-                const data = this.get();
-                const hash = board.join('');
-                const pattern = { 
-                    hash, board: [...board], result, timestamp: Date.now(), 
-                    playerMove, level, skill: data.adaptiveDiff 
-                };
-                
-                if (!data.patterns.some(p => p.hash === hash)) {
-                    data.patterns.push(pattern);
-                    if (result === 'win') data.winPatterns.push(hash);
-                    if (result === 'draw') data.drawPatterns.push(hash);
-                    if (result === 'lose') data.losePatterns.push(hash);
-                    
-                    // Update player style analysis
-                    if (playerMove !== null) {
-                        data.playerStyle[playerMove] = (data.playerStyle[playerMove] || 0) + 1;
-                    }
-                    
-                    data.cycles++;
-                    // Improve accuracy and adapt difficulty
-                    data.accuracy = Math.min(99.9, 95 + (data.cycles * 0.06));
-                    if (result === 'lose') data.adaptiveDiff = Math.min(3, data.adaptiveDiff + 0.15);
-                    if (result === 'win') data.adaptiveDiff = Math.max(0.5, data.adaptiveDiff - 0.08);
-                    
-                    // Unlock achievements
-                    if (data.cycles === 10 && !data.achievements.includes('first10')) {
-                        data.achievements.push('first10');
-                        showAchievement('🎯 محارب مبتدئ: 10 مباريات');
-                    }
-                    if (data.cycles === 50 && !data.achievements.includes('first50')) {
-                        data.achievements.push('first50');
-                        showAchievement('⚔️ محترف: 50 معركة');
-                    }
-                    if (data.losePatterns.length >= 3 && !data.achievements.includes('challenger')) {
-                        data.achievements.push('challenger');
-                        showAchievement('🏆 تحدي الأسطورة: هزمت الذكاء 3 مرات!');
-                    }
-                    
-                    this.save(data);
-                    return true;
-                }
-                return false;
-            },
-            
-            getInsight(board, isAIMove = true, level = 'cosmic') {
-                const data = this.get();
-                const hash = board.join('');
-                
-                // Check historical outcomes across all levels
-                const history = data.patterns.filter(p => p.hash === hash);
-                if (history.length > 0) {
-                    const losses = history.filter(p => p.result === 'lose').length;
-                    const draws = history.filter(p => p.result === 'draw').length;
-                    
-                    if (losses > 0 && isAIMove) return { type: 'avoid', reason: 'Led to defeat previously', confidence: losses / history.length };
-                    if (draws > 0 && isAIMove) return { type: 'improve', reason: 'Previously resulted in draw', confidence: draws / history.length };
-                }
-                
-                // Player pattern prediction
-                if (!isAIMove && Object.keys(data.playerStyle).length > 5) {
-                    const preferred = Object.entries(data.playerStyle).sort((a,b) => b[1] - a[1])[0];
-                    if (preferred && board[preferred[0]] === null) {
-                        return { type: 'predict', reason: `Player prefers position ${preferred[0]}`, confidence: preferred[1] / Math.max(1, data.cycles) };
-                    }
-                }
-                
-                return null;
-            },
-            
-            showSync() {
-                const bar = document.getElementById('uploadBar');
-                const progress = document.getElementById('uploadProgress');
-                bar.style.display = 'block';
-                progress.style.width = '0%';
-                setTimeout(() => progress.style.width = '40%', 140);
-                setTimeout(() => progress.style.width = '85%', 380);
-                setTimeout(() => { progress.style.width = '100%'; setTimeout(() => bar.style.display = 'none', 280); }, 700);
-            },
-            
-            updateUI() {
-                const data = this.get();
-                document.getElementById('savedPatterns').innerText = data.patterns.length;
-                document.getElementById('learningCycles').innerText = data.cycles;
-                document.getElementById('predictionAcc').innerText = data.accuracy.toFixed(1) + '%';
-                
-                const moves = Object.values(data.playerStyle);
-                if (moves.length > 0) {
-                    const avg = moves.reduce((a,b) => a+b, 0) / moves.length;
-                    const style = avg > 3.5 ? 'عدواني' : avg > 1.8 ? 'متوازن' : 'دفاعي';
-                    document.getElementById('playerAdapt').innerText = style;
-                }
-                
-                const diff = data.adaptiveDiff;
-                document.getElementById('adaptiveDiff').innerText = diff > 2 ? 'صعب' : diff > 1.2 ? 'متوازن' : 'سهل';
-            }
-        };
-
-        // === UI FUNCTIONS ===
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const isMobile = window.innerWidth <= 1150;
-            if (isMobile) sidebar.classList.toggle('visible');
-            else sidebar.classList.toggle('hidden');
-        }
-
-        document.getElementById('sidebarToggle').addEventListener('click', toggleSidebar);
-        document.getElementById('closeSidebar').addEventListener('click', toggleSidebar);
-
-        function addLog(msg, type = 'sys') {
-            const log = document.getElementById('gameLog');
-            const entry = document.createElement('div');
-            entry.className = 'log-entry';
-            const time = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            entry.innerHTML = `<span class="log-time">${time}</span><span class="log-msg ${type}">${msg}</span>`;
-            log.insertBefore(entry, log.firstChild);
-            if (log.children.length > 40) log.removeChild(log.lastChild);
-        }
-
-        function showAchievement(text) {
-            const badge = document.getElementById('achievement');
-            badge.innerText = text;
-            badge.classList.add('show');
-            AudioSys.playAchievement();
-            setTimeout(() => badge.classList.remove('show'), 4000);
-        }
-
-        // FIXED: Pass button element directly
-        function setLevel(level, btn) {
-            document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            currentLevel = level;
-            addLog(`🎮 Level: ${level.toUpperCase()}`, 'sys');
-            
-            const statusMap = {
-                novice: "🌱 Casual Mode - Learning Enabled",
-                tactical: "⚔️ Tactical Analysis + Pattern Learning",
-                divine: "👑 Minimax God Mode + Adaptive Learning",
-                cosmic: "✨ Self-Evolving Cosmic Intelligence"
-            };
-            document.getElementById('statusSub').innerText = statusMap[level] || statusMap.cosmic;
-            
-            if (level === 'cosmic') {
-                AudioSys.speak(AudioSys.getRandom(AudioSys.comments.start));
-                CosmicMemory.updateUI();
-            }
-            resetGame();
-            if (window.innerWidth <= 1150) document.getElementById('sidebar').classList.remove('visible');
-        }
-
-        // === COSMIC PARTICLES ===
-        function initCosmicParticles() {
-            const container = document.getElementById('cosmicParticles');
-            const colors = ['var(--cosmic-cyan)', 'var(--cosmic-pink)', 'var(--cosmic-gold)', 'var(--cosmic-purple)'];
-            for (let i = 0; i < 70; i++) {
-                const p = document.createElement('div');
-                p.className = 'cosmic-particle';
-                p.style.left = Math.random() * 100 + '%';
-                p.style.top = Math.random() * 100 + '%';
-                p.style.width = (2 + Math.random() * 4) + 'px';
-                p.style.height = p.style.width;
-                p.style.background = colors[Math.floor(Math.random() * colors.length)];
-                p.style.animationDelay = Math.random() * 12 + 's';
-                p.style.animationDuration = (10 + Math.random() * 8) + 's';
-                container.appendChild(p);
-            }
-        }
-
-        // === GAME ENGINE ===
-        const boardEl = document.getElementById('board');
-        const statusMain = document.getElementById('statusMain');
-        const statusSub = document.getElementById('statusSub');
-        const aiComment = document.getElementById('aiComment');
-        const winPath = document.getElementById('winPath');
-        const celebrationOverlay = document.getElementById('celebrationOverlay');
-
-        let board = Array(9).fill(null);
-        let gameActive = true;
-        let currentPlayer = 'X';
-        let currentLevel = 'cosmic';
-        let moveHistory = [];
-        let playerSkill = 1;
-        
-        const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-
-        function initBoard() {
-            boardEl.innerHTML = '<svg class="winning-svg"><path id="winPath" class="winning-path" d="" /></svg>';
-            for (let i = 0; i < 9; i++) {
-                const cell = document.createElement('div');
-                cell.className = 'cell';
-                cell.dataset.index = i;
-                cell.addEventListener('click', () => handleCellClick(i));
-                boardEl.appendChild(cell);
-            }
-        }
-        initBoard();
-
-        // Initialize all systems
-        ThemeSys.init();
-        AudioSys.init();
-        NeuralViz.init();
-        CosmicMemory.updateUI();
-        initCosmicParticles();
-
-        // Start button handler
-        document.getElementById('startBtn').addEventListener('click', () => {
-            document.getElementById('startScreen').classList.add('hidden');
-            setTimeout(() => {
-                addLog('✨ Cosmic Omniscient Ready', 'sys');
-                addLog('👨‍💻 Engineered by Mohamed El-Menzalawy', 'sys');
-                if (currentLevel === 'cosmic') aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.start)}"`;
-            }, 600);
-        });
-
-        function handleCellClick(index) {
-            if (board[index] || !gameActive || currentPlayer !== 'X') return;
-            AudioSys.playTone(740, 'sine', 0.1);
-            makeMove(index, 'X');
-            moveHistory.push({ player: 'X', index, board: [...board] });
-            
-            if (gameActive) {
-                currentPlayer = 'O';
-                statusMain.innerText = "AI THINKING";
-                statusMain.classList.remove('victory');
-                NeuralViz.setState('thinking');
-                aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.thinking)}"`;
-                
-                const thinkInterval = setInterval(() => AudioSys.playThink(), 140);
-                
-                setTimeout(() => {
-                    clearInterval(thinkInterval);
-                    NeuralViz.setState('idle');
-                    makeComputerMove();
-                }, 650 + Math.random() * 550);
-            }
-        }
-
-        function makeMove(index, player) {
-            board[index] = player;
-            const cell = boardEl.children[index + 1];
-            cell.innerText = player;
-            cell.classList.add(player.toLowerCase());
-            
-            const winCombo = checkWin(board, player);
-            if (winCombo) endGame(player, winCombo);
-            else if (!board.includes(null)) endGame('draw');
-        }
-
-        function makeComputerMove() {
-            if (!gameActive) return;
-            let moveIndex;
-            
-            if (currentLevel === 'novice') {
-                if (Math.random() < 0.5) moveIndex = getRandomMove();
-                else moveIndex = getBestMove(2);
-            } else if (currentLevel === 'tactical') {
-                if (Math.random() < 0.25) moveIndex = getRandomMove();
-                else moveIndex = getBestMove(5);
-            } else if (currentLevel === 'divine') {
-                moveIndex = getBestMove(9);
-            } else if (currentLevel === 'cosmic') {
-                moveIndex = getCosmicMove();
-            }
-            
-            makeMove(moveIndex, 'O');
-            moveHistory.push({ player: 'O', index: moveIndex, board: [...board] });
-            
-            if (gameActive) {
-                currentPlayer = 'X';
-                statusMain.innerText = "YOUR TURN";
-                
-                const lastPlayerMove = [...moveHistory].reverse().find(m => m.player === 'X');
-                if (lastPlayerMove && isStrategicMove(board, lastPlayerMove.index, 'X')) {
-                    aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.goodMove)}"`;
-                    playerSkill = Math.min(10, playerSkill + 0.35);
+                    return best;
                 } else {
-                    aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.badMove)}"`;
-                    playerSkill = Math.max(1, playerSkill - 0.12);
-                }
-            }
-        }
-
-        // === COSMIC AI ALGORITHMS ===
-        function getRandomMove() {
-            const available = board.map((v, i) => v === null ? i : null).filter(v => v !== null);
-            return available[Math.floor(Math.random() * available.length)];
-        }
-
-        function getBestMove(depth) {
-            let bestScore = -Infinity, move = -1;
-            let alpha = -Infinity, beta = Infinity;
-            
-            for (let i = 0; i < 9; i++) {
-                if (board[i] === null) {
-                    board[i] = 'O';
-                    const score = minimax(board, 0, false, alpha, beta, depth);
-                    board[i] = null;
-                    if (score > bestScore) { bestScore = score; move = i; }
-                    alpha = Math.max(alpha, score);
-                    if (beta <= alpha) break;
-                }
-            }
-            return move;
-        }
-
-        function minimax(board, depth, isMaximizing, alpha, beta, depthLimit) {
-            if (checkWin(board, 'O')) return 10 - depth;
-            if (checkWin(board, 'X')) return depth - 10;
-            if (!board.includes(null)) return 0;
-            if (depth >= depthLimit) return evaluateBoard(board);
-            
-            if (isMaximizing) {
-                let bestScore = -Infinity;
-                for (let i = 0; i < 9; i++) {
-                    if (board[i] === null) {
-                        board[i] = 'O';
-                        const score = minimax(board, depth + 1, false, alpha, beta, depthLimit);
-                        board[i] = null;
-                        bestScore = Math.max(score, bestScore);
-                        alpha = Math.max(alpha, score);
-                        if (beta <= alpha) break;
+                    let best=Infinity;
+                    for(let i=0;i<9;i++) {
+                        if(board[i]===null) {
+                            board[i]='X';
+                            best = Math.min(best, minimax(board,depth+1,true,alpha,beta,limit));
+                            board[i]=null;
+                            beta = Math.min(beta, best);
+                            if(beta<=alpha) break;
+                        }
                     }
+                    return best;
                 }
-                return bestScore;
-            } else {
-                let bestScore = Infinity;
-                for (let i = 0; i < 9; i++) {
-                    if (board[i] === null) {
-                        board[i] = 'X';
-                        const score = minimax(board, depth + 1, true, alpha, beta, depthLimit);
-                        board[i] = null;
-                        bestScore = Math.min(score, bestScore);
-                        beta = Math.min(beta, score);
-                        if (beta <= alpha) break;
+            }
+
+            function evaluate(board) {
+                let score = 0;
+                if(board[4]==='O') score+=4; else if(board[4]==='X') score-=4;
+                [0,2,6,8].forEach(i=>{if(board[i]==='O') score+=1.5; else if(board[i]==='X') score-=1.5;});
+                App.wins.forEach(combo=>{
+                    let o=0,x=0;
+                    combo.forEach(i=>{if(board[i]==='O')o++;else if(board[i]==='X')x++;});
+                    if(o===2 && x===0) score+=6;
+                    if(x===2 && o===0) score-=6;
+                });
+                return score;
+            }
+
+            function getCosmicMove() {
+                let available = App.board.map((v,i)=> v===null ? i : null).filter(v=>v!==null);
+                let scores = available.map(move => {
+                    let score = 0;
+                    for(let s=0; s<20; s++) {
+                        let sim = [...App.board];
+                        sim[move]='O';
+                        score += simulateGame(sim, 'X');
                     }
-                }
-                return bestScore;
+                    return score;
+                });
+                let bestIdx = 0, bestScore = -Infinity;
+                scores.forEach((s,i)=> { if(s>bestScore) { bestScore=s; bestIdx=i; } });
+                return available[bestIdx];
             }
-        }
 
-        function evaluateBoard(boardState) {
-            let score = 0;
-            if (boardState[4] === 'O') score += 4; if (boardState[4] === 'X') score -= 4;
-            [0,2,6,8].forEach(i => { if (boardState[i] === 'O') score += 1.5; if (boardState[i] === 'X') score -= 1.5; });
-            wins.forEach(combo => {
-                const values = combo.map(i => boardState[i]);
-                const oCount = values.filter(v => v === 'O').length;
-                const xCount = values.filter(v => v === 'X').length;
-                if (oCount === 2 && xCount === 0) score += 6;
-                if (xCount === 2 && oCount === 0) score -= 6;
-            });
-            return score;
-        }
-
-        // COSMIC LEVEL: Ultimate Hybrid AI
-        function getCosmicMove() {
-            const simulations = 25;
-            const moveScores = {};
-            const available = board.map((v, i) => v === null ? i : null).filter(v => v !== null);
-            
-            // Monte Carlo + Minimax hybrid evaluation
-            available.forEach(move => {
-                let totalScore = 0;
-                for (let s = 0; s < simulations; s++) {
-                    const simBoard = [...board];
-                    simBoard[move] = 'O';
-                    totalScore += simulateGame(simBoard, 'X');
+            function simulateGame(board, player) {
+                let sim = [...board];
+                let cur = player;
+                for(let d=0; d<10; d++) {
+                    let avail = sim.map((v,i)=> v===null?i:null).filter(v=>v!==null);
+                    if(avail.length===0) break;
+                    let move = avail[Math.floor(Math.random()*avail.length)];
+                    sim[move] = cur;
+                    if(checkWin(sim, cur)) return cur==='O'?1:-1;
+                    cur = cur==='O'?'X':'O';
                 }
-                // Blend with minimax for precision
-                const minimaxScore = getMinimaxScoreForMove(move, 7);
-                moveScores[move] = (totalScore / simulations) * 0.4 + minimaxScore * 0.6;
-            });
-            
-            let bestMove = available[0], bestScore = -Infinity;
-            for (const [move, score] of Object.entries(moveScores)) {
-                if (score > bestScore) { bestScore = score; bestMove = parseInt(move); }
+                return 0;
             }
-            
-            // Apply cosmic memory insights
-            const testBoard = [...board];
-            testBoard[bestMove] = 'O';
-            const insight = CosmicMemory.getInsight(testBoard, true, currentLevel);
-            
-            if (insight && insight.confidence > 0.35) {
-                addLog(`🧠 Cosmic Insight: ${insight.reason} (${(insight.confidence*100).toFixed(0)}%)`, 'learn');
-                if (insight.type === 'avoid') {
-                    const alt = available.find(m => {
-                        const tb = [...board]; tb[m] = 'O';
-                        return !CosmicMemory.getInsight(tb, true, currentLevel);
+
+            // ==================== NEURAL VIZ ====================
+            const NeuralViz = {
+                canvas: null, ctx: null, nodes: [], connections: [], state: 'idle',
+                colors: { idle:'#00f0ff', thinking:'#ffd966', attacking:'#ff6b6b', defending:'#32ffaa', learning:'#b87cff' },
+                init() {
+                    this.canvas = document.getElementById('neuralCanvas');
+                    if(!this.canvas) return;
+                    this.ctx = this.canvas.getContext('2d');
+                    this.resize();
+                    window.addEventListener('resize', ()=>this.resize());
+                    this.createNetwork();
+                    this.animate();
+                },
+                resize() {
+                    let w = this.canvas.parentElement.offsetWidth;
+                    let h = this.canvas.parentElement.offsetHeight;
+                    this.canvas.width = w * devicePixelRatio;
+                    this.canvas.height = h * devicePixelRatio;
+                    this.ctx.scale(devicePixelRatio, devicePixelRatio);
+                },
+                createNetwork() {
+                    let w = this.canvas.width/devicePixelRatio, h = this.canvas.height/devicePixelRatio;
+                    let count = this.state!=='idle' ? 80 : 50;
+                    this.nodes = [];
+                    for(let i=0; i<count; i++) {
+                        this.nodes.push({
+                            x: Math.random()*w, y: Math.random()*h,
+                            vx: (Math.random()-0.5)*(this.state!=='idle'?2.5:1),
+                            vy: (Math.random()-0.5)*(this.state!=='idle'?2.5:1),
+                            r: Math.random()*4+2,
+                            pulse: Math.random()*Math.PI*2,
+                            color: this.colors[this.state] || this.colors.idle
+                        });
+                    }
+                    this.connections = [];
+                    for(let i=0; i<this.nodes.length; i++) {
+                        for(let j=i+1; j<this.nodes.length; j++) {
+                            let dx = this.nodes[i].x - this.nodes[j].x;
+                            let dy = this.nodes[i].y - this.nodes[j].y;
+                            let dist = Math.sqrt(dx*dx+dy*dy);
+                            if(dist < (this.state!=='idle'?120:90)) {
+                                this.connections.push({ a:i, b:j, strength:1-dist/(this.state!=='idle'?120:90), pulse:Math.random()*Math.PI*2 });
+                            }
+                        }
+                    }
+                },
+                setState(s) {
+                    this.state = s;
+                    document.getElementById('neuralStatus').innerText = s.toUpperCase();
+                    document.getElementById('neuralViz').className = `neural-viz ${s}`;
+                    this.createNetwork();
+                },
+                animate() {
+                    let w = this.canvas.width/devicePixelRatio, h = this.canvas.height/devicePixelRatio;
+                    this.ctx.clearRect(0,0,w,h);
+                    this.connections.forEach(c => {
+                        let n1 = this.nodes[c.a], n2 = this.nodes[c.b];
+                        let alpha = c.strength * (this.state!=='idle'?0.9:0.5) * (0.6+Math.sin(c.pulse)*0.4);
+                        c.pulse += 0.05;
+                        this.ctx.strokeStyle = n1.color;
+                        this.ctx.globalAlpha = alpha;
+                        this.ctx.lineWidth = 1.8;
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(n1.x, n1.y);
+                        this.ctx.lineTo(n2.x, n2.y);
+                        this.ctx.stroke();
                     });
-                    if (alt !== undefined) return alt;
+                    this.nodes.forEach(n => {
+                        n.x += n.vx; n.y += n.vy;
+                        if(n.x<0||n.x>w) n.vx*=-1;
+                        if(n.y<0||n.y>h) n.vy*=-1;
+                        n.pulse += 0.1;
+                        let size = n.r + Math.sin(n.pulse)*1.8;
+                        let grad = this.ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,size*7);
+                        grad.addColorStop(0, n.color);
+                        grad.addColorStop(0.4, n.color+'80');
+                        grad.addColorStop(1, 'transparent');
+                        this.ctx.fillStyle = grad;
+                        this.ctx.globalAlpha = 0.8;
+                        this.ctx.beginPath();
+                        this.ctx.arc(n.x, n.y, size*7, 0, Math.PI*2);
+                        this.ctx.fill();
+                        this.ctx.globalAlpha = 1;
+                        this.ctx.fillStyle = '#fff';
+                        this.ctx.beginPath();
+                        this.ctx.arc(n.x, n.y, size*1.0, 0, Math.PI*2);
+                        this.ctx.fill();
+                    });
+                    requestAnimationFrame(()=>this.animate());
+                }
+            };
+
+            // ==================== UI HELPERS ====================
+            function addLog(msg, type='sys') {
+                let log = document.getElementById('gameLog');
+                let entry = document.createElement('div');
+                entry.className = 'log-entry';
+                let time = new Date().toLocaleTimeString('ar-EG', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+                entry.innerHTML = `<span class="log-time">${time}</span><span class="log-msg ${type}">${msg}</span>`;
+                log.insertBefore(entry, log.firstChild);
+                if(log.children.length>30) log.removeChild(log.lastChild);
+            }
+
+            function resetGame() {
+                App.board = Array(9).fill(null);
+                App.gameActive = true;
+                App.currentPlayer = 'X';
+                App.moveHistory = [];
+                App.moveCount = 0;
+                document.getElementById('statusMain').innerText = 'COSMIC';
+                document.getElementById('statusMain').classList.remove('victory');
+                winPath.style.strokeDashoffset = '500';
+                cells.forEach(c => { c.innerText=''; c.classList.remove('x','o'); });
+                addLog('🔄 لعبة جديدة', 'sys');
+                updateAIComment('معركة جديدة تبدأ...');
+            }
+
+            // ==================== INIT COSMIC PARTICLES ====================
+            function initCosmicParticles() {
+                const container = document.getElementById('cosmicParticles');
+                const colors = ['#00f0ff', '#ff44e0', '#ffd966', '#b87cff'];
+                for (let i = 0; i < 70; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'cosmic-particle';
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.top = Math.random() * 100 + '%';
+                    p.style.width = (2 + Math.random() * 4) + 'px';
+                    p.style.height = p.style.width;
+                    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    p.style.animationDelay = Math.random() * 12 + 's';
+                    p.style.animationDuration = (10 + Math.random() * 8) + 's';
+                    container.appendChild(p);
                 }
             }
-            
-            // Player prediction with neural analysis
-            const playerInsight = CosmicMemory.getInsight(board, false, currentLevel);
-            if (playerInsight && playerInsight.type === 'predict') {
-                NeuralViz.setState('attacking');
-                addLog(`🎯 Predicting: ${playerInsight.reason}`, 'ai');
-            }
-            
-            return bestMove;
-        }
 
-        function getMinimaxScoreForMove(move, depth) {
-            const original = board[move];
-            board[move] = 'O';
-            const score = minimax(board, 0, false, -Infinity, Infinity, depth);
-            board[move] = original;
-            return score;
-        }
+            // ==================== TOUR ====================
+            const Tour = {
+                steps: [
+                    { title: 'مرحباً بك 👋', desc: 'هذا دليل سريع لمكونات اللعبة.' },
+                    { title: 'الشريط الجانبي', desc: 'يحتوي على مستويات الذكاء، لوحة التعلم، والمطور.' },
+                    { title: 'لوحة المعلومات', desc: 'تعرض حالة اللعبة وتعليقات الذكاء.' },
+                    { title: 'الشبكة العصبية', desc: 'تعكس حالة الذكاء (تفكير، هجوم، دفاع، تعلم).' },
+                    { title: 'المهام والإنجازات', desc: 'أكمل المهام لفتح الإنجازات.' },
+                    { title: 'التحدي اليومي', desc: 'كل يوم تحدٍ جديد بمكافأة.' },
+                    { title: 'الإعدادات', desc: 'تحكم في الموسيقى والصوت.' }
+                ],
+                step: 0,
+                shown: false,
+                init() {
+                    const data = Storage.get();
+                    this.shown = data.tutorialShown || false;
+                    if(!this.shown) this.show();
+                },
+                show() {
+                    document.getElementById('tourOverlay').style.display = 'flex';
+                    this.update();
+                },
+                hide() {
+                    document.getElementById('tourOverlay').style.display = 'none';
+                    const data = Storage.get();
+                    data.tutorialShown = true;
+                    Storage.save(data);
+                },
+                next() {
+                    if(this.step < this.steps.length-1) {
+                        this.step++;
+                        this.update();
+                    } else {
+                        this.hide();
+                    }
+                },
+                prev() {
+                    if(this.step > 0) {
+                        this.step--;
+                        this.update();
+                    }
+                },
+                update() {
+                    document.getElementById('tourTitle').innerText = this.steps[this.step].title;
+                    document.getElementById('tourDesc').innerText = this.steps[this.step].desc;
+                }
+            };
 
-        function simulateGame(boardState, currentPlayer) {
-            let simBoard = [...boardState];
-            let simPlayer = currentPlayer;
-            
-            for (let depth = 0; depth < 10; depth++) {
-                const available = simBoard.map((v, i) => v === null ? i : null).filter(v => v !== null);
-                if (available.length === 0) break;
-                
-                // Weighted random with strategic bias
-                const weights = available.map(idx => {
-                    const test = [...simBoard]; test[idx] = simPlayer;
-                    if (checkWin(test, simPlayer)) return 100;
-                    return 1 + evaluateBoard(test) * 0.3;
+            // ==================== INIT ====================
+            function init() {
+                // Load data
+                let data = Storage.get();
+                Stats.init();
+                QLearning.load();
+                Achievements.init();
+                Missions.init();
+                Leaderboard.init();
+                Daily.init();
+
+                // DOM elements
+                initBoard();
+                AudioSys.init();
+                NeuralViz.init();
+                Music.init();
+                Tour.init();
+                initCosmicParticles();
+
+                // Set default level active
+                document.querySelector('.level-btn[data-level="cosmic"]').classList.add('active');
+
+                // Event listeners
+                document.getElementById('startBtn').addEventListener('click', ()=>{
+                    document.getElementById('startScreen').style.display = 'none';
+                    addLog('✨ Cosmic AI ready', 'sys');
+                    updateAIComment('أهلاً بك في عالم MENZO-XO!');
+                    // Play default music
+                    Music.loadSong(0);
+                    Music.play();
+                    // Start play time counter
+                    App.playTimeInterval = setInterval(()=>{
+                        if(App.gameActive) {
+                            Stats.totalTime++;
+                            document.getElementById('totalTime').innerText = Math.floor(Stats.totalTime/60)+'m '+ (Stats.totalTime%60)+'s';
+                        }
+                    }, 1000);
+                    // Check welcome mission
+                    Missions.checkCondition('welcome');
                 });
-                const total = weights.reduce((a,b) => a+b, 0);
-                let rand = Math.random() * total;
-                let move = available[0];
-                for (let i = 0; i < available.length; i++) {
-                    rand -= weights[i];
-                    if (rand <= 0) { move = available[i]; break; }
-                }
-                
-                simBoard[move] = simPlayer;
-                if (checkWin(simBoard, simPlayer)) return simPlayer === 'O' ? 12 : -12;
-                simPlayer = simPlayer === 'O' ? 'X' : 'O';
+
+                document.getElementById('sidebarToggle').addEventListener('click', ()=>{
+                    document.getElementById('sidebar').classList.toggle('visible');
+                });
+                document.getElementById('closeSidebar').addEventListener('click', ()=>{
+                    document.getElementById('sidebar').classList.remove('visible');
+                });
+                document.getElementById('themeToggle').addEventListener('click', ()=>{
+                    let body = document.body;
+                    let current = body.getAttribute('data-theme')||'dark';
+                    let next = current==='dark'?'light':'dark';
+                    body.setAttribute('data-theme', next);
+                    document.getElementById('themeToggle').innerText = next==='dark'?'🌙':'☀️';
+                    App.hasChangedTheme = true;
+                    Missions.checkCondition('theme');
+                });
+                document.getElementById('statsToggle').addEventListener('click', ()=>{
+                    Stats.updateUI();
+                    document.getElementById('statsModal').style.display = 'block';
+                });
+                document.getElementById('closeStatsBtn').addEventListener('click', ()=>{
+                    document.getElementById('statsModal').style.display = 'none';
+                });
+                document.getElementById('achievementsBtn').addEventListener('click', ()=>{
+                    Achievements.renderModal();
+                    document.getElementById('achievementsModal').style.display = 'block';
+                });
+                document.getElementById('closeAchievementsBtn').addEventListener('click', ()=>{
+                    document.getElementById('achievementsModal').style.display = 'none';
+                });
+                document.getElementById('leaderboardBtn').addEventListener('click', ()=>{
+                    Leaderboard.renderModal();
+                    document.getElementById('leaderboardModal').style.display = 'block';
+                });
+                document.getElementById('closeLeaderboardBtn').addEventListener('click', ()=>{
+                    document.getElementById('leaderboardModal').style.display = 'none';
+                });
+                document.getElementById('dailyBtn').addEventListener('click', ()=>{
+                    Daily.renderModal();
+                    document.getElementById('dailyModal').style.display = 'block';
+                });
+                document.getElementById('closeDailyBtn').addEventListener('click', ()=>{
+                    document.getElementById('dailyModal').style.display = 'none';
+                });
+                document.getElementById('claimDailyBtn').addEventListener('click', ()=>{
+                    Achievements.showToast('🎁 تم استلام المكافأة!');
+                    document.getElementById('dailyModal').style.display = 'none';
+                });
+
+                document.getElementById('settingsBtn').addEventListener('click', ()=>{
+                    document.getElementById('settingsModal').style.display = 'block';
+                    // Load current settings
+                    document.getElementById('musicVolume').value = Music.volume;
+                    document.getElementById('sfxVolume').value = AudioSys.volume;
+                    document.getElementById('musicVolValue').innerText = Music.volume.toFixed(2);
+                    document.getElementById('sfxVolValue').innerText = AudioSys.volume.toFixed(2);
+                    document.getElementById('songSelect').selectedIndex = Music.currentSong;
+                    document.getElementById('soundEffects').checked = AudioSys.enabled;
+                    document.getElementById('bgMusicToggle').checked = Music.isPlaying;
+                });
+                document.getElementById('closeSettingsBtn').addEventListener('click', ()=>{
+                    document.getElementById('settingsModal').style.display = 'none';
+                });
+                document.getElementById('resetGameOnlyBtn').addEventListener('click', ()=>{
+                    resetGame();
+                });
+
+                // Volume controls
+                document.getElementById('musicVolume').addEventListener('input', (e)=>{
+                    let v = parseFloat(e.target.value);
+                    Music.setVolume(v);
+                    document.getElementById('musicVolValue').innerText = v.toFixed(2);
+                });
+                document.getElementById('sfxVolume').addEventListener('input', (e)=>{
+                    let v = parseFloat(e.target.value);
+                    AudioSys.volume = v;
+                    document.getElementById('sfxVolValue').innerText = v.toFixed(2);
+                });
+                document.getElementById('songSelect').addEventListener('change', (e)=>{
+                    let idx = parseInt(e.target.value);
+                    Music.loadSong(idx);
+                });
+                document.getElementById('soundEffects').addEventListener('change', (e)=>{
+                    AudioSys.enabled = e.target.checked;
+                });
+                document.getElementById('bgMusicToggle').addEventListener('change', (e)=>{
+                    if(e.target.checked) Music.play();
+                    else Music.pause();
+                });
+
+                document.getElementById('pvpToggle').addEventListener('click', ()=>{
+                    App.isPvP = !App.isPvP;
+                    document.getElementById('pvpText').innerText = App.isPvP ? 'وضع AI' : 'وضع PvP';
+                    document.getElementById('hintBtn').style.display = App.isPvP ? 'none' : 'inline-block';
+                    resetGame();
+                    addLog(App.isPvP ? '👥 PvP mode' : '🤖 AI mode', 'sys');
+                });
+
+                document.getElementById('quickPlayBtn').addEventListener('click', ()=>{
+                    document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelector('.level-btn[data-level="cosmic"]').classList.add('active');
+                    App.currentLevel = 'cosmic';
+                    resetGame();
+                });
+
+                document.getElementById('hintBtn').addEventListener('click', ()=>{
+                    if(!App.gameActive || App.currentPlayer!=='X' || App.isPvP) return;
+                    let best = getBestMove(9);
+                    if(best!==-1) {
+                        cells[best].style.boxShadow = 'inset 0 0 40px gold, 0 0 30px gold';
+                        setTimeout(()=>cells[best].style.boxShadow='',2000);
+                        App.hasUsedHint = true;
+                        Missions.checkCondition('hint');
+                    }
+                });
+                document.getElementById('resetBtn').addEventListener('click', resetGame);
+
+                // Level buttons
+                document.querySelectorAll('.level-btn[data-level]').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        App.currentLevel = this.dataset.level;
+                        if(!App.levelsTried.includes(App.currentLevel)) {
+                            App.levelsTried.push(App.currentLevel);
+                        }
+                        addLog(`🎮 مستوى: ${App.currentLevel}`, 'sys');
+                        resetGame();
+                    });
+                });
+
+                // Tour buttons
+                document.getElementById('tourNext').addEventListener('click', ()=> Tour.next());
+                document.getElementById('tourPrev').addEventListener('click', ()=> Tour.prev());
+                document.getElementById('tourSkip').addEventListener('click', ()=> Tour.hide());
+
+                resetGame();
             }
-            return evaluateBoard(simBoard) * 0.15;
-        }
 
-        function checkWin(boardState, player) {
-            return wins.some(combo => combo.every(i => boardState[i] === player));
-        }
-
-        function isStrategicMove(boardState, index, player) {
-            const testBoard = [...boardState];
-            testBoard[index] = player;
-            for (const combo of wins) {
-                const count = combo.filter(i => testBoard[i] === player).length;
-                if (count === 2 && combo.includes(index)) return true;
-            }
-            return [4].includes(index) && boardState.filter(v => v !== null).length < 4;
-        }
-
-        function endGame(winner, combo = null) {
-            gameActive = false;
-            NeuralViz.setState('idle');
-            let result, logType;
-            
-            if (winner === 'draw') {
-                result = 'draw'; logType = 'draw';
-                statusMain.innerText = "COSMIC DRAW";
-                aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.draw)}"`;
-                AudioSys.playDraw();
-                addLog('🤝 Epic cosmic draw', 'draw');
-                CosmicMemory.addPattern([...board], 'draw', moveHistory.filter(m => m.player === 'X').pop()?.index, currentLevel);
-                
-            } else {
-                if (winner === 'X') {
-                    result = 'lose'; logType = 'win';
-                    statusMain.innerText = "COSMIC VICTORY!";
-                    statusMain.classList.add('victory');
-                    aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.victory)}"`;
-                    AudioSys.playWin();
-                    triggerVictoryCelebration();
-                    addLog('🏆 Player achieved COSMIC victory!', 'win');
-                    playerSkill = Math.min(10, playerSkill + 0.6);
-                    CosmicMemory.addPattern([...board], 'lose', moveHistory.filter(m => m.player === 'X').pop()?.index, currentLevel);
-                    
-                } else {
-                    result = 'win'; logType = 'lose';
-                    statusMain.innerText = "AI COSMIC WIN";
-                    statusMain.classList.remove('victory');
-                    aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.win)}"`;
-                    AudioSys.playLose();
-                    addLog('🤖 AI secured cosmic victory', 'lose');
-                    playerSkill = Math.max(1, playerSkill - 0.25);
-                    CosmicMemory.addPattern([...board], 'win', null, currentLevel);
-                }
-                if (combo) drawWinLine(combo);
-            }
-            
-            CosmicMemory.updateUI();
-        }
-
-        // FIXED: Winning line draws correctly across any 3 cells
-        function drawWinLine(combo) {
-            const cell1 = boardEl.children[combo[0] + 1];
-            const cell3 = boardEl.children[combo[2] + 1];
-            const boardRect = boardEl.getBoundingClientRect();
-            const r1 = cell1.getBoundingClientRect();
-            const r3 = cell3.getBoundingClientRect();
-            
-            const x1 = r1.left + r1.width/2 - boardRect.left;
-            const y1 = r1.top + r1.height/2 - boardRect.top;
-            const x2 = r3.left + r3.width/2 - boardRect.left;
-            const y2 = r3.top + r3.height/2 - boardRect.top;
-            
-            const path = document.getElementById('winPath');
-            path.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
-            setTimeout(() => path.style.strokeDashoffset = '0', 140);
-        }
-
-        // === EPIC VICTORY CELEBRATION ===
-        function triggerVictoryCelebration() {
-            const overlay = celebrationOverlay;
-            overlay.classList.add('active');
-            document.querySelector('.main-stage').classList.add('screen-shake');
-            setTimeout(() => document.querySelector('.main-stage').classList.remove('screen-shake'), 650);
-            
-            const colors = ['var(--cosmic-cyan)', 'var(--cosmic-pink)', 'var(--cosmic-gold)', 'var(--cosmic-green)', '#ffffff'];
-            
-            for (let i = 0; i < 150; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.width = (10 + Math.random() * 14) + 'px';
-                    confetti.style.height = (16 + Math.random() * 20) + 'px';
-                    confetti.style.animationDuration = (3 + Math.random() * 2.5) + 's';
-                    confetti.style.animationDelay = Math.random() * 1 + 's';
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '4px';
-                    overlay.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 5000);
-                }, i * 22);
-            }
-            setTimeout(() => overlay.classList.remove('active'), 5000);
-        }
-
-        // === UTILITIES ===
-        function getHint() {
-            if (!gameActive || currentPlayer !== 'X') return;
-            let bestScore = -Infinity, bestMove = -1;
-            for (let i = 0; i < 9; i++) {
-                if (board[i] === null) {
-                    board[i] = 'X';
-                    const score = minimax(board, 0, false, -Infinity, Infinity, 7);
-                    board[i] = null;
-                    if (score > bestScore) { bestScore = score; bestMove = i; }
-                }
-            }
-            if (bestMove !== -1) {
-                const cell = boardEl.children[bestMove + 1];
-                cell.style.boxShadow = `inset 0 0 50px var(--cosmic-gold), 0 0 40px var(--cosmic-gold)`;
-                cell.style.borderColor = 'var(--cosmic-gold)';
-                setTimeout(() => { cell.style.boxShadow = ''; cell.style.borderColor = ''; }, 3000);
-                statusSub.innerText = `💡 Cosmic Hint: Position ${bestMove}`;
-                addLog(`💡 Hint: Optimal cosmic move at ${bestMove}`, 'sys');
-            }
-        }
-
-        function resetGame() {
-            board = Array(9).fill(null);
-            gameActive = true;
-            currentPlayer = 'X';
-            moveHistory = [];
-            statusMain.innerText = "COSMIC";
-            statusMain.classList.remove('victory');
-            statusSub.innerText = currentLevel === 'cosmic' ? 
-                "✨ Self-Evolving Cosmic Intelligence" : "Processing...";
-            aiComment.innerText = '';
-            document.getElementById('winPath').style.strokeDashoffset = '1000';
-            
-            document.querySelectorAll('.cell').forEach(cell => {
-                cell.innerText = '';
-                cell.classList.remove('x', 'o');
-                cell.style.boxShadow = '';
-                cell.style.borderColor = '';
-            });
-            addLog('🔄 New cosmic match initialized', 'sys');
-            
-            if (currentLevel === 'cosmic' && Math.random() > 0.55) {
-                setTimeout(() => aiComment.innerText = `"${AudioSys.getRandom(AudioSys.comments.start)}"`, 450);
-            }
-        }
-
+            init();
+        })();
     </script>
 </body>
     </html>
